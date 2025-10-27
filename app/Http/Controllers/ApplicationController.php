@@ -11,7 +11,7 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $applications = \App\Models\Application::latest()->get();
+        $applications = \App\Models\Application::latest()->paginate(15);
         return view('admin.applications.index', compact('applications'));
     }
 

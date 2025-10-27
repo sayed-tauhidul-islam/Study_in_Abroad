@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\SearchController;
 
 // --- Public Routes ---
@@ -42,7 +43,20 @@ Route::get('/courses', [CourseController::class, 'publicIndex'])->name('courses.
 Route::get('/posts', [PostController::class, 'publicIndex'])->name('posts.index');
 Route::get('/reviews', [ReviewController::class, 'publicIndex'])->name('reviews.index');
 Route::get('/scholarships', [ScholarshipController::class, 'publicIndex'])->name('scholarships.index');
+Route::get('/degrees', [DegreeController::class, 'publicIndex'])->name('degrees.index');
+
+// --- Public Routes for Details ---
+Route::get('/universities/{university}', [UniversityController::class, 'publicShow'])->name('universities.show');
+Route::get('/countries/{country}', [CountryController::class, 'publicShow'])->name('countries.show');
+Route::get('/courses/{course}', [CourseController::class, 'publicShow'])->name('courses.show');
+Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'publicShow'])->name('scholarships.show');
+
+
 Route::get('/applications/create', [ApplicationController::class, 'create'])->name('applications.create');
+Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
 
 // --- Resource Routes for Dynamic Content (Admin) ---
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
@@ -109,6 +123,28 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         'update' => 'scholarships.update',
         'destroy' => 'scholarships.destroy'
     ]);
+    Route::resource('degrees', DegreeController::class)->names([
+        'index' => 'degrees.index',
+        'create' => 'degrees.create',
+        'store' => 'degrees.store',
+        'show' => 'degrees.show',
+        'edit' => 'degrees.edit',
+        'update' => 'degrees.update',
+        'destroy' => 'degrees.destroy'
+    ]);
 });
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+// --- Section-Specific Search Routes ---
+Route::get('/search/universities', [SearchController::class, 'searchUniversities'])->name('search.universities');
+Route::get('/search/countries', [SearchController::class, 'searchCountries'])->name('search.countries');
+Route::get('/search/courses', [SearchController::class, 'searchCourses'])->name('search.courses');
+Route::get('/search/scholarships', [SearchController::class, 'searchScholarships'])->name('search.scholarships');
+Route::get('/search/posts', [SearchController::class, 'searchPosts'])->name('search.posts');
+Route::get('/search/degrees', [SearchController::class, 'searchDegrees'])->name('search.degrees');
+Route::get('/search/reviews', [SearchController::class, 'searchReviews'])->name('search.reviews');
+
+// Event registration routes
+use App\Http\Controllers\EventController;
+Route::post('/events/{eventId}/register', [EventController::class, 'register'])->name('events.register');

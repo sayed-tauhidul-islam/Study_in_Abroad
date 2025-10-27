@@ -25,6 +25,15 @@ class CountryController extends Controller
     }
 
     /**
+     * Display the specified country for public view.
+     */
+    public function publicShow(\App\Models\Country $country)
+    {
+        $country->load('universities');
+        return view('countries.show', compact('country'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

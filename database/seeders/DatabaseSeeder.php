@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             UniversitySeeder::class,
             CourseSeeder::class,
+            DegreeSeeder::class,
         ]);
 
         User::factory()->create([

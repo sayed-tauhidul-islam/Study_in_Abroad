@@ -644,8 +644,9 @@
                 <h3 class="font-bold text-xl mb-3 text-blue-700">Application Guides</h3>
                 <p class="text-gray-600 mb-4">Step-by-step guides for university applications, visa processes, and
                     document preparation.</p>
-                <button class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Explore
-                    Guides</button>
+                <a href="{{ route('applications.create') }}"
+                    class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Explore
+                    Guides</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-green-500">
@@ -653,8 +654,9 @@
                 <h3 class="font-bold text-xl mb-3 text-green-700">Financial Planning</h3>
                 <p class="text-gray-600 mb-4">Budget calculators, scholarship databases, and financial aid resources for
                     international students.</p>
-                <button class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition">Plan
-                    Finances</button>
+                <a href="{{ route('scholarships.index') }}"
+                    class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition">Plan
+                    Finances</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-purple-500">
@@ -662,8 +664,9 @@
                 <h3 class="font-bold text-xl mb-3 text-purple-700">Accommodation Finder</h3>
                 <p class="text-gray-600 mb-4">Find student housing, dormitories, and off-campus apartments in your
                     destination city.</p>
-                <button class="bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition">Find
-                    Housing</button>
+                <a href="{{ route('universities.index') }}"
+                    class="bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition">Find
+                    Housing</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-orange-500">
@@ -671,8 +674,9 @@
                 <h3 class="font-bold text-xl mb-3 text-orange-700">Cultural Guides</h3>
                 <p class="text-gray-600 mb-4">Cultural adaptation tips, language resources, and local insights for your
                     destination country.</p>
-                <button class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition">Learn
-                    Culture</button>
+                <a href="{{ route('countries.index') }}"
+                    class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition">Learn
+                    Culture</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-pink-500">
@@ -680,8 +684,9 @@
                 <h3 class="font-bold text-xl mb-3 text-pink-700">Career Services</h3>
                 <p class="text-gray-600 mb-4">Resume building, job search assistance, and internship opportunities for
                     international students.</p>
-                <button class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition">Build
-                    Career</button>
+                <a href="{{ route('posts.index') }}"
+                    class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition">Build
+                    Career</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-teal-500">
@@ -689,8 +694,9 @@
                 <h3 class="font-bold text-xl mb-3 text-teal-700">Student Community</h3>
                 <p class="text-gray-600 mb-4">Connect with fellow international students, join study groups, and share
                     experiences.</p>
-                <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition">Join
-                    Community</button>
+                <a href="{{ route('reviews.index') }}"
+                    class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition">Join
+                    Community</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-indigo-500">
@@ -698,8 +704,9 @@
                 <h3 class="font-bold text-xl mb-3 text-indigo-700">Mobile App</h3>
                 <p class="text-gray-600 mb-4">Access all our services on-the-go with our mobile app for iOS and Android
                     devices.</p>
-                <button class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition">Download
-                    App</button>
+                <a href="{{ route('about-us') }}"
+                    class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition">Download
+                    App</a>
             </div>
             <div
                 class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-red-500">
@@ -707,8 +714,9 @@
                 <h3 class="font-bold text-xl mb-3 text-red-700">Alumni Network</h3>
                 <p class="text-gray-600 mb-4">Connect with successful alumni for mentorship, career advice, and
                     networking opportunities.</p>
-                <button class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition">Join
-                    Network</button>
+                <a href="{{ route('reviews.index') }}"
+                    class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition">Join
+                    Network</a>
             </div>
         </div>
     </div>
@@ -739,8 +747,12 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-sm text-gray-500">Free Registration</span>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Register
-                        Now</button>
+                    <form action="{{ route('events.register', 1) }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Register
+                            Now</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -795,31 +807,547 @@
     </div>
 </section>
 
-<!-- Newsletter Signup Section -->
-<section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 py-20">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold text-white mb-6">Stay Updated with StudyAbroad</h2>
-        <p class="text-xl text-white mb-8 max-w-2xl mx-auto">Get the latest news, scholarship opportunities, and study
-            abroad tips delivered to your inbox</p>
-        <div
-            class="max-w-md mx-auto bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20">
-            <form class="space-y-4">
-                <div>
-                    <input type="email" placeholder="Enter your email address"
-                        class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800"
-                        required>
+<!-- Accreditation & Partnerships Section -->
+<section class="bg-white py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Trusted by Leading Institutions</h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">We are accredited and partnered with
+            world-renowned organizations ensuring quality education and support</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl text-center border-2 border-blue-200">
+                <div class="text-6xl mb-4">🏛️</div>
+                <h3 class="font-bold text-xl mb-2 text-blue-700">ICEF Certified</h3>
+                <p class="text-gray-600">International Consultants for Education and Fairs certified partner</p>
+            </div>
+            <div
+                class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl text-center border-2 border-green-200">
+                <div class="text-6xl mb-4">🎓</div>
+                <h3 class="font-bold text-xl mb-2 text-green-700">QS Partner</h3>
+                <p class="text-gray-600">Official partner of QS World University Rankings</p>
+            </div>
+            <div
+                class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl text-center border-2 border-purple-200">
+                <div class="text-6xl mb-4">🌍</div>
+                <h3 class="font-bold text-xl mb-2 text-purple-700">UNESCO Alliance</h3>
+                <p class="text-gray-600">Member of UNESCO's global education network</p>
+            </div>
+            <div
+                class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl text-center border-2 border-orange-200">
+                <div class="text-6xl mb-4">⭐</div>
+                <h3 class="font-bold text-xl mb-2 text-orange-700">ISO Certified</h3>
+                <p class="text-gray-600">ISO 9001:2015 certified for quality management</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8">Our University Partners</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 opacity-60">
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🎓</div>
+                    <p class="text-sm font-semibold text-gray-600">Harvard</p>
                 </div>
-                <div class="flex items-start space-x-2 text-left">
-                    <input type="checkbox" id="newsletter-consent" class="mt-1" required>
-                    <label for="newsletter-consent" class="text-white text-sm">I agree to receive newsletters and
-                        updates about study abroad opportunities. You can unsubscribe at any time.</label>
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🏛️</div>
+                    <p class="text-sm font-semibold text-gray-600">Oxford</p>
                 </div>
-                <button type="submit"
-                    class="w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition shadow-lg">Subscribe
-                    Now</button>
-            </form>
-            <p class="text-white text-sm mt-4 opacity-80">Join 50,000+ students who stay informed with our newsletter
-            </p>
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🎓</div>
+                    <p class="text-sm font-semibold text-gray-600">Stanford</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🏫</div>
+                    <p class="text-sm font-semibold text-gray-600">Cambridge</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🎓</div>
+                    <p class="text-sm font-semibold text-gray-600">MIT</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-2">🏛️</div>
+                    <p class="text-sm font-semibold text-gray-600">Yale</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Study Abroad Process Timeline -->
+<section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Your Study Abroad Journey</h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Follow our proven 8-step process to
+            successfully study abroad</p>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div
+                        class="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        1</div>
+                    <h3 class="font-bold text-xl mb-3 text-blue-700">Free Consultation</h3>
+                    <p class="text-gray-600">Discuss your goals, budget, and preferences with our expert counselors</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 1</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        2</div>
+                    <h3 class="font-bold text-xl mb-3 text-green-700">University Selection</h3>
+                    <p class="text-gray-600">Get personalized university recommendations based on your profile</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 2-3</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        3</div>
+                    <h3 class="font-bold text-xl mb-3 text-purple-700">Application Preparation</h3>
+                    <p class="text-gray-600">Complete application forms, write SOPs, and prepare required documents</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 4-8</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        4</div>
+                    <h3 class="font-bold text-xl mb-3 text-orange-700">Test Preparation</h3>
+                    <p class="text-gray-600">Prepare for IELTS/TOEFL, GRE/GMAT with our expert coaching</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 6-12</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-pink-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        5</div>
+                    <h3 class="font-bold text-xl mb-3 text-pink-700">Application Submission</h3>
+                    <p class="text-gray-600">Submit applications to multiple universities with our assistance</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 10-16</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-teal-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        6</div>
+                    <h3 class="font-bold text-xl mb-3 text-teal-700">Offer & Acceptance</h3>
+                    <p class="text-gray-600">Receive offers and make informed decisions about your future</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 16-20</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-indigo-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        7</div>
+                    <h3 class="font-bold text-xl mb-3 text-indigo-700">Visa Processing</h3>
+                    <p class="text-gray-600">Complete visa applications with our dedicated visa assistance team</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 20-24</div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="bg-red-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        8</div>
+                    <h3 class="font-bold text-xl mb-3 text-red-700">Pre-Departure Support</h3>
+                    <p class="text-gray-600">Get accommodation, airport pickup, and orientation before departure</p>
+                    <div class="mt-4 text-sm text-gray-500">Week 24+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cost Comparison Section -->
+<section class="bg-white py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Study Abroad Cost Comparison</h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Compare tuition fees, living costs, and
+            potential savings across popular destinations</p>
+        <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+                <thead class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                    <tr>
+                        <th class="px-6 py-4 text-left">Country</th>
+                        <th class="px-6 py-4 text-center">Avg. Tuition ($/year)</th>
+                        <th class="px-6 py-4 text-center">Living Cost ($/month)</th>
+                        <th class="px-6 py-4 text-center">Total Cost ($/year)</th>
+                        <th class="px-6 py-4 text-center">Scholarship Potential</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇺🇸 United States</td>
+                        <td class="px-6 py-4 text-center">$25,000 - $55,000</td>
+                        <td class="px-6 py-4 text-center">$1,200 - $2,500</td>
+                        <td class="px-6 py-4 text-center">$37,200 - $79,000</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (50%+)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇬🇧 United Kingdom</td>
+                        <td class="px-6 py-4 text-center">$15,000 - $30,000</td>
+                        <td class="px-6 py-4 text-center">$1,000 - $1,800</td>
+                        <td class="px-6 py-4 text-center">$27,000 - $45,600</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (40%+)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇦🇺 Australia</td>
+                        <td class="px-6 py-4 text-center">$20,000 - $35,000</td>
+                        <td class="px-6 py-4 text-center">$1,200 - $2,000</td>
+                        <td class="px-6 py-4 text-center">$34,400 - $51,000</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Medium
+                                (30%+)</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇨🇦 Canada</td>
+                        <td class="px-6 py-4 text-center">$12,000 - $25,000</td>
+                        <td class="px-6 py-4 text-center">$800 - $1,500</td>
+                        <td class="px-6 py-4 text-center">$21,600 - $39,000</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (35%+)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇩🇪 Germany</td>
+                        <td class="px-6 py-4 text-center">$0 - $500</td>
+                        <td class="px-6 py-4 text-center">$800 - $1,200</td>
+                        <td class="px-6 py-4 text-center">$9,600 - $14,400</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Low (10%+)</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-800">🇳🇱 Netherlands</td>
+                        <td class="px-6 py-4 text-center">$8,000 - $15,000</td>
+                        <td class="px-6 py-4 text-center">$900 - $1,400</td>
+                        <td class="px-6 py-4 text-center">$19,800 - $31,800</td>
+                        <td class="px-6 py-4 text-center"><span
+                                class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Medium
+                                (25%+)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-8">
+            <p class="text-gray-600 mb-4">*Costs are approximate and can vary based on location, lifestyle, and currency
+                exchange rates</p>
+            <button class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition font-semibold">Get
+                Detailed Cost Analysis</button>
+        </div>
+    </div>
+</section>
+
+<!-- Admission Requirements Section -->
+<section class="bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Admission Requirements by Country</h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Understand the specific requirements for
+            your dream destination</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-blue-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇺🇸</div>
+                    <h3 class="font-bold text-2xl text-blue-700">United States</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 3.0+ (undergraduate), 3.5+ (graduate)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> TOEFL 80+ or IELTS 6.5+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> SAT/ACT (undergrad), GRE/GMAT (grad)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> Transcripts, LORs, SOP</span>
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-red-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇬🇧</div>
+                    <h3 class="font-bold text-2xl text-red-700">United Kingdom</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 3.0+ or equivalent grades</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> IELTS 6.0-7.0+ (varies by course)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> UCAS application system</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> Personal statement, references</span>
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-green-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇦🇺</div>
+                    <h3 class="font-bold text-2xl text-green-700">Australia</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-green-100 text-green-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 2.8+ or ATAR equivalent</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-green-100 text-green-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> IELTS 6.5+ or PTE 58+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-green-100 text-green-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> No standardized tests required</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-green-100 text-green-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> Academic transcripts, CV</span>
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-orange-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇨🇦</div>
+                    <h3 class="font-bold text-2xl text-orange-700">Canada</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-orange-100 text-orange-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 3.0+ (B average)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-orange-100 text-orange-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> IELTS 6.5+ or TOEFL 86+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-orange-100 text-orange-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> No entrance exams for most programs</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-orange-100 text-orange-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> Transcripts, LORs, SOP</span>
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-purple-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇩🇪</div>
+                    <h3 class="font-bold text-2xl text-purple-700">Germany</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-purple-100 text-purple-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 2.5+ or equivalent</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-purple-100 text-purple-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> IELTS 6.0+ (for English programs)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-purple-100 text-purple-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> TestAS for some technical programs</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-purple-100 text-purple-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> University entrance qualification</span>
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-teal-500">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🇳🇱</div>
+                    <h3 class="font-bold text-2xl text-teal-700">Netherlands</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>GPA:</strong> 3.0+ or equivalent</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>English:</strong> IELTS 6.5+ or TOEFL 90+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Tests:</strong> No entrance exams for most programs</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3 mt-0.5">✓</span>
+                        <span><strong>Documents:</strong> Motivation letter, CV, references</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Post-Study Work Opportunities Section -->
+<section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-white mb-4">Post-Study Work Opportunities</h2>
+        <p class="text-xl text-center text-white mb-16 max-w-3xl mx-auto">Maximize your international education
+            investment with work opportunities after graduation</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇺🇸</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">OPT</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">United States - OPT Program</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 12 months for STEM graduates</li>
+                    <li>• 36 months for STEM extensions</li>
+                    <li>• Work authorization for F-1 students</li>
+                    <li>• Path to H-1B visa</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: $65,000+</div>
+            </div>
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇬🇧</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">PSW</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">United Kingdom - PSW Visa</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 2 years work permission</li>
+                    <li>• Any job, any salary level</li>
+                    <li>• Extendable in some cases</li>
+                    <li>• Path to skilled worker visa</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: £35,000+</div>
+            </div>
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇦🇺</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">485</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">Australia - 485 Visa</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 18 months for graduates</li>
+                    <li>• 4 years for PhD graduates</li>
+                    <li>• Work rights in any occupation</li>
+                    <li>• Pathway to PR</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: AUD 70,000+</div>
+            </div>
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇨🇦</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">PGWP</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">Canada - PGWP</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 8-36 months based on program length</li>
+                    <li>• Open work permit</li>
+                    <li>• Express Entry points</li>
+                    <li>• Direct path to permanent residency</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: CAD 60,000+</div>
+            </div>
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇩🇪</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">Job Seeker</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">Germany - Job Seeker Visa</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 6 months to find work</li>
+                    <li>• Extendable if job found</li>
+                    <li>• EU Blue Card pathway</li>
+                    <li>• Strong economy with high demand</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: €45,000+</div>
+            </div>
+            <div
+                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="text-4xl">🇳🇱</div>
+                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">Orientation</div>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-white">Netherlands - Orientation Year</h3>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>• 1 year to find work or start business</li>
+                    <li>• No job offer required initially</li>
+                    <li>• Highly skilled migrant visa pathway</li>
+                    <li>• English widely spoken</li>
+                </ul>
+                <div class="text-yellow-400 font-semibold">Average Salary: €40,000+</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pre-Departure Preparation Section -->
+<section class="bg-white py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Pre-Departure Preparation</h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Get fully prepared for your study abroad
+            journey with our comprehensive support</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+                class="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-blue-200">
+                <div class="text-6xl mb-6">🏠</div>
+                <h3 class="font-bold text-xl mb-3 text-blue-700">Accommodation</h3>
+                <p class="text-gray-600 mb-4">Pre-arranged housing options including dormitories, apartments, and
+                    homestays with verified landlords.</p>
+                <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Airport pickup included</li>
+                    <li>• Fully furnished options</li>
+                    <li>• Utilities setup assistance</li>
+                </ul>
+            </div>
+            <div
+                class="text-center bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-green-200">
+                <div class="text-6xl mb-6">💳</div>
+                <h3 class="font-bold text-xl mb-3 text-green-700">Banking & Finance</h3>
+                <p class="text-gray-600 mb-4">International bank account setup, currency exchange guidance, and
+                    financial planning for your stay.</p>
+                <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Multi-currency accounts</li>
+                    <li>• Debit card applications</li>
+                    <li>• Money transfer services</li>
+                </ul>
+            </div>
+            <div
+                class="text-center bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-purple-200">
+                <div class="text-6xl mb-6">🏥</div>
+                <h3 class="font-bold text-xl mb-3 text-purple-700">Health Insurance</h3>
+                <p class="text-gray-600 mb-4">Comprehensive health insurance coverage, medical checkups, and emergency
+                    assistance services for international students.</p>
+                <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Student health plans</li>
+                    <li>• Emergency medical coverage</li>
+                    <li>• Dental and vision care</li>
+                </ul>
+            </div>
+            <div
+                class="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-orange-200">
+                <div class="text-6xl mb-6">🌍</div>
+                <h3 class="font-bold text-xl mb-3 text-orange-700">Cultural Orientation</h3>
+                <p class="text-gray-600 mb-4">Cultural adaptation workshops, language classes, and local customs
+                    guidance to help you settle in smoothly.</p>
+                <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Cultural sensitivity training</li>
+                    <li>• Language immersion programs</li>
+                    <li>• Local community connections</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>

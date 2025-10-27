@@ -25,6 +25,14 @@ class UniversityController extends Controller
     }
 
     /**
+     * Display the specified university for public view.
+     */
+    public function publicShow(\App\Models\University $university)
+    {
+        return view('universities.show', compact('university'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
