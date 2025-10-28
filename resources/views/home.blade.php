@@ -57,12 +57,14 @@
                     Abroad</span> Opportunities</h1>
             <p class="text-lg mb-8">Find the best universities and programs around the world. Start your journey to
                 study abroad with us today!</p>
-            <form action="{{ route('search') }}" method="GET" class="mb-6 flex items-center max-w-md">
-                <input type="text" name="query" placeholder="Search universities, courses, scholarships..."
-                    class="w-full px-4 py-2 rounded-l-lg focus:outline-none text-gray-800" />
-                <button type="submit"
-                    class="bg-yellow-300 text-blue-900 px-4 py-2 rounded-r-lg font-bold hover:bg-yellow-400 transition">Search</button>
-            </form>
+            <div class="flex items-center space-x-4 mb-6">
+                <form action="{{ route('search') }}" method="GET" class="flex items-center max-w-sm">
+                    <input type="text" name="query" placeholder="Search universities..."
+                        class="w-full px-3 py-2 rounded-l-lg focus:outline-none text-gray-800 text-sm" />
+                    <button type="submit"
+                        class="bg-yellow-300 text-blue-900 px-3 py-2 rounded-r-lg font-bold hover:bg-yellow-400 transition text-sm">Search</button>
+                </form>
+            </div>
             <a href="{{ route('applications.create') }}"
                 class="bg-yellow-300 text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow">Apply
                 Now</a>
@@ -243,6 +245,8 @@
         </div>
     </div>
 </section>
+
+
 
 <!-- Testimonials Section -->
 <section class="container mx-auto px-4 py-16">
@@ -1351,5 +1355,27 @@
         </div>
     </div>
 </section>
+
+
+
+<!-- Floating Chat Button -->
+<div class="fixed bottom-6 right-6 z-50">
+    <a href="{{ route('chat.index') }}"
+        class="bg-yellow-300 hover:bg-yellow-400 text-blue-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+            </path>
+        </svg>
+    </a>
+    <!-- Tooltip -->
+    <div
+        class="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+        Chat with us
+        <div
+            class="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800">
+        </div>
+    </div>
+</div>
 
 @endsection

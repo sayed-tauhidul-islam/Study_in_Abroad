@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Study Abroad')</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -28,26 +29,26 @@
                 </div>
                 <div class="flex flex-wrap space-x-4 md:space-x-6">
                     <a href="{{ url('/') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Home</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('/') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Home</a>
                     <a href="{{ url('/countries') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Countries</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('countries*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Countries</a>
                     <a href="{{ url('/universities') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Universities</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('universities*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Universities</a>
                     <a href="{{ url('/courses') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Courses</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('courses*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Courses</a>
                     <a href="{{ url('/posts') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Posts</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('posts*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Posts</a>
                     <a href="{{ url('/degrees') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Degrees</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('degrees*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Degrees</a>
                     <a href="{{ url('/reviews') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Reviews</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('reviews*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Reviews</a>
                     <a href="{{ url('/scholarships') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">Scholarships</a>
+                        class="transition font-medium text-sm md:text-base {{ request()->is('scholarships*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Scholarships</a>
                     <a href="{{ url('/about-us') }}"
-                        class="text-white hover:text-yellow-300 transition font-medium text-sm md:text-base">About
+                        class="transition font-medium text-sm md:text-base {{ request()->is('about-us') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">About
                         Us</a>
                     <a href="{{ route('applications.create') }}"
-                        class="bg-yellow-400 text-blue-900 px-4 md:px-6 py-2 rounded-full hover:bg-yellow-300 transition font-semibold shadow-lg text-sm md:text-base">Apply
+                        class="px-4 md:px-6 py-2 rounded-full transition font-semibold shadow-lg text-sm md:text-base {{ Route::currentRouteName() == 'applications.create' ? 'bg-red-500 text-white' : 'bg-yellow-400 text-blue-900 hover:bg-yellow-300' }}">Apply
                         Now</a>
                 </div>
             </div>

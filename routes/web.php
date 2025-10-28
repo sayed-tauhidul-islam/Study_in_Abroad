@@ -12,6 +12,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ChatController;
 
 // --- Public Routes ---
 
@@ -57,6 +58,10 @@ Route::post('/applications', [ApplicationController::class, 'store'])->name('app
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
+
+// Chat routes
+Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
 
 // --- Resource Routes for Dynamic Content (Admin) ---
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
