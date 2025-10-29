@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Hero Section with Search Bar -->
-<section class="relative bg-gradient-to-br from-blue-500 via-purple-500 to-pink-400 py-20" x-data="{
+<section class="relative bg-white py-20 border-b-4 border-blue-500" x-data="{
     images: [
         {src: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800&q=80', alt: 'Modern University Building', caption: 'Modern University'},
         {src: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80', alt: 'International Students', caption: 'International Students'},
@@ -52,21 +52,23 @@
     init() { this.start() }
 }">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0 text-white">
-            <h1 class="text-5xl font-extrabold mb-6 drop-shadow-lg">Explore Your <span class="text-yellow-300">Study
+        <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-5xl font-extrabold mb-6 drop-shadow-sm text-blue-900">Explore Your <span
+                    class="text-green-600">Study
                     Abroad</span> Opportunities</h1>
-            <p class="text-lg mb-8">Find the best universities and programs around the world. Start your journey to
+            <p class="text-lg mb-8 text-blue-800">Find the best universities and programs around the world. Start your
+                journey to
                 study abroad with us today!</p>
             <div class="flex items-center space-x-4 mb-6">
                 <form action="{{ route('search') }}" method="GET" class="flex items-center max-w-sm">
                     <input type="text" name="query" placeholder="Search universities..."
-                        class="w-full px-3 py-2 rounded-l-lg focus:outline-none text-gray-800 text-sm" />
+                        class="w-full px-3 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800 text-sm border border-green-200 bg-white" />
                     <button type="submit"
-                        class="bg-yellow-300 text-blue-900 px-3 py-2 rounded-r-lg font-bold hover:bg-yellow-400 transition text-sm">Search</button>
+                        class="bg-green-700 text-white px-3 py-2 rounded-r-lg font-bold hover:bg-green-800 transition text-sm">Search</button>
                 </form>
             </div>
             <a href="{{ route('applications.create') }}"
-                class="bg-yellow-300 text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow">Apply
+                class="bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition shadow-xl pulse-glow">Apply
                 Now</a>
         </div>
         <div class="md:w-1/2 flex flex-col items-center justify-center relative">
@@ -93,45 +95,46 @@
                         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' />
                     </svg></button>
             </div>
-            <div class="mt-4 text-lg text-white font-semibold bg-blue-900 bg-opacity-60 px-4 py-2 rounded shadow-lg min-h-[48px]"
+            <div class="mt-4 text-lg text-blue-900 font-semibold bg-white bg-opacity-90 px-4 py-2 rounded shadow-lg min-h-[48px]"
                 x-text="images[current].caption"></div>
         </div>
     </div>
 </section>
 
 <!-- Why Choose Us Section -->
-<section class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-20">
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Why Choose StudyAbroad?</h2>
-        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">We provide comprehensive support to make
+        <h2 class="text-4xl font-bold text-center text-slate-800 mb-4">Why Choose StudyAbroad?</h2>
+        <p class="text-xl text-center text-slate-600 mb-16 max-w-3xl mx-auto">We provide comprehensive support to make
             your study abroad journey smooth, successful, and unforgettable.</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div
-                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-blue-500">
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-emerald-500 bounce-hover">
                 <div class="text-6xl mb-6 text-center">🎯</div>
-                <h3 class="font-bold text-xl mb-3 text-blue-700 text-center">Personalized Matching</h3>
-                <p class="text-gray-600 text-center">AI-powered recommendations based on your profile, preferences, and
+                <h3 class="font-bold text-xl mb-3 text-slate-800 text-center">Personalized Matching</h3>
+                <p class="text-slate-600 text-center">AI-powered recommendations based on your profile, preferences, and
                     goals.</p>
             </div>
             <div
-                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-green-500">
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-emerald-500 bounce-hover">
                 <div class="text-6xl mb-6 text-center">💰</div>
-                <h3 class="font-bold text-xl mb-3 text-green-700 text-center">Scholarship Assistance</h3>
-                <p class="text-gray-600 text-center">Access to thousands of scholarships with expert application
+                <h3 class="font-bold text-xl mb-3 text-slate-800 text-center">Scholarship Assistance</h3>
+                <p class="text-slate-600 text-center">Access to thousands of scholarships with expert application
                     guidance.</p>
             </div>
             <div
-                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-purple-500">
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-emerald-500 bounce-hover">
                 <div class="text-6xl mb-6 text-center">📋</div>
-                <h3 class="font-bold text-xl mb-3 text-purple-700 text-center">Complete Support</h3>
-                <p class="text-gray-600 text-center">From application to arrival - we handle every step of your journey.
+                <h3 class="font-bold text-xl mb-3 text-slate-800 text-center">Complete Support</h3>
+                <p class="text-slate-600 text-center">From application to arrival - we handle every step of your
+                    journey.
                 </p>
             </div>
             <div
-                class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-orange-500">
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-green-600 bounce-hover">
                 <div class="text-6xl mb-6 text-center">🌟</div>
-                <h3 class="font-bold text-xl mb-3 text-orange-700 text-center">Success Guarantee</h3>
-                <p class="text-gray-600 text-center">95% success rate with proven track record of student placements.
+                <h3 class="font-bold text-xl mb-3 text-blue-900 text-center">Success Guarantee</h3>
+                <p class="text-blue-700 text-center">95% success rate with proven track record of student placements.
                 </p>
             </div>
         </div>
@@ -139,105 +142,110 @@
 </section>
 
 <!-- Features Section -->
-<section class="container mx-auto px-4 py-16">
+<section class="container mx-auto px-4 py-16 bg-white">
     <div class="grid md:grid-cols-3 gap-10">
         <div
-            class="bg-gradient-to-br from-yellow-200 via-pink-100 to-blue-100 p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-yellow-300">
+            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-blue-200 hover:border-blue-500 shimmer">
             <div class="text-5xl mb-4">🌍</div>
-            <h3 class="font-bold text-2xl mb-2 text-blue-700">Global Universities</h3>
-            <p class="text-gray-700">Access a wide range of top universities from all over the world.</p>
+            <h3 class="font-bold text-2xl mb-2 text-blue-900">Global Universities</h3>
+            <p class="text-blue-700">Access a wide range of top universities from all over the world.</p>
         </div>
         <div
-            class="bg-gradient-to-br from-blue-200 via-green-100 to-yellow-100 p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-blue-300">
+            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-green-200 hover:border-green-500 shimmer">
             <div class="text-5xl mb-4">🎓</div>
-            <h3 class="font-bold text-2xl mb-2 text-green-700">Diverse Programs</h3>
-            <p class="text-gray-700">Choose from hundreds of programs to match your interests and goals.</p>
+            <h3 class="font-bold text-2xl mb-2 text-blue-900">Diverse Programs</h3>
+            <p class="text-blue-700">Choose from hundreds of programs to match your interests and goals.</p>
         </div>
         <div
-            class="bg-gradient-to-br from-pink-200 via-purple-100 to-green-100 p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-pink-300">
+            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-blue-200 hover:border-blue-500 shimmer">
             <div class="text-5xl mb-4">🤝</div>
-            <h3 class="font-bold text-2xl mb-2 text-pink-700">Expert Guidance</h3>
-            <p class="text-gray-700">Get support from our experienced counselors at every step.</p>
+            <h3 class="font-bold text-2xl mb-2 text-blue-900">Expert Guidance</h3>
+            <p class="text-blue-700">Get support from our experienced counselors at every step.</p>
         </div>
     </div>
 </section>
 
 <!-- Statistics Section -->
-<section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 py-20">
+<section class="bg-white py-20 border-t-4 border-b-4 border-blue-500">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-white mb-4">Our Impact in Numbers</h2>
-        <p class="text-xl text-center text-white mb-16">Trusted by students worldwide for their study abroad dreams</p>
+        <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Our Impact in Numbers</h2>
+        <p class="text-xl text-center text-blue-700 mb-16">Trusted by students worldwide for their study abroad dreams
+        </p>
         <div class="grid md:grid-cols-4 gap-8 text-center">
             <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 hover:scale-105 border border-white border-opacity-20">
-                <div class="text-5xl font-bold text-yellow-300 mb-3">500+</div>
-                <p class="text-white font-semibold text-lg">Partner Universities</p>
-                <p class="text-white text-sm opacity-80 mt-2">World-class institutions</p>
+                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-blue-600 float-animation">
+                <div class="text-5xl font-bold text-blue-900 mb-3">500+</div>
+                <p class="text-blue-800 font-semibold text-lg">Partner Universities</p>
+                <p class="text-blue-600 text-sm mt-2">World-class institutions</p>
             </div>
             <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 hover:scale-105 border border-white border-opacity-20">
-                <div class="text-5xl font-bold text-yellow-300 mb-3">50K+</div>
-                <p class="text-white font-semibold text-lg">Students Helped</p>
-                <p class="text-white text-sm opacity-80 mt-2">Successful placements</p>
+                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-600 float-animation">
+                <div class="text-5xl font-bold text-blue-900 mb-3">50K+</div>
+                <p class="text-blue-800 font-semibold text-lg">Students Helped</p>
+                <p class="text-blue-600 text-sm mt-2">Successful placements</p>
             </div>
             <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 hover:scale-105 border border-white border-opacity-20">
-                <div class="text-5xl font-bold text-yellow-300 mb-3">100+</div>
-                <p class="text-white font-semibold text-lg">Countries Covered</p>
-                <p class="text-white text-sm opacity-80 mt-2">Global opportunities</p>
+                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-blue-600 float-animation">
+                <div class="text-5xl font-bold text-blue-900 mb-3">100+</div>
+                <p class="text-blue-800 font-semibold text-lg">Countries Covered</p>
+                <p class="text-blue-600 text-sm mt-2">Global opportunities</p>
             </div>
             <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 hover:scale-105 border border-white border-opacity-20">
-                <div class="text-5xl font-bold text-yellow-300 mb-3">95%</div>
-                <p class="text-white font-semibold text-lg">Success Rate</p>
-                <p class="text-white text-sm opacity-80 mt-2">Proven track record</p>
+                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-600 float-animation">
+                <div class="text-5xl font-bold text-blue-900 mb-3">95%</div>
+                <p class="text-blue-800 font-semibold text-lg">Success Rate</p>
+                <p class="text-blue-600 text-sm mt-2">Proven track record</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-gradient-to-br from-gray-50 via-white to-blue-50 py-20">
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Frequently Asked Questions</h2>
-        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Get answers to common questions about
+        <h2 class="text-4xl font-bold text-center text-slate-800 mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-center text-slate-600 mb-16 max-w-3xl mx-auto">Get answers to common questions about
             studying abroad</p>
         <div class="max-w-4xl mx-auto space-y-6">
-            <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center">
-                    <span class="bg-blue-100 text-blue-600 rounded-full p-2 mr-4">❓</span>
+            <div
+                class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300 border-l-4 border-emerald-500">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-emerald-100 text-emerald-700 rounded-full p-2 mr-4">❓</span>
                     How do I choose the right university for me?
                 </h3>
-                <p class="text-gray-600 leading-relaxed">We help you evaluate universities based on your academic
+                <p class="text-slate-600 leading-relaxed">We help you evaluate universities based on your academic
                     profile, career goals, budget, and personal preferences. Our AI-powered matching system considers
                     factors like acceptance rates, program quality, location, and cost of living to recommend the best
                     options for you.</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center">
-                    <span class="bg-green-100 text-green-600 rounded-full p-2 mr-4">💰</span>
+            <div
+                class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300 border-l-4 border-emerald-500">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-emerald-100 text-emerald-700 rounded-full p-2 mr-4">💰</span>
                     What scholarships am I eligible for?
                 </h3>
-                <p class="text-gray-600 leading-relaxed">We maintain a comprehensive database of scholarships from
+                <p class="text-slate-600 leading-relaxed">We maintain a comprehensive database of scholarships from
                     universities, governments, and private organizations. Our team helps identify scholarships based on
                     your nationality, field of study, academic merit, and financial need, potentially saving you
                     thousands of dollars.</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center">
-                    <span class="bg-purple-100 text-purple-600 rounded-full p-2 mr-4">📋</span>
+            <div
+                class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300 border-l-4 border-emerald-500">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-emerald-100 text-emerald-700 rounded-full p-2 mr-4">📋</span>
                     What documents do I need for my application?
                 </h3>
-                <p class="text-gray-600 leading-relaxed">Required documents typically include academic transcripts,
+                <p class="text-slate-600 leading-relaxed">Required documents typically include academic transcripts,
                     standardized test scores (TOEFL/IELTS, GRE/GMAT), letters of recommendation, personal statement, and
                     financial statements. We provide detailed checklists and guidance for each document.</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-bold text-orange-700 mb-4 flex items-center">
-                    <span class="bg-orange-100 text-orange-600 rounded-full p-2 mr-4">🛂</span>
+            <div
+                class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300 border-l-4 border-emerald-500">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-emerald-100 text-emerald-700 rounded-full p-2 mr-4">🛂</span>
                     How long does the visa process take?
                 </h3>
-                <p class="text-gray-600 leading-relaxed">Visa processing times vary by country and visa type, typically
+                <p class="text-slate-600 leading-relaxed">Visa processing times vary by country and visa type, typically
                     ranging from 2-12 weeks. We help you prepare all required documents, schedule appointments, and
                     provide tips to increase your approval chances. Most students receive their visas within 4-6 weeks.
                 </p>
@@ -359,27 +367,27 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="bg-gradient-to-r from-green-400 to-blue-500 py-16">
+<section class="bg-white py-16 border-t-4 border-b-4 border-blue-500">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
-        <p class="text-xl text-white mb-8">Join thousands of students who have successfully studied abroad with our
+        <p class="text-xl text-blue-100 mb-8">Join thousands of students who have successfully studied abroad with our
             help.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('search') }}"
-                class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">Search
+                class="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition shadow-lg pulse-glow">Search
                 Programs</a>
             <a href="{{ route('applications.create') }}"
-                class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">Apply
+                class="bg-green-700 border-2 border-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 hover:border-green-800 transition shimmer">Apply
                 Now</a>
         </div>
     </div>
 </section>
 
 <!-- Popular Destinations Section -->
-<section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20">
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Popular Study Destinations</h2>
-        <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Explore the world's most sought-after
+        <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Popular Study Destinations</h2>
+        <p class="text-xl text-center text-blue-700 mb-16 max-w-3xl mx-auto">Explore the world's most sought-after
             destinations for international education</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div
@@ -404,7 +412,7 @@
                 class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
                 <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
                     <div class="text-center text-white">
-                        <div class="text-6xl mb-2">🇬🇧</div>
+                        <div class="text-6xl mb-2">UK</div>
                         <h3 class="text-2xl font-bold">United Kingdom</h3>
                     </div>
                 </div>
@@ -438,20 +446,19 @@
             </div>
             <div
                 class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                <div class="h-48 bg-gradient-to-br from-red-400 to-yellow-600 flex items-center justify-center">
                     <div class="text-center text-white">
-                        <div class="text-6xl mb-2">🇨🇦</div>
+                        <div class="text-6xl mb-2">CA</div>
                         <h3 class="text-2xl font-bold">Canada</h3>
                     </div>
                 </div>
                 <div class="p-6">
-                    <p class="text-gray-600 mb-4">Affordable education with pathways to permanent residency.
-                        Multicultural environment with high quality of life.</p>
+                    <p class="text-gray-600 mb-4">High-quality education with excellent post-study work opportunities.
+                        Known for research excellence.</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">100+ Universities</span>
-                        <span
-                            class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">Affordable
-                            Excellence</span>
+                        <span class="text-sm text-gray-500">20+ Universities</span>
+                        <span class="bg-pink-100 text-black-600 px-3 py-1 rounded-full text-sm font-semibold">Work
+                            Opportunities</span>
                     </div>
                 </div>
             </div>
@@ -466,7 +473,7 @@
         academic goals and career aspirations</p>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
-            class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-500">
             <div class="text-5xl mb-4">🎓</div>
             <h3 class="font-bold text-2xl mb-3 text-blue-700">Undergraduate Programs</h3>
             <p class="text-gray-700 mb-4">Bachelor's degrees in various fields including Business, Engineering, Arts,
@@ -478,7 +485,7 @@
             </ul>
         </div>
         <div
-            class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-green-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-green-500">
             <div class="text-5xl mb-4">📚</div>
             <h3 class="font-bold text-2xl mb-3 text-green-700">Graduate Programs</h3>
             <p class="text-gray-700 mb-4">Master's and PhD programs for advanced study. Research opportunities, industry
@@ -490,7 +497,7 @@
             </ul>
         </div>
         <div
-            class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500">
             <div class="text-5xl mb-4">💼</div>
             <h3 class="font-bold text-2xl mb-3 text-purple-700">Professional Programs</h3>
             <p class="text-gray-700 mb-4">MBA, Law, Medicine, and other professional degrees. Specialized training with
@@ -502,7 +509,7 @@
             </ul>
         </div>
         <div
-            class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-orange-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-orange-500">
             <div class="text-5xl mb-4">🌐</div>
             <h3 class="font-bold text-2xl mb-3 text-orange-700">Online & Hybrid Programs</h3>
             <p class="text-gray-700 mb-4">Flexible learning options combining online coursework with in-person
@@ -514,7 +521,7 @@
             </ul>
         </div>
         <div
-            class="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-pink-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-pink-500">
             <div class="text-5xl mb-4">🎨</div>
             <h3 class="font-bold text-2xl mb-3 text-pink-700">Creative Arts Programs</h3>
             <p class="text-gray-700 mb-4">Fine Arts, Design, Music, Film, and Performing Arts. Portfolio development and
@@ -526,7 +533,7 @@
             </ul>
         </div>
         <div
-            class="bg-gradient-to-br from-teal-50 to-teal-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-teal-500">
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-teal-500">
             <div class="text-5xl mb-4">🔬</div>
             <h3 class="font-bold text-2xl mb-3 text-teal-700">STEM Programs</h3>
             <p class="text-gray-700 mb-4">Science, Technology, Engineering, and Mathematics. Cutting-edge research
@@ -541,7 +548,7 @@
 </section>
 
 <!-- University Rankings Section -->
-<section class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-20">
+<section class="bg-white py-20 border-t-4 border-b-4 border-pink-500">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-white mb-4">Top Ranked Universities</h2>
         <p class="text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">Partnered with world-leading institutions
@@ -636,7 +643,7 @@
 </section>
 
 <!-- Student Resources Section -->
-<section class="bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-20">
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Student Resources & Tools</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Everything you need to succeed in your
@@ -649,7 +656,7 @@
                 <p class="text-gray-600 mb-4">Step-by-step guides for university applications, visa processes, and
                     document preparation.</p>
                 <a href="{{ route('applications.create') }}"
-                    class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Explore
+                    class="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Explore
                     Guides</a>
             </div>
             <div
@@ -659,7 +666,7 @@
                 <p class="text-gray-600 mb-4">Budget calculators, scholarship databases, and financial aid resources for
                     international students.</p>
                 <a href="{{ route('scholarships.index') }}"
-                    class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition">Plan
+                    class="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Plan
                     Finances</a>
             </div>
             <div
@@ -754,7 +761,7 @@
                     <form action="{{ route('events.register', 1) }}" method="POST" class="inline">
                         @csrf
                         <button type="submit"
-                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Register
+                            class="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition">Register
                             Now</button>
                     </form>
                 </div>
@@ -818,26 +825,22 @@
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">We are accredited and partnered with
             world-renowned organizations ensuring quality education and support</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <div
-                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl text-center border-2 border-blue-200">
+            <div class="bg-white p-8 rounded-2xl text-center border-2 border-blue-200">
                 <div class="text-6xl mb-4">🏛️</div>
                 <h3 class="font-bold text-xl mb-2 text-blue-700">ICEF Certified</h3>
                 <p class="text-gray-600">International Consultants for Education and Fairs certified partner</p>
             </div>
-            <div
-                class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl text-center border-2 border-green-200">
+            <div class="bg-white p-8 rounded-2xl text-center border-2 border-green-200">
                 <div class="text-6xl mb-4">🎓</div>
                 <h3 class="font-bold text-xl mb-2 text-green-700">QS Partner</h3>
                 <p class="text-gray-600">Official partner of QS World University Rankings</p>
             </div>
-            <div
-                class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl text-center border-2 border-purple-200">
+            <div class="bg-white p-8 rounded-2xl text-center border-2 border-purple-200">
                 <div class="text-6xl mb-4">🌍</div>
                 <h3 class="font-bold text-xl mb-2 text-purple-700">UNESCO Alliance</h3>
                 <p class="text-gray-600">Member of UNESCO's global education network</p>
             </div>
-            <div
-                class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl text-center border-2 border-orange-200">
+            <div class="bg-white p-8 rounded-2xl text-center border-2 border-orange-200">
                 <div class="text-6xl mb-4">⭐</div>
                 <h3 class="font-bold text-xl mb-2 text-orange-700">ISO Certified</h3>
                 <p class="text-gray-600">ISO 9001:2015 certified for quality management</p>
@@ -970,7 +973,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇺🇸 United States</td>
                         <td class="px-6 py-4 text-center">$25,000 - $55,000</td>
                         <td class="px-6 py-4 text-center">$1,200 - $2,500</td>
@@ -979,7 +982,7 @@
                                 class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (50%+)</span>
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇬🇧 United Kingdom</td>
                         <td class="px-6 py-4 text-center">$15,000 - $30,000</td>
                         <td class="px-6 py-4 text-center">$1,000 - $1,800</td>
@@ -988,7 +991,7 @@
                                 class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (40%+)</span>
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇦🇺 Australia</td>
                         <td class="px-6 py-4 text-center">$20,000 - $35,000</td>
                         <td class="px-6 py-4 text-center">$1,200 - $2,000</td>
@@ -997,7 +1000,7 @@
                                 class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Medium
                                 (30%+)</span></td>
                     </tr>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇨🇦 Canada</td>
                         <td class="px-6 py-4 text-center">$12,000 - $25,000</td>
                         <td class="px-6 py-4 text-center">$800 - $1,500</td>
@@ -1006,7 +1009,7 @@
                                 class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">High (35%+)</span>
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇩🇪 Germany</td>
                         <td class="px-6 py-4 text-center">$0 - $500</td>
                         <td class="px-6 py-4 text-center">$800 - $1,200</td>
@@ -1014,7 +1017,7 @@
                         <td class="px-6 py-4 text-center"><span
                                 class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Low (10%+)</span></td>
                     </tr>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-white">
                         <td class="px-6 py-4 font-semibold text-gray-800">🇳🇱 Netherlands</td>
                         <td class="px-6 py-4 text-center">$8,000 - $15,000</td>
                         <td class="px-6 py-4 text-center">$900 - $1,400</td>
@@ -1036,7 +1039,7 @@
 </section>
 
 <!-- Admission Requirements Section -->
-<section class="bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-20">
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Admission Requirements by Country</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Understand the specific requirements for
@@ -1305,7 +1308,7 @@
             journey with our comprehensive support</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div
-                class="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-blue-200">
+                class="text-center bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-blue-200">
                 <div class="text-6xl mb-6">🏠</div>
                 <h3 class="font-bold text-xl mb-3 text-blue-700">Accommodation</h3>
                 <p class="text-gray-600 mb-4">Pre-arranged housing options including dormitories, apartments, and
@@ -1317,7 +1320,7 @@
                 </ul>
             </div>
             <div
-                class="text-center bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-green-200">
+                class="text-center bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-green-200">
                 <div class="text-6xl mb-6">💳</div>
                 <h3 class="font-bold text-xl mb-3 text-green-700">Banking & Finance</h3>
                 <p class="text-gray-600 mb-4">International bank account setup, currency exchange guidance, and
@@ -1329,7 +1332,7 @@
                 </ul>
             </div>
             <div
-                class="text-center bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-purple-200">
+                class="text-center bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-purple-200">
                 <div class="text-6xl mb-6">🏥</div>
                 <h3 class="font-bold text-xl mb-3 text-purple-700">Health Insurance</h3>
                 <p class="text-gray-600 mb-4">Comprehensive health insurance coverage, medical checkups, and emergency
@@ -1341,7 +1344,7 @@
                 </ul>
             </div>
             <div
-                class="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-orange-200">
+                class="text-center bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform border-2 border-orange-200">
                 <div class="text-6xl mb-6">🌍</div>
                 <h3 class="font-bold text-xl mb-3 text-orange-700">Cultural Orientation</h3>
                 <p class="text-gray-600 mb-4">Cultural adaptation workshops, language classes, and local customs
@@ -1361,7 +1364,7 @@
 <!-- Floating Chat Button -->
 <div class="fixed bottom-6 right-6 z-50">
     <a href="{{ route('chat.index') }}"
-        class="bg-yellow-300 hover:bg-yellow-400 text-blue-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
+        class="bg-blue-600 hover:bg-blue-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group pulse-glow">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
@@ -1377,5 +1380,105 @@
         </div>
     </div>
 </div>
+
+<!-- Floating Social Media Icons - Dynamic & Circular (Hidden by default) -->
+<div
+    class="fixed right-0 top-1/2 transform -translate-y-1/2 translate-x-12 hover:translate-x-0 transition-transform duration-500 ease-in-out z-40 group/container">
+    <div class="flex flex-col space-y-6 pr-4">
+        @foreach($socialLinks as $index => $social)
+            <a href="{{ $social->url }}" target="_blank"
+                class="group relative {{ $social->bg_color }} {{ $social->hover_color }} text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-all duration-500 hover:scale-110 hover:rotate-6 ring-2 ring-white ring-opacity-50 hover:ring-4 hover:ring-opacity-100 z-10"
+                style="animation: pulse-{{ $index }} 3s ease-in-out infinite {{ $index * 0.3 }}s;"
+                title="{{ $social->platform }}">
+
+                <!-- Icon -->
+                <div
+                    class="w-7 h-7 flex items-center justify-center relative z-10 transition-transform duration-300 group-hover:scale-110">
+                    {!! $social->icon_svg !!}
+                </div>
+
+                <!-- Platform Name Badge - Shows on Hover -->
+                <div
+                    class="absolute right-full mr-3 px-4 py-2 bg-gray-900 text-white text-sm font-semibold rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap transform group-hover:translate-x-0 translate-x-4 z-50">
+                    {{ $social->platform }}
+                    <!-- Arrow pointing to icon -->
+                    <div class="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2">
+                        <div
+                            class="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-gray-900">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glowing effect on hover -->
+                <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md -z-10"
+                    style="background: inherit;"></div>
+            </a>
+        @endforeach
+    </div>
+</div>
+
+<!-- Pulse Animation Styles for Social Icons -->
+<style>
+    <blade keyframes|%20pulse-0%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+    <blade keyframes|%20pulse-1%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+    <blade keyframes|%20pulse-2%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+    <blade keyframes|%20pulse-3%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+    <blade keyframes|%20pulse-4%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+    <blade keyframes|%20pulse-5%20%7B%0D>0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+    }
+
+</style>
 
 @endsection

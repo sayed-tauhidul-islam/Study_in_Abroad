@@ -13,12 +13,11 @@ use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\HomeController;
 
 // --- Public Routes ---
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 // Admin dashboard route (session-based admin login, no 'auth' middleware)

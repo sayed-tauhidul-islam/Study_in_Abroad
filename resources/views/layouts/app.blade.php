@@ -8,19 +8,183 @@
     <title>@yield('title', 'Study Abroad')</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom Styles for Dynamic Effects -->
+    <style>
+        /* White Background */
+        body {
+            background: #ffffff;
+        }
+
+        /* Floating Animation */
+        <blade keyframes|%20float%20%7B%0D>0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Slide In From Left */
+        <blade keyframes|%20slideInLeft%20%7B%0D>from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        /* Fade In */
+        <blade keyframes|%20fadeIn%20%7B%0D>from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Staggered Animation */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            animation-delay: 0.5s;
+        }
+
+        .stagger-6 {
+            animation-delay: 0.6s;
+        }
+
+        /* Pulse Glow Effect */
+        <blade keyframes|%20pulseGlow%20%7B%0D>0%,
+        100% {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        50% {
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+        }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* Smooth Hover Scale */
+        .hover-scale {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Glassmorphism Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Button Shine Effect */
+        <blade keyframes|%20shine%20%7B%0D>0% {
+            background-position: -200%;
+        }
+
+        100% {
+            background-position: 200%;
+        }
+        }
+
+        .btn-shine {
+            background: linear-gradient(90deg, #ffd700 0%, #ffffff 50%, #ffd700 100%);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        /* Bounce on Hover */
+        .bounce-hover:hover {
+            animation: bounce 0.5s ease;
+        }
+
+        <blade keyframes|%20bounce%20%7B%0D>0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+        }
+
+        /* Rotate on Hover */
+        .rotate-hover {
+            transition: transform 0.5s ease;
+        }
+
+        .rotate-hover:hover {
+            transform: rotate(360deg);
+        }
+
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg">
+<body class="min-h-screen" x-data="{ scrolled: false }" @scroll.window="scrolled = window.pageYOffset > 10">
+    <!-- Navigation Bar with Glassmorphism -->
+    <nav class="sticky top-0 z-50 transition-all duration-300 bg-green-600"
+        :class="scrolled ? 'bg-opacity-95' : 'bg-opacity-90'">
         <div class="container mx-auto px-4 py-4">
             <div class="flex flex-wrap justify-between items-center">
-                <div class="flex items-center space-x-4 mb-2 md:mb-0">
+                <div class="flex items-center space-x-4 mb-2 md:mb-0 slide-in-left">
                     <a href="{{ url('/') }}"
-                        class="text-2xl md:text-3xl font-bold text-white hover:text-yellow-300 transition">🌍
-                        StudyAbroad</a>
-                    <div class="flex items-center text-white">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        class="text-2xl md:text-3xl font-bold text-white hover:scale-110 transition-transform duration-300 float-animation">
+                        🌍 <span class="text-white">StudyAbroad</span>
+                    </a>
+                    <div
+                        class="flex items-center text-white glass-effect px-3 py-1 rounded-full fade-in stagger-1 bg-pink-700 bg-opacity-50">
+                        <svg class="w-5 h-5 mr-2 rotate-hover" fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                         </svg>
@@ -29,123 +193,32 @@
                 </div>
                 <div class="flex flex-wrap space-x-4 md:space-x-6">
                     <a href="{{ url('/') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('/') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Home</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('/') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Home</a>
                     <a href="{{ url('/countries') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('countries*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Countries</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('countries*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Countries</a>
                     <a href="{{ url('/universities') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('universities*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Universities</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-4 {{ request()->is('universities*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Universities</a>
                     <a href="{{ url('/courses') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('courses*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Courses</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-5 {{ request()->is('courses*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Courses</a>
                     <a href="{{ url('/posts') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('posts*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Posts</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-6 {{ request()->is('posts*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Posts</a>
                     <a href="{{ url('/degrees') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('degrees*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Degrees</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-1 {{ request()->is('degrees*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Degrees</a>
                     <a href="{{ url('/reviews') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('reviews*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Reviews</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('reviews*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Reviews</a>
                     <a href="{{ url('/scholarships') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('scholarships*') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">Scholarships</a>
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('scholarships*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Scholarships</a>
                     <a href="{{ url('/about-us') }}"
-                        class="transition font-medium text-sm md:text-base {{ request()->is('about-us') ? 'text-red-500' : 'text-white hover:text-yellow-300' }}">About
+                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-4 {{ request()->is('about-us') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">About
                         Us</a>
                     <a href="{{ route('applications.create') }}"
-                        class="px-4 md:px-6 py-2 rounded-full transition font-semibold shadow-lg text-sm md:text-base {{ Route::currentRouteName() == 'applications.create' ? 'bg-red-500 text-white' : 'bg-yellow-400 text-blue-900 hover:bg-yellow-300' }}">Apply
-                        Now</a>
+                        class="px-4 md:px-6 py-2 rounded-full transition font-semibold shadow-lg text-sm md:text-base bounce-hover pulse-glow fade-in stagger-5 bg-green-700 text-white hover:bg-green-800">
+                        Apply Now
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
-
-    <div class="container mx-auto px-4 py-4">
-        @if(Route::currentRouteName() == 'universities.index')
-            <form action="{{ route('search.universities') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for universities..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'countries.index')
-            <form action="{{ route('search.countries') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for countries..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'courses.index')
-            <form action="{{ route('search.courses') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for courses..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'scholarships.index')
-            <form action="{{ route('search.scholarships') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for scholarships..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'posts.index')
-            <form action="{{ route('search.posts') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for posts..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'degrees.index')
-            <form action="{{ route('search.degrees') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for degrees..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @elseif(Route::currentRouteName() == 'reviews.index')
-            <form action="{{ route('search.reviews') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for reviews..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @else
-            <form action="{{ route('search') }}" method="GET">
-                <div class="flex items-center bg-white rounded-full shadow-md">
-                    <input type="text" name="query" placeholder="Search for anything..."
-                        class="w-full py-3 px-6 rounded-l-full focus:outline-none">
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-full">
-                        Search
-                    </button>
-                </div>
-            </form>
-        @endif
-    </div>
 
     <!-- Main Content -->
     <main class="flex-1">
@@ -166,7 +239,7 @@
                         world-class universities, scholarships, and courses to shape their future globally.
                     </p>
                     <!-- Social Media Icons -->
-                    <div class="flex space-x-4">
+                    <!-- <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300"
                             title="Facebook">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -196,7 +269,7 @@
                                     d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                             </svg>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Quick Links -->
