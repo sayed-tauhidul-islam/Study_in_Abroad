@@ -1,6 +1,24 @@
 @extends('layouts.admin')
 @section('content')
 <div class="space-y-6">
+    <!-- Success Message -->
+    @if(session('success'))
+        <div class="bg-green-600 text-white px-6 py-4 rounded-lg flex items-center justify-between">
+            <div class="flex items-center">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="font-semibold">{{ session('success') }}</span>
+            </div>
+            <button onclick="this.parentElement.remove()" class="text-white hover:text-gray-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    @endif
+
     <!-- Header -->
     <div class="flex justify-between items-center">
         <div>
@@ -8,7 +26,7 @@
             <p class="text-gray-400 mt-1">Manage countries and their information</p>
         </div>
         <a href="{{ route('admin.countries.create') }}"
-            class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center">
+            class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
                 </path>
@@ -72,19 +90,20 @@
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                             </path>
                         </svg>
-                        <span class="text-sm">{{ number_format($country->student_count) }} students</span>
+                        <span class="text-sm">{{ number_format($country->student_count ?? 0) }}
+                            students</span>
                     </div>
 
-                    <p class="text-gray-400 text-sm line-clamp-3">{{ Str::limit($country->description, 120) }}
+                    <p class="text-gray-400 text-sm line-clamp-3">
+                        {{ Str::limit($country->description ?? 'No description available', 120) }}
                     </p>
 
                     <div class="flex items-center justify-between pt-3 border-t border-gray-700">
                         <span class="text-xs text-gray-500">ID: {{ $country->id }}</span>
-                        <div class="flex space-x-1">
-                            <span class="bg-red-600 text-white px-2 py-1 rounded-full text-xs">Add</span>
-                            <span class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs">Edit</span>
-                            <span class="bg-red-800 text-white px-2 py-1 rounded-full text-xs">Delete</span>
-                        </div>
+                        <span class="text-xs text-gray-400">
+                            Created:
+                            {{ $country->created_at ? $country->created_at->format('M d, Y') : 'N/A' }}
+                        </span>
                     </div>
                 </div>
             </div>

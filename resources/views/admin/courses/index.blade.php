@@ -8,7 +8,7 @@
             <p class="text-gray-400 mt-1">Manage courses and their information</p>
         </div>
         <a href="{{ route('admin.courses.create') }}"
-            class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center">
+            class="bg-green-700 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
                 </path>
@@ -17,14 +17,34 @@
         </a>
     </div>
 
+    <!-- Success Message -->
+    @if(session('success'))
+        <div
+            class="bg-green-600/20 border border-green-600 text-green-400 px-4 py-3 rounded-lg flex items-center justify-between">
+            <span>{{ session('success') }}</span>
+            <button onclick="this.parentElement.remove()" class="text-green-400 hover:text-green-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    @endif
+
     <!-- Courses Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($courses as $course)
             <div class="bg-gray-800 rounded-lg border border-gray-700 p-6 hover:bg-gray-750 transition-colors">
                 <div class="flex items-start justify-between mb-4">
                     <div class="flex-1">
-                        <h3 class="text-xl font-bold text-white mb-1">{{ $course->name }}</h3>
-                        <p class="text-gray-400 text-sm">Course ID: {{ $course->id }}</p>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $course->name }}</h3>
+                        @if($course->university)
+                            <p class="text-blue-400 text-sm mb-1">{{ $course->university->name }}</p>
+                        @endif
+                        @if($course->level)
+                            <span
+                                class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs">{{ $course->level }}</span>
+                        @endif
                     </div>
                     <div class="flex space-x-2">
                         <a href="{{ route('admin.courses.show', $course->id) }}"
@@ -66,16 +86,33 @@
                 </div>
 
                 <div class="space-y-3">
-                    <div class="text-gray-300 text-sm line-clamp-3">
-                        {{ Str::limit($course->description, 150) }}</div>
+                    <!-- Description -->
+                    <div class="text-gray-300 text-sm line-clamp-3 min-h-[60px]">
+                        {{ Str::limit($course->description, 150) ?? 'No description available' }}
+                    </div>
 
+                    <!-- Course Details -->
+                    <div class="grid grid-cols-2 gap-2 pt-3 border-t border-gray-700">
+                        @if($course->duration)
+                            <div>
+                                <span class="text-xs text-gray-500">Duration:</span>
+                                <p class="text-sm text-gray-300">{{ $course->duration }}</p>
+                            </div>
+                        @endif
+                        @if($course->tuition_fee)
+                            <div>
+                                <span class="text-xs text-gray-500">Tuition:</span>
+                                <p class="text-sm text-gray-300">${{ number_format($course->tuition_fee) }}</p>
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- Footer -->
                     <div class="flex items-center justify-between pt-3 border-t border-gray-700">
-                        <span class="text-xs text-gray-500">ID: {{ $course->id }}</span>
-                        <div class="flex space-x-1">
-                            <span class="bg-red-600 text-white px-2 py-1 rounded-full text-xs">Add</span>
-                            <span class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs">Edit</span>
-                            <span class="bg-red-800 text-white px-2 py-1 rounded-full text-xs">Delete</span>
-                        </div>
+                        <span class="text-xs text-gray-500">
+                            {{ $course->created_at ? $course->created_at->format('M d, Y') : 'N/A' }}
+                        </span>
+                        <span class="text-xs text-gray-400">ID: {{ $course->id }}</span>
                     </div>
                 </div>
             </div>
@@ -100,7 +137,7 @@
             <h3 class="text-xl font-semibold text-gray-400 mb-2">No courses found</h3>
             <p class="text-gray-500 mb-6">Get started by adding your first course.</p>
             <a href="{{ route('admin.courses.create') }}"
-                class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-flex items-center">
+                class="bg-green-700 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-flex items-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>

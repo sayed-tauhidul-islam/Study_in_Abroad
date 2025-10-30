@@ -38,7 +38,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.countries.create');
     }
 
     /**
@@ -46,7 +46,17 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'country_code' => 'required|string|max:10',
+            'description' => 'nullable|string',
+            'student_count' => 'nullable|integer|min:0',
+        ]);
+
+        \App\Models\Country::create($validated);
+
+        return redirect()->route('admin.countries.index')
+            ->with('success', 'Country created successfully!');
     }
 
     /**
@@ -54,7 +64,8 @@ class CountryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $country = \App\Models\Country::with(['universities.courses'])->findOrFail($id);
+        return view('admin.countries.show', compact('country'));
     }
 
     /**
@@ -62,7 +73,8 @@ class CountryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $country = \App\Models\Country::findOrFail($id);
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
@@ -70,7 +82,18 @@ class CountryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'country_code' => 'required|string|max:10',
+            'description' => 'nullable|string',
+            'student_count' => 'nullable|integer|min:0',
+        ]);
+
+        $country = \App\Models\Country::findOrFail($id);
+        $country->update($validated);
+
+        return redirect()->route('admin.countries.index')
+            ->with('success', 'Country updated successfully!');
     }
 
     /**
@@ -78,6 +101,10 @@ class CountryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $country = \App\Models\Country::findOrFail($id);
+        $country->delete();
+
+        return redirect()->route('admin.countries.index')
+            ->with('success', 'Country deleted successfully!');
     }
 }

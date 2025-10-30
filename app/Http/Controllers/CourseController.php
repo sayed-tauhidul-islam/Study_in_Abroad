@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\University;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -11,7 +13,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = \App\Models\Course::paginate(24);
+        $courses = Course::with('university')->paginate(24);
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -20,7 +22,7 @@ class CourseController extends Controller
      */
     public function publicIndex()
     {
-        $courses = \App\Models\Course::paginate(24);
+        $courses = Course::with('university')->paginate(24);
         return view('courses.index', compact('courses'));
     }
 
@@ -29,7 +31,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $universities = University::orderBy('name')->get();
+        return view('admin.courses.create', compact('universities'));
     }
 
     /**
@@ -37,7 +40,22 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'university_id' => 'required|exists:universities,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'duration' => 'nullable|string|max:100',
+            'level' => 'nullable|string|max:100',
+            'tuition_fee' => 'nullable|numeric|min:0',
+            'application_fee' => 'nullable|numeric|min:0',
+            'language' => 'nullable|string|max:100',
+            'requirements' => 'nullable|string',
+        ]);
+
+        Course::create($validated);
+
+        return redirect()->route('admin.courses.index')
+            ->with('success', 'Course created successfully!');
     }
 
     /**
@@ -45,7 +63,8 @@ class CourseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $course = Course::with(['university.country'])->findOrFail($id);
+        return view('admin.courses.show', compact('course'));
     }
 
     /**
@@ -53,7 +72,9 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $universities = University::orderBy('name')->get();
+        return view('admin.courses.edit', compact('course', 'universities'));
     }
 
     /**
@@ -61,7 +82,24 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $course = Course::findOrFail($id);
+
+        $validated = $request->validate([
+            'university_id' => 'required|exists:universities,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'duration' => 'nullable|string|max:100',
+            'level' => 'nullable|string|max:100',
+            'tuition_fee' => 'nullable|numeric|min:0',
+            'application_fee' => 'nullable|numeric|min:0',
+            'language' => 'nullable|string|max:100',
+            'requirements' => 'nullable|string',
+        ]);
+
+        $course->update($validated);
+
+        return redirect()->route('admin.courses.index')
+            ->with('success', 'Course updated successfully!');
     }
 
     /**
@@ -69,6 +107,10 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $course->delete();
+
+        return redirect()->route('admin.courses.index')
+            ->with('success', 'Course deleted successfully!');
     }
 }

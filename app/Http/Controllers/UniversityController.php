@@ -53,7 +53,8 @@ class UniversityController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $university = \App\Models\University::with(['country', 'courses'])->findOrFail($id);
+        return view('admin.universities.show', compact('university'));
     }
 
     /**
