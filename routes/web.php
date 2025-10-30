@@ -19,6 +19,33 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Test Alpine.js
+Route::get('/test-alpine', function () {
+    return view('test-alpine');
+})->name('test.alpine');
+
+// Test University Data
+Route::get('/test-data', function () {
+    $universities = \App\Models\University::with('country')
+        ->orderBy('ranking')
+        ->limit(10)
+        ->get();
+    
+    return response()->json([
+        'total_universities' => \App\Models\University::count(),
+        'top_10' => $universities->map(function($u) {
+            return [
+                'id' => $u->id,
+                'name' => $u->name,
+                'ranking' => $u->ranking,
+                'country' => $u->country->name ?? 'N/A',
+                'image_url' => $u->image_url,
+                'logo_url' => $u->logo_url,
+            ];
+        })
+    ]);
+})->name('test.data');
+
 
 // Admin dashboard route (session-based admin login, no 'auth' middleware)
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');

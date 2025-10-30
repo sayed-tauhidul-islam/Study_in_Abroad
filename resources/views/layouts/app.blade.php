@@ -11,13 +11,16 @@
 
     <!-- Custom Styles for Dynamic Effects -->
     <style>
+        /* Alpine.js cloak */
+        [x-cloak] { display: none !important; }
+        
         /* White Background */
         body {
             background: #ffffff;
         }
 
         /* Floating Animation */
-        <blade keyframes|%20float%20%7B%0D>0%,
+        @keyframes 0%,
         100% {
             transform: translateY(0px);
         }
@@ -32,7 +35,7 @@
         }
 
         /* Slide In From Left */
-        <blade keyframes|%20slideInLeft%20%7B%0D>from {
+        @keyframes from {
             opacity: 0;
             transform: translateX(-100px);
         }
@@ -48,7 +51,7 @@
         }
 
         /* Fade In */
-        <blade keyframes|%20fadeIn%20%7B%0D>from {
+        @keyframes from {
             opacity: 0;
             transform: translateY(30px);
         }
@@ -89,7 +92,7 @@
         }
 
         /* Pulse Glow Effect */
-        <blade keyframes|%20pulseGlow%20%7B%0D>0%,
+        @keyframes 0%,
         100% {
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
@@ -129,7 +132,7 @@
         }
 
         /* Button Shine Effect */
-        <blade keyframes|%20shine%20%7B%0D>0% {
+        @keyframes 0% {
             background-position: -200%;
         }
 
@@ -149,7 +152,7 @@
             animation: bounce 0.5s ease;
         }
 
-        <blade keyframes|%20bounce%20%7B%0D>0%,
+        @keyframes 0%,
         100% {
             transform: translateY(0);
         }
@@ -197,7 +200,7 @@
 
                     <!-- Countries Dropdown -->
                     <div x-data="{ open: false }" @click.away="open = false" class="relative">
-                        <button @click="open = !open"
+                        <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('countries*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Countries
                             <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
@@ -206,14 +209,14 @@
                                     d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="opacity-0 transform scale-95"
                             x-transition:enter-end="opacity-100 transform scale-100"
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
                             class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
-                            style="display: none;">
+                            >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/countries') }}"
                                     class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
@@ -224,6 +227,14 @@
                                     </svg>
                                 </a>
                             </div>
+                            @php
+                                if (!isset($navbarCountries)) {
+                                    $navbarCountries = \App\Models\Country::withCount('universities')
+                                        ->orderBy('name')
+                                        ->limit(10)
+                                        ->get();
+                                }
+                            @endphp
                             @if(isset($navbarCountries) && $navbarCountries->count() > 0)
                                 @foreach($navbarCountries as $country)
                                     <a href="{{ url('/countries/' . $country->id) }}"
@@ -259,7 +270,7 @@
 
                     <!-- Universities Dropdown -->
                     <div x-data="{ open: false }" @click.away="open = false" class="relative">
-                        <button @click="open = !open"
+                        <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-4 {{ request()->is('universities*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Universities
                             <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
@@ -270,14 +281,14 @@
                         </button>
 
                         <!-- Dropdown Menu -->
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="opacity-0 transform scale-95"
                             x-transition:enter-end="opacity-100 transform scale-100"
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
                             class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
-                            style="display: none;">
+                            >
 
                             <!-- View All Link -->
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
@@ -292,8 +303,18 @@
                             </div>
 
                             <!-- Universities List -->
-                            <blade
-                                if|(isset(%24navbarUniversities)%20%26%26%20%24navbarUniversities-%3Ecount()%20%3E%200)%0D>
+                            {{-- Debug: Check if variable exists --}}
+                            @php
+                                // Temporary debug - remove after fixing
+                                if (!isset($navbarUniversities)) {
+                                    $navbarUniversities = \App\Models\University::with('country')
+                                        ->orderBy('ranking')
+                                        ->limit(10)
+                                        ->get();
+                                }
+                            @endphp
+                            
+                            @if(isset($navbarUniversities) && $navbarUniversities->count() > 0)
                                 @foreach($navbarUniversities as $university)
                                     <a href="{{ url('/universities/' . $university->id) }}"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
@@ -338,7 +359,7 @@
 
                     <!-- Courses Dropdown -->
                     <div x-data="{ open: false }" @click.away="open = false" class="relative">
-                        <button @click="open = !open"
+                        <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-5 {{ request()->is('courses*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Courses
                             <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
@@ -347,14 +368,14 @@
                                     d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="opacity-0 transform scale-95"
                             x-transition:enter-end="opacity-100 transform scale-100"
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
                             class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
-                            style="display: none;">
+                            >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/courses') }}"
                                     class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
@@ -365,6 +386,13 @@
                                     </svg>
                                 </a>
                             </div>
+                            @php
+                                if (!isset($navbarCourses)) {
+                                    $navbarCourses = \App\Models\Course::with('university')
+                                        ->limit(10)
+                                        ->get();
+                                }
+                            @endphp
                             @if(isset($navbarCourses) && $navbarCourses->count() > 0)
                                 @foreach($navbarCourses as $course)
                                     <a href="{{ url('/courses/' . $course->id) }}"
@@ -389,21 +417,176 @@
                         </div>
                     </div>
 
-                    <!-- Posts Link (simple) -->
-                    <a href="{{ url('/posts') }}"
-                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-6 {{ request()->is('posts*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Posts</a>
+                    <!-- Posts Dropdown -->
+                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                        <button type="button" @click="open = !open"
+                            class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-6 {{ request()->is('posts*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
+                            Posts
+                            <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform scale-95"
+                            x-transition:enter-end="opacity-100 transform scale-100"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform scale-100"
+                            x-transition:leave-end="opacity-0 transform scale-95"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            >
+                            <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
+                                <a href="{{ url('/posts') }}"
+                                    class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
+                                    <span>View All Posts</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            @php if (!isset($navbarPosts)) { try { $navbarPosts = \App\Models\Post::orderBy('created_at', 'desc')->limit(10)->get(); } catch (\Exception $e) { $navbarPosts = collect([]); } } @endphp@if(isset($navbarPosts) && $navbarPosts->count() > 0)
+                                @foreach($navbarPosts as $post)
+                                    <a href="{{ url('/posts/' . $post->id) }}"
+                                        class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                                        <div
+                                            class="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
+                                            📝
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <h4 class="font-semibold text-gray-900 text-sm truncate">
+                                                {{ $post->title }}</h4>
+                                            <p class="text-xs text-gray-500 truncate">
+                                                {{ $post->created_at->format('M d, Y') }}
+                                            </p>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <div class="p-4 text-center text-gray-500 text-sm">No posts available</div>
+                            @endif
+                        </div>
+                    </div>
 
-                    <!-- Degrees Link (simple) -->
-                    <a href="{{ url('/degrees') }}"
-                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-1 {{ request()->is('degrees*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Degrees</a>
+                    <!-- Degrees Dropdown -->
+                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                        <button type="button" @click="open = !open"
+                            class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-1 {{ request()->is('degrees*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
+                            Degrees
+                            <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform scale-95"
+                            x-transition:enter-end="opacity-100 transform scale-100"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform scale-100"
+                            x-transition:leave-end="opacity-0 transform scale-95"
+                            class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            >
+                            <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
+                                <a href="{{ url('/degrees') }}"
+                                    class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
+                                    <span>View All Degrees</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            @php if (!isset($navbarDegrees)) { try { $navbarDegrees = \App\Models\Degree::limit(10)->get(); } catch (\Exception $e) { $navbarDegrees = collect([]); } } @endphp@if(isset($navbarDegrees) && $navbarDegrees->count() > 0)
+                                @foreach($navbarDegrees as $degree)
+                                    <a href="{{ url('/degrees/' . $degree->id) }}"
+                                        class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                                        <div
+                                            class="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
+                                            🎓
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <h4 class="font-semibold text-gray-900 text-sm truncate">
+                                                {{ $degree->name }}</h4>
+                                            <p class="text-xs text-gray-500">
+                                                {{ $degree->level ?? 'Degree' }}</p>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <div class="p-4 text-center text-gray-500 text-sm">No degrees available</div>
+                            @endif
+                        </div>
+                    </div>
 
-                    <!-- Reviews Link (simple) -->
-                    <a href="{{ url('/reviews') }}"
-                        class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('reviews*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Reviews</a>
+                    <!-- Reviews Dropdown -->
+                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                        <button type="button" @click="open = !open"
+                            class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('reviews*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
+                            Reviews
+                            <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform scale-95"
+                            x-transition:enter-end="opacity-100 transform scale-100"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform scale-100"
+                            x-transition:leave-end="opacity-0 transform scale-95"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            >
+                            <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
+                                <a href="{{ url('/reviews') }}"
+                                    class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
+                                    <span>View All Reviews</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            @php 
+                                if (!isset($navbarReviews)) { 
+                                    try {
+                                        $navbarReviews = \App\Models\Review::orderBy('created_at', 'desc')->limit(10)->get(); 
+                                    } catch (\Exception $e) {
+                                        $navbarReviews = collect([]);
+                                    }
+                                } 
+                            @endphp
+                            @if(isset($navbarReviews) && $navbarReviews->count() > 0)
+                                @foreach($navbarReviews as $review)
+                                    <a href="{{ url('/reviews/' . $review->id) }}"
+                                        class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                                        <div
+                                            class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
+                                            ⭐
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <h4 class="font-semibold text-gray-900 text-sm truncate">
+                                                {{ $review->title ?? 'Review' }}</h4>
+                                            <p class="text-xs text-gray-500 truncate">
+                                                {{ $review->university->name ?? 'University Review' }}
+                                            </p>
+                                            @if($review->rating)
+                                                <p class="text-xs text-yellow-600">⭐ {{ $review->rating }}/5</p>
+                                            @endif
+                                        </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <div class="p-4 text-center text-gray-500 text-sm">No reviews available</div>
+                            @endif
+                        </div>
+                    </div>
 
                     <!-- Scholarships Dropdown -->
                     <div x-data="{ open: false }" @click.away="open = false" class="relative">
-                        <button @click="open = !open"
+                        <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('scholarships*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Scholarships
                             <svg class="w-4 h-4 ml-1" :class="{'rotate-180': open}" fill="none" stroke="currentColor"
@@ -412,14 +595,14 @@
                                     d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="opacity-0 transform scale-95"
                             x-transition:enter-end="opacity-100 transform scale-100"
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
                             class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
-                            style="display: none;">
+                            >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/scholarships') }}"
                                     class="flex items-center justify-between text-blue-600 hover:text-blue-800 font-semibold">
@@ -430,8 +613,16 @@
                                     </svg>
                                 </a>
                             </div>
-                            <blade
-                                if|(isset(%24navbarScholarships)%20%26%26%20%24navbarScholarships-%3Ecount()%20%3E%200)%0D>
+                            @php 
+                                if (!isset($navbarScholarships)) { 
+                                    try {
+                                        $navbarScholarships = \App\Models\Scholarship::orderBy('created_at', 'desc')->limit(10)->get(); 
+                                    } catch (\Exception $e) {
+                                        $navbarScholarships = collect([]);
+                                    }
+                                } 
+                            @endphp
+                            @if(isset($navbarScholarships) && $navbarScholarships->count() > 0)
                                 @foreach($navbarScholarships as $scholarship)
                                     <a href="{{ url('/scholarships/' . $scholarship->id) }}"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">

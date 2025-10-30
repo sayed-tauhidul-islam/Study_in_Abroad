@@ -8,6 +8,9 @@ use App\View\Composers\UniversityComposer;
 use App\View\Composers\CountryComposer;
 use App\View\Composers\CourseComposer;
 use App\View\Composers\ScholarshipComposer;
+use App\View\Composers\DegreeComposer;
+use App\View\Composers\ReviewComposer;
+use App\View\Composers\PostComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
             CountryComposer::class,
             CourseComposer::class,
             ScholarshipComposer::class,
+            DegreeComposer::class,
+            ReviewComposer::class,
+            PostComposer::class,
         ]);
     }
 }
