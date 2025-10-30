@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class University extends Model
 {
+    protected $fillable = [
+        'name',
+        'country_id',
+        'description',
+        'ranking',
+        'website',
+        'logo_url',
+        'image_url',
+        'environment_quality',
+        'num_courses',
+        'bd_students'
+    ];
+
     public function country()
     {
         return $this->belongsTo(\App\Models\Country::class);

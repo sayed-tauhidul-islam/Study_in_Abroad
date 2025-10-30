@@ -1,39 +1,114 @@
 @extends('layouts.app')
 
-@section('title', 'Countries')
+@section('title', 'Study Abroad Countries')
 
 @section('content')
-<div class="container mx-auto p-4 bg-white">
-    <h1 class="text-4xl font-bold mb-8 text-center text-blue-900">Explore Countries for Study Abroad</h1>
-    <p class="text-lg text-blue-700 text-center mb-12 max-w-3xl mx-auto">Discover amazing study destinations around the
-        world. Each country offers unique educational opportunities, cultural experiences, and pathways to your future
-        career.</p>
+<!-- Hero Section -->
+<div class="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-20">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center text-white">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">🌍 Explore Study Destinations</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto font-medium">Discover amazing countries offering
+                world-class education, vibrant cultures, and incredible career opportunities for international students
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-lg">
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-bold">{{ $countries->total() }}</span> Countries
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-bold">500+</span> Universities
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-bold">1000+</span> Programs
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+<div class="container mx-auto px-4 py-16">
+    <!-- Countries Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         @foreach($countries as $country)
             <div
-                class="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-blue-200 hover:border-pink-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div class="relative">
-                    <img src="{{ $country->image_url ?? 'https://source.unsplash.com/400x200/?country,'.$country->name }}"
-                        alt="{{ $country->name }}" class="w-full h-48 object-cover">
+                class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                <!-- Country Image -->
+                <div class="relative h-56 overflow-hidden">
+                    <img src="{{ $country->image_url ?? 'https://source.unsplash.com/800x600/?country,'.$country->name }}"
+                        alt="{{ $country->name }}"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                    <!-- Country Code Badge -->
                     <div
-                        class="absolute top-4 right-4 bg-yellow-400 text-pink-900 px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+                        class="absolute top-4 right-4 bg-white px-4 py-2 rounded-full text-sm font-bold text-gray-800 shadow-lg">
                         {{ $country->country_code }}
                     </div>
-                </div>
-                <div class="p-6">
-                    <h2 class="text-xl font-bold text-blue-900 mb-3">{{ $country->name }}</h2>
-                    <p class="text-blue-700 text-sm mb-4 line-clamp-3">{{ $country->description }}</p>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm text-blue-600">Students:
-                            {{ number_format($country->student_count ?? 0) }}</span>
-                        @if($country->details)
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Details Available</span>
+
+                    <!-- Country Name -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h2 class="text-3xl font-black text-white drop-shadow-lg">{{ $country->name }}</h2>
+                        @if($country->capital)
+                            <p class="text-white/90 font-medium mt-1">📍 Capital: {{ $country->capital }}</p>
                         @endif
                     </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-6">
+                    <!-- Quick Info -->
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        @if($country->language)
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-xs text-blue-600 font-semibold">Language</p>
+                                <p class="text-sm text-blue-900 font-bold">
+                                    {{ Str::limit($country->language, 20) }}</p>
+                            </div>
+                        @endif
+                        @if($country->currency)
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <p class="text-xs text-green-600 font-semibold">Currency</p>
+                                <p class="text-sm text-green-900 font-bold">
+                                    {{ Str::limit($country->currency, 20) }}</p>
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ $country->description }}</p>
+
+                    <!-- Stats -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div
+                            class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            <span>🎓</span> {{ number_format($country->student_count ?? 0) }} Students
+                        </div>
+                        @if($country->universities_count > 0)
+                            <div
+                                class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <span>🏛️</span> {{ $country->universities_count }}+ Universities
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- Tuition Range -->
+                    @if($country->tuition_range_min && $country->tuition_range_max)
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 mb-4">
+                            <p class="text-xs text-gray-600 font-semibold mb-1">💰 Tuition Range (Annual)</p>
+                            <p
+                                class="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                                ${{ number_format($country->tuition_range_min) }} -
+                                ${{ number_format($country->tuition_range_max) }}
+                            </p>
+                        </div>
+                    @endif
+
+                    <!-- CTA Button -->
                     <a href="{{ route('countries.show', $country) }}"
-                        class="inline-block bg-green-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-800 transition-all duration-300 w-full text-center shadow-lg">Explore
-                        Universities</a>
+                        class="block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-center shadow-lg hover:shadow-xl">
+                        Explore {{ $country->name }} →
+                    </a>
                 </div>
             </div>
         @endforeach

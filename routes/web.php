@@ -62,6 +62,13 @@ Route::get('/about-us', function () {
 Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
 Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
 
+// Best Choice routes
+use App\Http\Controllers\BestChoiceController;
+Route::get('/best-choice', [BestChoiceController::class, 'index'])->name('best-choice.index');
+Route::post('/best-choice', [BestChoiceController::class, 'store'])->name('best-choice.store');
+Route::get('/best-choice/result/{id}', [BestChoiceController::class, 'result'])->name('best-choice.result');
+Route::get('/best-choice/search', [BestChoiceController::class, 'search'])->name('best-choice.search');
+
 // --- Resource Routes for Dynamic Content (Admin) ---
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::resource('countries', CountryController::class)->names([
