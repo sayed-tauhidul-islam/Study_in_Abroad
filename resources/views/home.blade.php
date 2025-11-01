@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Hero Section with Elegant Slideshow -->
-<section class="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-20 border-b-4 border-blue-500" x-data="{
+<section class="relative py-20 border-b-4 border-blue-500" x-data="{
     images: [
         {src: 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=95', alt: 'Harvard University', caption: 'Top Universities Worldwide'},
         {src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=95', alt: 'Oxford University', caption: 'Historic Academic Excellence'},
@@ -48,14 +48,14 @@
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
         <!-- Left Content -->
         <div class="md:w-1/2 mb-10 md:mb-0">
-            <h1 class="text-5xl font-extrabold mb-6 leading-tight text-blue-900">
+            <h1 class="text-5xl font-extrabold mb-6 leading-tight text-gray-900">
                 Explore Your
-                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mt-2">
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-600 mt-2">
                     Study Abroad
                 </span>
-                <span class="block mt-2">Opportunities</span>
+                <span class="block mt-2 text-gray-800">Opportunities</span>
             </h1>
-            <p class="text-lg mb-8 text-blue-800 leading-relaxed">
+            <p class="text-lg mb-8 text-gray-700 leading-relaxed">
                 Find the best universities and programs around the world. Start your journey to study abroad with us
                 today!
             </p>
@@ -64,16 +64,16 @@
                 <form action="{{ route('search') }}" method="GET"
                     class="flex items-center w-full max-w-lg shadow-lg rounded-lg overflow-hidden bg-white">
                     <input type="text" name="query" placeholder="Search universities, courses, countries..."
-                        class="flex-1 px-4 py-3 focus:outline-none text-gray-800" />
+                        class="flex-1 px-4 py-3 focus:outline-none text-gray-900" />
                     <button type="submit"
-                        class="bg-green-700 text-white px-6 py-3 font-bold hover:bg-green-800 transition">
+                        class="bg-green-700 text-white px-6 py-3 font-bold hover:bg-green-800 transition duration-300">
                         Search
                     </button>
                 </form>
             </div>
 
             <a href="{{ route('applications.create') }}"
-                class="inline-block bg-green-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-800 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                class="inline-block bg-green-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-800 transition duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                 Apply Now →
             </a>
         </div>
@@ -100,14 +100,14 @@
 
                     <!-- Navigation Arrows -->
                     <button @click="prev(); stop();" @mouseenter="stop()"
-                        class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-sm hover:bg-white text-blue-700 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none group">
+                        class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-green-700 text-green-700 hover:text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none group">
                         <svg class='h-6 w-6 group-hover:-translate-x-0.5 transition-transform' fill='none'
                             viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'>
                             <path stroke-linecap='round' stroke-linejoin='round' d='M15 19l-7-7 7-7' />
                         </svg>
                     </button>
                     <button @click="next(); stop();" @mouseenter="stop()"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-sm hover:bg-white text-blue-700 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none group">
+                        class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-green-700 text-green-700 hover:text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none group">
                         <svg class='h-6 w-6 group-hover:translate-x-0.5 transition-transform' fill='none'
                             viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'>
                             <path stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7' />
@@ -120,7 +120,7 @@
                     <template x-for="(img, idx) in images" :key="idx">
                         <button @click="current = idx; stop();"
                             class="transition-all duration-300 rounded-full focus:outline-none"
-                            :class="idx === current ? 'w-8 h-3 bg-blue-600' : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'">
+                            :class="idx === current ? 'w-8 h-3 bg-green-700' : 'w-3 h-3 bg-gray-400 hover:bg-gray-500'">
                         </button>
                     </template>
                 </div>
@@ -128,7 +128,7 @@
                 <!-- Play/Pause Button -->
                 <div class="text-center mt-4">
                     <button @click="interval ? stop() : start()"
-                        class="text-sm text-blue-700 hover:text-blue-900 font-semibold transition-colors flex items-center gap-2 mx-auto">
+                        class="text-sm text-gray-700 hover:text-green-700 font-semibold transition-colors flex items-center gap-2 mx-auto">
                         <span x-show="interval">⏸ Pause</span>
                         <span x-show="!interval">▶ Play</span>
                     </button>
@@ -140,40 +140,23 @@
 
 <!-- Why Choose Us Section -->
 <!-- Why Choose StudyAbroad Section - Enhanced Design -->
-<section class="relative py-24 overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-    <!-- Decorative Background Elements -->
-    <div class="absolute inset-0 opacity-10">
-        <div
-            class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full blur-3xl">
-        </div>
-        <div
-            class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-pink-400 to-orange-600 rounded-full blur-3xl">
-        </div>
-        <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-green-400 to-blue-600 rounded-full blur-3xl">
-        </div>
-    </div>
-
+<section class="relative py-24 overflow-hidden">
     <div class="container mx-auto px-4 relative z-10">
         <!-- Section Header -->
         <div class="text-center mb-16 animate-fade-in-up">
             <div class="inline-block mb-4">
                 <span
-                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg">
+                    class="bg-green-700 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg">
                     ✨ Why Choose Us
                 </span>
             </div>
             <h2
-                class="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+                class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Why Choose StudyAbroad?
             </h2>
             <p class="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                We provide <span
-                    class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">comprehensive
-                    support</span> to make your study abroad journey
-                <span
-                    class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">smooth,
-                    successful, and unforgettable.</span>
+                We provide <span class="font-bold text-green-700">comprehensive support</span> to make your study abroad journey
+                <span class="font-bold text-green-700">smooth, successful, and unforgettable.</span>
             </p>
         </div>
 
@@ -182,34 +165,34 @@
             <!-- Card 1: Personalized Matching -->
             <div class="group relative">
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    class="absolute inset-0 bg-green-700 rounded-3xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                 </div>
                 <div
-                    class="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden">
+                    class="relative bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-200 overflow-hidden">
                     <!-- Decorative Corner -->
                     <div
-                        class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-bl-full opacity-10">
+                        class="absolute top-0 right-0 w-20 h-20 bg-green-700 rounded-bl-full opacity-5">
                     </div>
 
                     <!-- Icon Container -->
                     <div class="relative mb-6">
                         <div
-                            class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
+                            class="w-20 h-20 mx-auto bg-green-700 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
                             <span class="text-4xl">🎯</span>
                         </div>
                     </div>
 
                     <h3
-                        class="font-bold text-2xl mb-3 text-gray-800 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                        class="font-bold text-2xl mb-3 text-gray-900 text-center group-hover:text-green-700 transition-all duration-300">
                         Personalized Matching
                     </h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+                    <p class="text-gray-700 text-center leading-relaxed">
                         AI-powered recommendations based on your profile, preferences, and career goals.
                     </p>
 
                     <!-- Bottom Accent -->
                     <div
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -217,31 +200,31 @@
             <!-- Card 2: Scholarship Assistance -->
             <div class="group relative">
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    class="absolute inset-0 bg-green-700 rounded-3xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                 </div>
                 <div
-                    class="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden">
+                    class="relative bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-200 overflow-hidden">
                     <div
-                        class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-600 rounded-bl-full opacity-10">
+                        class="absolute top-0 right-0 w-20 h-20 bg-green-700 rounded-bl-full opacity-5">
                     </div>
 
                     <div class="relative mb-6">
                         <div
-                            class="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
+                            class="w-20 h-20 mx-auto bg-green-700 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
                             <span class="text-4xl">💰</span>
                         </div>
                     </div>
 
                     <h3
-                        class="font-bold text-2xl mb-3 text-gray-800 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-600 group-hover:to-emerald-600 transition-all duration-300">
+                        class="font-bold text-2xl mb-3 text-gray-900 text-center group-hover:text-green-700 transition-all duration-300">
                         Scholarship Assistance
                     </h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+                    <p class="text-gray-700 text-center leading-relaxed">
                         Access to thousands of scholarships with expert application guidance and support.
                     </p>
 
                     <div
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -249,31 +232,31 @@
             <!-- Card 3: Complete Support -->
             <div class="group relative">
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    class="absolute inset-0 bg-orange-600 rounded-3xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                 </div>
                 <div
-                    class="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden">
+                    class="relative bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-200 overflow-hidden">
                     <div
-                        class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-600 rounded-bl-full opacity-10">
+                        class="absolute top-0 right-0 w-20 h-20 bg-orange-600 rounded-bl-full opacity-5">
                     </div>
 
                     <div class="relative mb-6">
                         <div
-                            class="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
+                            class="w-20 h-20 mx-auto bg-orange-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
                             <span class="text-4xl">📋</span>
                         </div>
                     </div>
 
                     <h3
-                        class="font-bold text-2xl mb-3 text-gray-800 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-red-600 transition-all duration-300">
+                        class="font-bold text-2xl mb-3 text-gray-900 text-center group-hover:text-orange-600 transition-all duration-300">
                         Complete Support
                     </h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+                    <p class="text-gray-700 text-center leading-relaxed">
                         From application to arrival - we handle every step of your journey with care.
                     </p>
 
                     <div
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -281,31 +264,31 @@
             <!-- Card 4: Success Guarantee -->
             <div class="group relative">
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    class="absolute inset-0 bg-red-600 rounded-3xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                 </div>
                 <div
-                    class="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden">
+                    class="relative bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-200 overflow-hidden">
                     <div
-                        class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-bl-full opacity-10">
+                        class="absolute top-0 right-0 w-20 h-20 bg-red-600 rounded-bl-full opacity-5">
                     </div>
 
                     <div class="relative mb-6">
                         <div
-                            class="w-20 h-20 mx-auto bg-gradient-to-br from-yellow-500 to-pink-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
+                            class="w-20 h-20 mx-auto bg-red-600 rounded-2xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-500 shadow-lg">
                             <span class="text-4xl">🌟</span>
                         </div>
                     </div>
 
                     <h3
-                        class="font-bold text-2xl mb-3 text-gray-800 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-yellow-600 group-hover:to-pink-600 transition-all duration-300">
+                        class="font-bold text-2xl mb-3 text-gray-900 text-center group-hover:text-red-600 transition-all duration-300">
                         Success Guarantee
                     </h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
-                        95% success rate with proven track record of successful student placements.
+                    <p class="text-gray-700 text-center leading-relaxed">
+                        <span class="font-bold text-red-600">95% success rate</span> with proven track record of successful student placements.
                     </p>
 
                     <div
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -335,59 +318,59 @@
 </section>
 
 <!-- Features Section -->
-<section class="container mx-auto px-4 py-16 bg-white">
+<section class="container mx-auto px-4 py-16">
     <div class="grid md:grid-cols-3 gap-10">
         <div
-            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-blue-200 hover:border-blue-500 shimmer">
+            class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-gray-200 hover:border-green-700 shimmer">
             <div class="text-5xl mb-4">🌍</div>
-            <h3 class="font-bold text-2xl mb-2 text-blue-900">Global Universities</h3>
-            <p class="text-blue-700">Access a wide range of top universities from all over the world.</p>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900">Global Universities</h3>
+            <p class="text-gray-700">Access a wide range of top universities from all over the world.</p>
         </div>
         <div
-            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-green-200 hover:border-green-500 shimmer">
+            class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-gray-200 hover:border-green-700 shimmer">
             <div class="text-5xl mb-4">🎓</div>
-            <h3 class="font-bold text-2xl mb-2 text-blue-900">Diverse Programs</h3>
-            <p class="text-blue-700">Choose from hundreds of programs to match your interests and goals.</p>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900">Diverse Programs</h3>
+            <p class="text-gray-700">Choose from hundreds of programs to match your interests and goals.</p>
         </div>
         <div
-            class="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-blue-200 hover:border-blue-500 shimmer">
+            class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform border-2 border-gray-200 hover:border-green-700 shimmer">
             <div class="text-5xl mb-4">🤝</div>
-            <h3 class="font-bold text-2xl mb-2 text-blue-900">Expert Guidance</h3>
-            <p class="text-blue-700">Get support from our experienced counselors at every step.</p>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900">Expert Guidance</h3>
+            <p class="text-gray-700">Get support from our experienced counselors at every step.</p>
         </div>
     </div>
 </section>
 
 <!-- Statistics Section -->
-<section class="bg-white py-20 border-t-4 border-b-4 border-blue-500">
+<section class="py-20 border-t-4 border-b-4 border-green-700">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Our Impact in Numbers</h2>
-        <p class="text-xl text-center text-blue-700 mb-16">Trusted by students worldwide for their study abroad dreams
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Our Impact in Numbers</h2>
+        <p class="text-xl text-center text-gray-700 mb-16">Trusted by students worldwide for their study abroad dreams
         </p>
         <div class="grid md:grid-cols-4 gap-8 text-center">
             <div
-                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-blue-600 float-animation">
-                <div class="text-5xl font-bold text-blue-900 mb-3">500+</div>
-                <p class="text-blue-800 font-semibold text-lg">Partner Universities</p>
-                <p class="text-blue-600 text-sm mt-2">World-class institutions</p>
+                class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-700 float-animation">
+                <div class="text-5xl font-bold text-green-700 mb-3">500+</div>
+                <p class="text-gray-900 font-semibold text-lg">Partner Universities</p>
+                <p class="text-gray-700 text-sm mt-2">World-class institutions</p>
             </div>
             <div
-                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-600 float-animation">
-                <div class="text-5xl font-bold text-blue-900 mb-3">50K+</div>
-                <p class="text-blue-800 font-semibold text-lg">Students Helped</p>
-                <p class="text-blue-600 text-sm mt-2">Successful placements</p>
+                class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-orange-600 float-animation">
+                <div class="text-5xl font-bold text-orange-600 mb-3">50K+</div>
+                <p class="text-gray-900 font-semibold text-lg">Students Helped</p>
+                <p class="text-gray-700 text-sm mt-2">Successful placements</p>
             </div>
             <div
-                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-blue-600 float-animation">
-                <div class="text-5xl font-bold text-blue-900 mb-3">100+</div>
-                <p class="text-blue-800 font-semibold text-lg">Countries Covered</p>
-                <p class="text-blue-600 text-sm mt-2">Global opportunities</p>
+                class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-700 float-animation">
+                <div class="text-5xl font-bold text-green-700 mb-3">100+</div>
+                <p class="text-gray-900 font-semibold text-lg">Countries Covered</p>
+                <p class="text-gray-700 text-sm mt-2">Global opportunities</p>
             </div>
             <div
-                class="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-green-600 float-animation">
-                <div class="text-5xl font-bold text-blue-900 mb-3">95%</div>
-                <p class="text-blue-800 font-semibold text-lg">Success Rate</p>
-                <p class="text-blue-600 text-sm mt-2">Proven track record</p>
+                class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-red-600 float-animation">
+                <div class="text-5xl font-bold text-red-600 mb-3">95%</div>
+                <p class="text-gray-900 font-semibold text-lg">Success Rate</p>
+                <p class="text-gray-700 text-sm mt-2">Proven track record</p>
             </div>
         </div>
     </div>
@@ -395,35 +378,22 @@
 
 <!-- FAQ Section -->
 <!-- FAQ Section - Enhanced Beautiful Design -->
-<section class="relative py-24 overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50">
-    <!-- Animated Background Shapes -->
-    <div class="absolute inset-0 opacity-10">
-        <div
-            class="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full blur-3xl animate-pulse">
-        </div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full blur-3xl animate-pulse"
-            style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full blur-3xl animate-pulse"
-            style="animation-delay: 2s;"></div>
-    </div>
-
+<section class="relative py-24 overflow-hidden">
     <div class="container mx-auto px-4 relative z-10">
         <!-- Section Header -->
         <div class="text-center mb-16">
             <div class="inline-block mb-4">
                 <span
-                    class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg">
+                    class="bg-green-700 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg">
                     💡 Got Questions?
                 </span>
             </div>
             <h2
-                class="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+                class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Frequently Asked Questions
             </h2>
             <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Get answers to <span
-                    class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">common
-                    questions</span> about studying abroad
+                Get answers to <span class="font-bold text-green-700">common questions</span> about studying abroad
             </p>
         </div>
 
@@ -439,13 +409,13 @@
 
                     <!-- Card -->
                     <div
-                        class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-purple-200 overflow-hidden">
+                        class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-green-200 overflow-hidden">
                         <button class="w-full text-left p-8 focus:outline-none" onclick="toggleFAQ(event, 'faq1')">
                             <div class="flex items-start justify-between gap-4">
                                 <div class="flex items-start gap-4 flex-1">
                                     <!-- Icon -->
                                     <div
-                                        class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                        class="flex-shrink-0 w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                                         <span class="text-2xl">❓</span>
                                     </div>
                                     <!-- Question -->
@@ -487,7 +457,7 @@
                     </div>
 
                     <div
-                        class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-emerald-200 overflow-hidden">
+                        class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-green-200 overflow-hidden">
                         <button class="w-full text-left p-8 focus:outline-none" onclick="toggleFAQ(event, 'faq2')">
                             <div class="flex items-start justify-between gap-4">
                                 <div class="flex items-start gap-4 flex-1">
@@ -615,10 +585,10 @@
         <div class="mt-16 text-center">
             <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 inline-block border border-gray-200">
                 <p class="text-gray-700 text-lg mb-4">Still have questions? <span
-                        class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">We're
+                        class="font-bold text-transparent bg-clip-text bg-gradient-to-r bg-green-700">We're
                         here to help!</span></p>
                 <a href="{{ route('chat.index') }}"
-                    class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r bg-green-700 text-white rounded-full font-semibold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
@@ -652,85 +622,223 @@
 
 
 
-<!-- Testimonials Section - Vibrant Colorful Design -->
-<section class="relative py-24 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500">
-    <!-- Floating Decorative Elements -->
-    <div class="absolute inset-0">
-        <div
-            class="absolute top-10 right-10 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl opacity-30 animate-pulse">
-        </div>
-        <div class="absolute bottom-20 left-10 w-80 h-80 bg-cyan-400 rounded-full filter blur-3xl opacity-30 animate-pulse"
-            style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/3 left-1/3 w-72 h-72 bg-pink-300 rounded-full filter blur-3xl opacity-20 animate-pulse"
-            style="animation-delay: 2s;"></div>
+<!-- Testimonials Section - Interactive Carousel Style -->
+<section class="relative py-24 overflow-hidden" x-data="{ 
+    currentSlide: 0,
+    testimonials: [
+        { name: 'Sarah Johnson', university: 'Harvard University', image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80', quote: 'StudyAbroad helped me find the perfect program in the US. The guidance was exceptional and made my dream come true!', rating: 5, color: 'from-rose-500 to-pink-500' },
+        { name: 'Michael Chen', university: 'Stanford University', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', quote: 'The scholarship assistance was incredible. I got full funding for my Masters degree thanks to their expert guidance!', rating: 5, color: 'from-blue-500 to-cyan-500' },
+        { name: 'Emily Davis', university: 'MIT', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80', quote: 'From application to visa, everything was smooth. Now I am studying my dream program at MIT!', rating: 5, color: 'from-purple-500 to-fuchsia-500' }
+    ],
+    nextSlide() { this.currentSlide = (this.currentSlide + 1) % this.testimonials.length; },
+    prevSlide() { this.currentSlide = this.currentSlide === 0 ? this.testimonials.length - 1 : this.currentSlide - 1; }
+}" x-init="setInterval(() => { nextSlide() }, 6000)">
+    
+    <!-- Vibrant Light Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-rose-100 via-purple-100 to-blue-100"></div>
+    
+    <!-- Animated Mesh Grid -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(99,102,241,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.2) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+    
+    <!-- Floating Colorful Particles -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute w-3 h-3 bg-rose-400 rounded-full opacity-40 animate-ping" style="top: 20%; left: 10%; animation-delay: 0s; animation-duration: 3s;"></div>
+        <div class="absolute w-3 h-3 bg-blue-400 rounded-full opacity-40 animate-ping" style="top: 60%; left: 80%; animation-delay: 1s; animation-duration: 4s;"></div>
+        <div class="absolute w-3 h-3 bg-purple-400 rounded-full opacity-40 animate-ping" style="top: 40%; left: 70%; animation-delay: 2s; animation-duration: 3.5s;"></div>
+        <div class="absolute w-3 h-3 bg-pink-400 rounded-full opacity-40 animate-ping" style="top: 80%; left: 30%; animation-delay: 1.5s; animation-duration: 4.5s;"></div>
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-            <div class="inline-block mb-6">
-                <div class="bg-white/20 backdrop-blur-lg px-8 py-3 rounded-full border-2 border-white/40 shadow-2xl">
-                    <div class="flex items-center gap-3">
-                        <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <span class="text-white font-bold text-sm tracking-widest uppercase">Student Voices</span>
-                        <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                    </div>
+        <!-- Section Header - Vibrant Light Style -->
+        <div class="text-center mb-20">
+            <!-- Animated Badge -->
+            <div class="inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/80 backdrop-blur-xl border-2 border-purple-200 shadow-xl">
+                <div class="flex gap-1">
+                    <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
+                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span>
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
+                </div>
+                <span class="text-gray-800 font-bold text-sm tracking-[0.3em] uppercase">Testimonials</span>
+                <div class="flex gap-1">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span>
+                    <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
                 </div>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight drop-shadow-2xl">
-                What Our Students
-                <span class="block text-yellow-300 mt-2">Actually Say</span>
+            
+            <!-- Title with Vibrant Gradient -->
+            <h2 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
+                <span class="block bg-gradient-to-r from-rose-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    What Our Students
+                </span>
+                <span class="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">Actually Say</span>
             </h2>
-            <p class="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-semibold">
-                Real voices, real stories, real success ✨
+            
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto font-semibold">
+                💬 Real experiences from students worldwide
             </p>
         </div>
 
-        <!-- Testimonial Cards -->
-        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <!-- Testimonial 1 - Blue Cyan Theme -->
-            <div class="group relative">
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500 animate-pulse">
+        <!-- Interactive Carousel -->
+        <div class="max-w-5xl mx-auto">
+            <!-- Main Carousel Card -->
+            <div class="relative">
+                <!-- Card Container -->
+                <template x-for="(testimonial, index) in testimonials" :key="index">
+                    <div x-show="currentSlide === index"
+                         x-transition:enter="transition ease-out duration-500 transform"
+                         x-transition:enter-start="opacity-0 translate-x-full"
+                         x-transition:enter-end="opacity-100 translate-x-0"
+                         x-transition:leave="transition ease-in duration-500 transform"
+                         x-transition:leave-start="opacity-100 translate-x-0"
+                         x-transition:leave-end="opacity-0 -translate-x-full"
+                         class="absolute inset-0">
+                        
+                        <!-- Glowing Border Effect -->
+                        <div class="absolute -inset-1 rounded-3xl opacity-75 blur-xl transition duration-500"
+                             :class="`bg-gradient-to-r ${testimonial.color}`"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-purple-200 shadow-2xl p-12">
+                            <!-- Large Quote Icon -->
+                            <div class="absolute -top-8 -left-8 text-9xl opacity-10">
+                                <span class="bg-gradient-to-br from-purple-500 to-blue-500 bg-clip-text text-transparent">"</span>
+                            </div>
+                            
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <!-- Student Photo -->
+                                <div class="relative flex-shrink-0">
+                                    <div class="absolute -inset-2 rounded-full opacity-60 blur-xl transition duration-500"
+                                         :class="`bg-gradient-to-r ${testimonial.color}`"></div>
+                                    <img :src="testimonial.image" :alt="testimonial.name"
+                                         class="relative w-32 h-32 rounded-full border-4 border-white object-cover shadow-2xl">
+                                    <!-- Verified Badge -->
+                                    <div class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full flex items-center justify-center shadow-xl"
+                                         :class="`bg-gradient-to-br ${testimonial.color}`">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <!-- Testimonial Content -->
+                                <div class="flex-1 text-center md:text-left">
+                                    <!-- Stars Rating -->
+                                    <div class="flex justify-center md:justify-start gap-1 mb-4">
+                                        <template x-for="i in 5">
+                                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        </template>
+                                    </div>
+                                    
+                                    <!-- Quote Text -->
+                                    <p class="text-2xl text-gray-800 font-medium leading-relaxed mb-6 italic" x-text="testimonial.quote"></p>
+                                    
+                                    <!-- Student Info -->
+                                    <div>
+                                        <h4 class="text-2xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-1" x-text="testimonial.name"></h4>
+                                        <p class="text-gray-600 font-semibold flex items-center justify-center md:justify-start gap-2">
+                                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span x-text="testimonial.university"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- Spacer for absolute positioning -->
+                <div class="opacity-0 pointer-events-none">
+                    <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-12">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="w-32 h-32"></div>
+                            <div class="flex-1">
+                                <div class="h-6 mb-4"></div>
+                                <p class="text-2xl leading-relaxed mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="h-16"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div
-                    class="relative bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-2xl hover:shadow-cyan-500/50 transition-all duration-500 p-8 transform hover:-translate-y-3 hover:scale-105 border-2 border-cyan-200">
-                    <!-- Decorative Quote -->
-                    <div class="absolute top-4 right-4 text-7xl font-black text-cyan-200 opacity-30">"</div>
+            </div>
+            
+            <!-- Navigation Controls -->
+            <div class="flex items-center justify-center gap-6 mt-12">
+                <!-- Previous Button -->
+                <button @click="prevSlide()" 
+                        class="group w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-white group-hover:text-rose-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Dots Indicator -->
+                <div class="flex gap-3">
+                    <template x-for="(testimonial, index) in testimonials" :key="index">
+                        <button @click="currentSlide = index"
+                                class="transition-all duration-300"
+                                :class="currentSlide === index ? 'w-12 h-3 rounded-full bg-gradient-to-r ' + testimonial.color : 'w-3 h-3 rounded-full bg-white/30 hover:bg-white/50'">
+                        </button>
+                    </template>
+                </div>
+                
+                <!-- Next Button -->
+                <button @click="nextSlide()" 
+                        class="group w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-white group-hover:text-blue-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-3 gap-6">
+                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                    <div class="text-4xl font-black text-white mb-2">500+</div>
+                    <div class="text-gray-300 font-semibold">Happy Students</div>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                    <div class="text-4xl font-black text-white mb-2">50+</div>
+                    <div class="text-gray-300 font-semibold">Countries</div>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                    <div class="text-4xl font-black text-white mb-2">4.9/5</div>
+                    <div class="text-gray-300 font-semibold">Rating</div>
+                </div>
+            </div>
+        </div>
+            <!-- Testimonial 1 - Elegant Glass Card -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 p-8 transform hover:-translate-y-2 border border-blue-100/50">
+                    <!-- Decorative Quote with Gradient -->
+                    <div class="absolute top-4 right-4 text-7xl font-black bg-gradient-to-br from-blue-300 to-cyan-300 bg-clip-text text-transparent opacity-20">"</div>
 
                     <!-- Student Profile -->
                     <div class="flex items-center mb-6 relative z-10">
                         <div class="relative">
-                            <div
-                                class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-75 animate-pulse">
-                            </div>
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur opacity-60"></div>
                             <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80"
                                 alt="Sarah Johnson"
-                                class="relative w-20 h-20 rounded-full border-4 border-white shadow-2xl">
-                            <div
-                                class="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center border-3 border-white shadow-lg">
+                                class="relative w-20 h-20 rounded-full border-4 border-white shadow-xl object-cover">
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
                                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                 </svg>
                             </div>
                         </div>
                         <div class="ml-4">
-                            <h4
-                                class="font-black text-xl bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent">
+                            <h4 class="font-black text-xl bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                                 Sarah Johnson</h4>
-                            <p class="text-sm text-cyan-700 font-semibold flex items-center gap-1.5">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd" />
+                            <p class="text-sm text-gray-600 font-semibold flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                 </svg>
                                 Harvard University
                             </p>
@@ -738,13 +846,13 @@
                     </div>
 
                     <!-- Quote Text -->
-                    <p class="text-gray-700 mb-6 leading-relaxed text-base font-medium">
+                    <p class="text-gray-700 mb-6 leading-relaxed text-base font-medium relative z-10">
                         "StudyAbroad helped me find the perfect program in the US. The guidance was exceptional and made
                         my dream come true!"
                     </p>
 
                     <!-- Rating -->
-                    <div class="flex items-center justify-between pt-4 border-t-2 border-cyan-200">
+                    <div class="flex items-center justify-between pt-4 border-t border-blue-100">
                         <div class="flex items-center gap-1">
                             <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path
@@ -959,39 +1067,35 @@
         </div>
 </section>
 
-<!-- Student Success Stories Section - Vibrant Colorful Design -->
-<section class="relative py-24 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500">
+<!-- Student Success Stories Section - Modern Elegant Design -->
+<section class="relative py-24 overflow-hidden">
+    <!-- Subtle Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/40 via-pink-50/30 to-rose-50/40"></div>
+    
     <!-- Floating Animated Decorative Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse">
-        </div>
-        <div class="absolute top-40 right-20 w-96 h-96 bg-cyan-400 rounded-full blur-3xl opacity-20 animate-pulse"
-            style="animation-delay: 1s;"></div>
-        <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-pink-300 rounded-full blur-3xl opacity-20 animate-pulse"
-            style="animation-delay: 2s;"></div>
+    <div class="absolute inset-0 overflow-hidden opacity-30">
+        <div class="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+        <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-rose-200 to-pink-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 3s;"></div>
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
+        <!-- Section Header with Glassmorphism -->
         <div class="text-center mb-20">
-            <div
-                class="inline-flex items-center gap-2 mb-6 bg-white/20 backdrop-blur-lg px-6 py-3 rounded-full border-2 border-white/40 shadow-xl">
-                <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            <div class="inline-flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-purple-100 shadow-2xl">
+                <svg class="w-6 h-6 text-yellow-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <span class="text-white font-bold text-lg tracking-wider uppercase">Success Stories 🎓</span>
-                <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <span class="text-gray-800 font-bold text-lg tracking-wider uppercase">Success Stories 🎓</span>
+                <svg class="w-6 h-6 text-yellow-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight drop-shadow-2xl">
-                Success Stories from <span class="text-yellow-300">Our Students</span>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent leading-tight">
+                Success Stories from <span class="block mt-2">Our Students</span>
             </h2>
-            <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-                ✨ Inspiring journeys of students who turned their <span class="font-black text-yellow-300">dreams into
-                    reality</span>
+            <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-semibold">
+                ✨ Inspiring journeys of students who turned their dreams into reality
             </p>
         </div>
 
@@ -1393,7 +1497,7 @@
 </section> -->
 
 <!-- Popular Destinations Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Popular Study Destinations</h2>
         <p class="text-xl text-center text-blue-700 mb-16 max-w-3xl mx-auto">Explore the world's most sought-after
@@ -1475,103 +1579,103 @@
     </div>
 </section>
 
-<!-- Study Programs Section -->
-<section class="bg-white py-20">
-    <div class="container mx-auto px-4">
+<!-- Study Programs Section - Modern Elegant Design -->
+<section class="relative py-24 overflow-hidden">
+    <!-- Subtle Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/60 via-blue-50/50 to-purple-50/60"></div>
+    
+    <!-- Floating Decorative Elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-25">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-indigo-200 to-blue-200 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute top-1/3 -right-32 w-96 h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
-            <span
-                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg inline-block mb-4 animate-pulse">
-                📚 Academic Excellence
-            </span>
-            <h2
-                class="text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+            <div class="inline-flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-indigo-100 shadow-2xl">
+                <span class="text-3xl animate-bounce">📚</span>
+                <span class="text-gray-800 font-bold text-sm uppercase tracking-widest">Academic Excellence</span>
+                <span class="text-3xl animate-bounce" style="animation-delay: 0.2s;">🎓</span>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
                 Explore Study Programs</h2>
-            <p class="text-xl font-semibold text-gray-700 max-w-3xl mx-auto">Find the perfect program that matches your
-                academic goals
-                and career aspirations ✨</p>
+            <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-semibold">Find the perfect program that matches your
+                academic goals and career aspirations ✨</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Undergraduate Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 p-8 border-4 border-blue-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            🎓
-                        </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">Undergraduate Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">Bachelor's degrees in various fields including
-                            Business, Engineering, Arts, and Sciences.</p>
+            <!-- Undergraduate Programs - Glassmorphism Design -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-blue-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-blue-100/50">
+                    <!-- Icon with Gradient Background -->
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        🎓
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Foundation Programs Available</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Transfer Credits Accepted</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Career Counseling Included</li>
+                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Undergraduate Programs</h3>
+                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">Bachelor's degrees in various fields including
+                        Business, Engineering, Arts, and Sciences.</p>
+                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
+                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
+                            <span class="mr-2 text-lg text-blue-500">✓</span> Foundation Programs Available
+                        </li>
+                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
+                            <span class="mr-2 text-lg text-blue-500">✓</span> Transfer Credits Accepted
+                        </li>
+                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
+                            <span class="mr-2 text-lg text-blue-500">✓</span> Career Counseling Included
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Graduate Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-green-500 via-green-600 to-emerald-700 p-8 border-4 border-green-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            📚
-                        </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">Graduate Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">Master's and PhD programs for advanced study. Research
-                            opportunities and industry partnerships.</p>
+            <!-- Graduate Programs - Glassmorphism Design -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-green-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-green-100/50">
+                    <!-- Icon with Gradient Background -->
+                    <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        📚
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Research Assistantships</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Industry Partnerships</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Fast-track Options</li>
+                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">Graduate Programs</h3>
+                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">Master's and PhD programs for advanced study. Research
+                        opportunities and industry partnerships.</p>
+                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
+                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
+                            <span class="mr-2 text-lg text-green-500">✓</span> Research Assistantships
+                        </li>
+                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
+                            <span class="mr-2 text-lg text-green-500">✓</span> Industry Partnerships
+                        </li>
+                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
+                            <span class="mr-2 text-lg text-green-500">✓</span> Fast-track Options
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Professional Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 p-8 border-4 border-purple-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            💼
-                        </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">Professional Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">MBA, Law, Medicine, and other professional degrees
-                            with industry certifications.</p>
+            <!-- Professional Programs - Glassmorphism Design -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-purple-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-purple-100/50">
+                    <!-- Icon with Gradient Background -->
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        💼
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Industry Certifications</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Internship Programs</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Executive Networks</li>
+                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">Professional Programs</h3>
+                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">MBA, Law, Medicine, and other professional degrees
+                        with industry certifications.</p>
+                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
+                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
+                            <span class="mr-2 text-lg text-purple-500">✓</span> Industry Certifications
+                        </li>
+                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
+                            <span class="mr-2 text-lg text-purple-500">✓</span> Internship Programs
+                        </li>
+                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
+                            <span class="mr-2 text-lg text-purple-500">✓</span> Executive Networks
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1901,7 +2005,7 @@
 </section>
 
 <!-- Student Resources Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Student Resources & Tools</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Everything you need to succeed in your
@@ -2077,7 +2181,7 @@
 </section>
 
 <!-- Accreditation & Partnerships Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Trusted by Leading Institutions</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">We are accredited and partnered with
@@ -2214,7 +2318,7 @@
 </section>
 
 <!-- Cost Comparison Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Study Abroad Cost Comparison</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Compare tuition fees, living costs, and
@@ -2297,7 +2401,7 @@
 </section>
 
 <!-- Admission Requirements Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Admission Requirements by Country</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Understand the specific requirements for
@@ -2559,7 +2663,7 @@
 </section>
 
 <!-- Pre-Departure Preparation Section -->
-<section class="bg-white py-20">
+<section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Pre-Departure Preparation</h2>
         <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">Get fully prepared for your study abroad
@@ -2740,3 +2844,5 @@
 </style>
 
 @endsection
+
+

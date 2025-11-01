@@ -14,9 +14,27 @@
         /* Alpine.js cloak */
         [x-cloak] { display: none !important; }
         
-        /* White Background */
+        /* Light Blue Background */
         body {
-            background: #ffffff;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #e1f5fe 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        /* Consistent section backgrounds */
+        main {
+            background: transparent;
+        }
+        
+        /* Override section backgrounds to match body */
+        section {
+            background: transparent !important;
+        }
+        
+        /* White cards/containers stand out on gradient background */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         /* Floating Animation */
@@ -199,7 +217,7 @@
                         class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('/') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">Home</a>
 
                     <!-- Countries Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchCountry: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('countries*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Countries
@@ -215,7 +233,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/countries') }}"
@@ -227,6 +245,20 @@
                                     </svg>
                                 </a>
                             </div>
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchCountry"
+                                        placeholder="Search countries..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="overflow-y-auto max-h-80">
                             @php
                                 if (!isset($navbarCountries)) {
                                     $navbarCountries = \App\Models\Country::withCount('universities')
@@ -238,6 +270,7 @@
                             @if(isset($navbarCountries) && $navbarCountries->count() > 0)
                                 @foreach($navbarCountries as $country)
                                     <a href="{{ url('/countries/' . $country->id) }}"
+                                        x-show="searchCountry === '' || '{{ strtolower($country->name) }}'.includes(searchCountry.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 mr-3 shadow-md">
                                             @if($country->image_url)
@@ -265,11 +298,12 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No countries available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Universities Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchUniversity: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-4 {{ request()->is('universities*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Universities
@@ -287,7 +321,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
 
                             <!-- View All Link -->
@@ -301,6 +335,22 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchUniversity"
+                                        placeholder="Search universities..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
 
                             <!-- Universities List -->
                             {{-- Debug: Check if variable exists --}}
@@ -317,6 +367,7 @@
                             @if(isset($navbarUniversities) && $navbarUniversities->count() > 0)
                                 @foreach($navbarUniversities as $university)
                                     <a href="{{ url('/universities/' . $university->id) }}"
+                                        x-show="searchUniversity === '' || '{{ strtolower($university->name) }}'.includes(searchUniversity.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <!-- University Image -->
                                         <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 mr-3 shadow-md">
@@ -354,11 +405,12 @@
                                     No universities available
                                 </div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Courses Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchCourse: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-5 {{ request()->is('courses*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Courses
@@ -374,7 +426,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/courses') }}"
@@ -386,6 +438,22 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchCourse"
+                                        placeholder="Search courses..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
                             @php
                                 if (!isset($navbarCourses)) {
                                     $navbarCourses = \App\Models\Course::with('university')
@@ -396,6 +464,7 @@
                             @if(isset($navbarCourses) && $navbarCourses->count() > 0)
                                 @foreach($navbarCourses as $course)
                                     <a href="{{ url('/courses/' . $course->id) }}"
+                                        x-show="searchCourse === '' || '{{ strtolower($course->name ?? $course->title) }}'.includes(searchCourse.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
@@ -414,11 +483,12 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No courses available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Posts Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchPost: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-6 {{ request()->is('posts*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Posts
@@ -434,7 +504,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/posts') }}"
@@ -446,9 +516,26 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchPost"
+                                        placeholder="Search posts..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
                             @php if (!isset($navbarPosts)) { try { $navbarPosts = \App\Models\Post::orderBy('created_at', 'desc')->limit(10)->get(); } catch (\Exception $e) { $navbarPosts = collect([]); } } @endphp@if(isset($navbarPosts) && $navbarPosts->count() > 0)
                                 @foreach($navbarPosts as $post)
                                     <a href="{{ url('/posts/' . $post->id) }}"
+                                        x-show="searchPost === '' || '{{ strtolower($post->title) }}'.includes(searchPost.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
@@ -466,11 +553,12 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No posts available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Degrees Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchDegree: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-1 {{ request()->is('degrees*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Degrees
@@ -486,7 +574,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/degrees') }}"
@@ -498,9 +586,26 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchDegree"
+                                        placeholder="Search degrees..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
                             @php if (!isset($navbarDegrees)) { try { $navbarDegrees = \App\Models\Degree::limit(10)->get(); } catch (\Exception $e) { $navbarDegrees = collect([]); } } @endphp@if(isset($navbarDegrees) && $navbarDegrees->count() > 0)
                                 @foreach($navbarDegrees as $degree)
                                     <a href="{{ url('/degrees/' . $degree->id) }}"
+                                        x-show="searchDegree === '' || '{{ strtolower($degree->name) }}'.includes(searchDegree.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
@@ -517,11 +622,12 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No degrees available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Reviews Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchReview: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-2 {{ request()->is('reviews*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Reviews
@@ -537,7 +643,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/reviews') }}"
@@ -549,6 +655,22 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchReview"
+                                        placeholder="Search reviews..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
                             @php 
                                 if (!isset($navbarReviews)) { 
                                     try {
@@ -561,6 +683,7 @@
                             @if(isset($navbarReviews) && $navbarReviews->count() > 0)
                                 @foreach($navbarReviews as $review)
                                     <a href="{{ url('/reviews/' . $review->id) }}"
+                                        x-show="searchReview === '' || '{{ strtolower($review->title ?? 'Review') }}'.includes(searchReview.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
@@ -581,11 +704,12 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No reviews available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
 
                     <!-- Scholarships Dropdown -->
-                    <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <div x-data="{ open: false, searchScholarship: '' }" @click.away="open = false" class="relative">
                         <button type="button" @click="open = !open"
                             class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-3 {{ request()->is('scholarships*') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }} flex items-center">
                             Scholarships
@@ -601,7 +725,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-95"
-                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-y-auto"
+                            class="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-50 max-h-96 overflow-hidden"
                             >
                             <div class="p-3 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50">
                                 <a href="{{ url('/scholarships') }}"
@@ -613,6 +737,22 @@
                                     </svg>
                                 </a>
                             </div>
+                            
+                            <!-- Search Bar -->
+                            <div class="p-3 border-b border-gray-200 bg-gray-50">
+                                <div class="relative">
+                                    <input type="text" 
+                                        x-model="searchScholarship"
+                                        placeholder="Search scholarships..."
+                                        class="w-full px-3 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        @click.stop>
+                                    <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-y-auto max-h-80">
                             @php 
                                 if (!isset($navbarScholarships)) { 
                                     try {
@@ -625,6 +765,7 @@
                             @if(isset($navbarScholarships) && $navbarScholarships->count() > 0)
                                 @foreach($navbarScholarships as $scholarship)
                                     <a href="{{ url('/scholarships/' . $scholarship->id) }}"
+                                        x-show="searchScholarship === '' || '{{ strtolower($scholarship->name) }}'.includes(searchScholarship.toLowerCase())"
                                         class="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0 mr-3">
@@ -648,6 +789,7 @@
                             @else
                                 <div class="p-4 text-center text-gray-500 text-sm">No scholarships available</div>
                             @endif
+                            </div>
                         </div>
                     </div>
                     <a href="{{ url('/about-us') }}"
