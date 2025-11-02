@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UniversitySeeder::class,
             CourseSeeder::class,
             DegreeSeeder::class,
+            ReviewSeeder::class,
             // Dynamic content seeders
             HeroSectionSeeder::class,
             FeatureSeeder::class,

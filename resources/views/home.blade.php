@@ -620,856 +620,237 @@
 
 </script>
 
-
-
-<!-- Testimonials Section - Interactive Carousel Style -->
-<section class="relative py-24 overflow-hidden" x-data="{ 
-    currentSlide: 0,
-    testimonials: [
-        { name: 'Sarah Johnson', university: 'Harvard University', image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80', quote: 'StudyAbroad helped me find the perfect program in the US. The guidance was exceptional and made my dream come true!', rating: 5, color: 'from-rose-500 to-pink-500' },
-        { name: 'Michael Chen', university: 'Stanford University', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', quote: 'The scholarship assistance was incredible. I got full funding for my Masters degree thanks to their expert guidance!', rating: 5, color: 'from-blue-500 to-cyan-500' },
-        { name: 'Emily Davis', university: 'MIT', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80', quote: 'From application to visa, everything was smooth. Now I am studying my dream program at MIT!', rating: 5, color: 'from-purple-500 to-fuchsia-500' }
-    ],
-    nextSlide() { this.currentSlide = (this.currentSlide + 1) % this.testimonials.length; },
-    prevSlide() { this.currentSlide = this.currentSlide === 0 ? this.testimonials.length - 1 : this.currentSlide - 1; }
-}" x-init="setInterval(() => { nextSlide() }, 6000)">
-    
-    <!-- Vibrant Light Gradient Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-rose-100 via-purple-100 to-blue-100"></div>
-    
-    <!-- Animated Mesh Grid -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(99,102,241,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.2) 1px, transparent 1px); background-size: 50px 50px;"></div>
+<!-- Student Success Stories Section - Dynamic Interactive Design -->
+<section class="relative py-24 overflow-hidden" x-data="{
+    activeStory: 0,
+    stories: [
+        {
+            id: 0,
+            name: 'Sarah Mitchell',
+            university: 'Stanford University',
+            program: 'Computer Science',
+            country: 'USA',
+            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+            campusImage: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop',
+            quote: 'StudyAbroad made my dream a reality! From application to visa approval, their support was exceptional.',
+            achievement: 'Full Scholarship',
+            color: 'from-green-600 to-emerald-600',
+            accentColor: 'green'
+        },
+        {
+            id: 1,
+            name: 'James Chen',
+            university: 'University of Oxford',
+            program: 'Business Management',
+            country: 'UK',
+            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+            campusImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=600&fit=crop',
+            quote: 'The counseling team helped me secure admission to my dream university. Forever grateful!',
+            achievement: 'Top University',
+            color: 'from-orange-600 to-red-600',
+            accentColor: 'orange'
+        },
+        {
+            id: 2,
+            name: 'Maria Rodriguez',
+            university: 'University of Toronto',
+            program: 'Medicine',
+            country: 'Canada',
+            image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+            campusImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop',
+            quote: 'From visa processing to finding accommodation, StudyAbroad supported me at every step.',
+            achievement: 'Medical Student',
+            color: 'from-blue-600 to-cyan-600',
+            accentColor: 'blue'
+        }
+    ]
+}">
+    <!-- Animated Background with Gradient Mesh -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-green-50 to-orange-50"></div>
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 -left-4 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
     </div>
-    
-    <!-- Floating Colorful Particles -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute w-3 h-3 bg-rose-400 rounded-full opacity-40 animate-ping" style="top: 20%; left: 10%; animation-delay: 0s; animation-duration: 3s;"></div>
-        <div class="absolute w-3 h-3 bg-blue-400 rounded-full opacity-40 animate-ping" style="top: 60%; left: 80%; animation-delay: 1s; animation-duration: 4s;"></div>
-        <div class="absolute w-3 h-3 bg-purple-400 rounded-full opacity-40 animate-ping" style="top: 40%; left: 70%; animation-delay: 2s; animation-duration: 3.5s;"></div>
-        <div class="absolute w-3 h-3 bg-pink-400 rounded-full opacity-40 animate-ping" style="top: 80%; left: 30%; animation-delay: 1.5s; animation-duration: 4.5s;"></div>
-    </div>
 
+    
     <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header - Vibrant Light Style -->
-        <div class="text-center mb-20">
-            <!-- Animated Badge -->
-            <div class="inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/80 backdrop-blur-xl border-2 border-purple-200 shadow-xl">
-                <div class="flex gap-1">
-                    <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
-                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span>
-                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
-                </div>
-                <span class="text-gray-800 font-bold text-sm tracking-[0.3em] uppercase">Testimonials</span>
-                <div class="flex gap-1">
-                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span>
-                    <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
-                </div>
+        <!-- Section Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 bg-green-700 text-white px-6 py-3 rounded-full mb-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span class="font-bold text-sm tracking-wider uppercase">Success Stories</span>
             </div>
-            
-            <!-- Title with Vibrant Gradient -->
-            <h2 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
-                <span class="block bg-gradient-to-r from-rose-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                    What Our Students
-                </span>
-                <span class="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">Actually Say</span>
+            <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
+                Dreams Achieved <span class="text-green-700">Worldwide</span>
             </h2>
-            
-            <p class="text-xl text-gray-700 max-w-2xl mx-auto font-semibold">
-                💬 Real experiences from students worldwide
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                Discover how our students transformed their aspirations into reality with <span class="font-bold text-orange-600">StudyAbroad</span>
             </p>
         </div>
 
-        <!-- Interactive Carousel -->
-        <div class="max-w-5xl mx-auto">
-            <!-- Main Carousel Card -->
+        <!-- Interactive Story Showcase with Tab Navigation -->
+        <div class="max-w-6xl mx-auto">
+            <!-- Story Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <template x-for="(story, index) in stories" :key="story.id">
+                    <button 
+                        @click="activeStory = index"
+                        :class="activeStory === index ? 'bg-gradient-to-r ' + story.color + ' text-white scale-110' : 'bg-white text-gray-700 hover:bg-gray-50'"
+                        class="px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 border-2"
+                        :style="activeStory === index ? 'border-color: transparent' : ''">
+                        <span x-text="story.name"></span>
+                    </button>
+                </template>
+            </div>
+
+            <!-- Active Story Display -->
             <div class="relative">
-                <!-- Card Container -->
-                <template x-for="(testimonial, index) in testimonials" :key="index">
-                    <div x-show="currentSlide === index"
-                         x-transition:enter="transition ease-out duration-500 transform"
-                         x-transition:enter-start="opacity-0 translate-x-full"
-                         x-transition:enter-end="opacity-100 translate-x-0"
-                         x-transition:leave="transition ease-in duration-500 transform"
-                         x-transition:leave-start="opacity-100 translate-x-0"
-                         x-transition:leave-end="opacity-0 -translate-x-full"
-                         class="absolute inset-0">
+                <template x-for="(story, index) in stories" :key="story.id">
+                    <div 
+                        x-show="activeStory === index"
+                        x-transition:enter="transition ease-out duration-500 transform"
+                        x-transition:enter-start="opacity-0 scale-95 translate-y-10"
+                        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="bg-white rounded-3xl shadow-2xl overflow-hidden">
                         
-                        <!-- Glowing Border Effect -->
-                        <div class="absolute -inset-1 rounded-3xl opacity-75 blur-xl transition duration-500"
-                             :class="`bg-gradient-to-r ${testimonial.color}`"></div>
-                        
-                        <!-- Main Card -->
-                        <div class="relative bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-purple-200 shadow-2xl p-12">
-                            <!-- Large Quote Icon -->
-                            <div class="absolute -top-8 -left-8 text-9xl opacity-10">
-                                <span class="bg-gradient-to-br from-purple-500 to-blue-500 bg-clip-text text-transparent">"</span>
-                            </div>
-                            
-                            <div class="flex flex-col md:flex-row items-center gap-8">
-                                <!-- Student Photo -->
-                                <div class="relative flex-shrink-0">
-                                    <div class="absolute -inset-2 rounded-full opacity-60 blur-xl transition duration-500"
-                                         :class="`bg-gradient-to-r ${testimonial.color}`"></div>
-                                    <img :src="testimonial.image" :alt="testimonial.name"
-                                         class="relative w-32 h-32 rounded-full border-4 border-white object-cover shadow-2xl">
-                                    <!-- Verified Badge -->
-                                    <div class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full flex items-center justify-center shadow-xl"
-                                         :class="`bg-gradient-to-br ${testimonial.color}`">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                
-                                <!-- Testimonial Content -->
-                                <div class="flex-1 text-center md:text-left">
-                                    <!-- Stars Rating -->
-                                    <div class="flex justify-center md:justify-start gap-1 mb-4">
-                                        <template x-for="i in 5">
-                                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                            </svg>
-                                        </template>
+                        <!-- Story Content Grid -->
+                        <div class="grid md:grid-cols-2 gap-8 p-8">
+                            <!-- Left Side - Image & Profile -->
+                            <div class="space-y-6">
+                                <!-- Campus Image -->
+                                <div class="relative h-80 rounded-2xl overflow-hidden group">
+                                    <img :src="story.campusImage" :alt="story.university" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                    
+                                    <!-- Achievement Badge -->
+                                    <div class="absolute top-4 right-4 px-4 py-2 rounded-full text-white font-bold text-sm shadow-xl animate-pulse"
+                                         :class="'bg-gradient-to-r ' + story.color">
+                                        <span x-text="story.achievement"></span>
                                     </div>
                                     
-                                    <!-- Quote Text -->
-                                    <p class="text-2xl text-gray-800 font-medium leading-relaxed mb-6 italic" x-text="testimonial.quote"></p>
-                                    
-                                    <!-- Student Info -->
-                                    <div>
-                                        <h4 class="text-2xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-1" x-text="testimonial.name"></h4>
-                                        <p class="text-gray-600 font-semibold flex items-center justify-center md:justify-start gap-2">
-                                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                            </svg>
-                                            <span x-text="testimonial.university"></span>
+                                    <!-- University Name -->
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <h3 class="text-2xl font-black text-white drop-shadow-2xl" x-text="story.university"></h3>
+                                        <p class="text-white/90 font-semibold flex items-center gap-2 mt-2">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                                            <span x-text="story.country"></span>
                                         </p>
                                     </div>
+                                </div>
+
+                                <!-- Student Profile Card -->
+                                <div class="flex items-center gap-4 p-6 rounded-2xl shadow-lg"
+                                     :class="'bg-gradient-to-r ' + story.color">
+                                    <div class="relative">
+                                        <div class="absolute -inset-1 bg-white/50 rounded-full blur"></div>
+                                        <img :src="story.image" :alt="story.name" class="relative w-20 h-20 rounded-full border-4 border-white object-cover shadow-xl">
+                                    </div>
+                                    <div class="text-white">
+                                        <h4 class="text-2xl font-black drop-shadow" x-text="story.name"></h4>
+                                        <p class="text-white/90 font-semibold" x-text="story.program"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side - Story Details -->
+                            <div class="flex flex-col justify-center space-y-6">
+                                <!-- Quote -->
+                                <div class="relative">
+                                    <svg class="w-12 h-12 text-gray-200 absolute -top-4 -left-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                    </svg>
+                                    <p class="text-2xl text-gray-800 font-medium leading-relaxed pl-10 italic" x-text="story.quote"></p>
+                                </div>
+
+                                <!-- Stats Grid -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-4 bg-green-50 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                                        <div class="text-3xl font-black text-green-700">100%</div>
+                                        <div class="text-sm font-semibold text-gray-600">Success Rate</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-orange-50 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                                        <div class="text-3xl font-black text-orange-600">Fast</div>
+                                        <div class="text-sm font-semibold text-gray-600">Visa Approval</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-blue-50 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                                        <div class="text-3xl font-black text-blue-600">24/7</div>
+                                        <div class="text-sm font-semibold text-gray-600">Support</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-red-50 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                                        <div class="text-3xl font-black text-red-600">Top</div>
+                                        <div class="text-sm font-semibold text-gray-600">Universities</div>
+                                    </div>
+                                </div>
+
+                                <!-- 5 Star Rating -->
+                                <div class="flex items-center justify-center gap-2 p-4 bg-yellow-50 rounded-xl">
+                                    <template x-for="i in 5">
+                                        <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </template>
+                                    <span class="text-2xl font-black text-gray-800 ml-2">5.0</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </template>
-                
-                <!-- Spacer for absolute positioning -->
-                <div class="opacity-0 pointer-events-none">
-                    <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-12">
-                        <div class="flex flex-col md:flex-row items-center gap-8">
-                            <div class="w-32 h-32"></div>
-                            <div class="flex-1">
-                                <div class="h-6 mb-4"></div>
-                                <p class="text-2xl leading-relaxed mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <div class="h-16"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            <!-- Navigation Controls -->
-            <div class="flex items-center justify-center gap-6 mt-12">
-                <!-- Previous Button -->
-                <button @click="prevSlide()" 
-                        class="group w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                    <svg class="w-6 h-6 text-white group-hover:text-rose-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+
+            <!-- Navigation Arrows -->
+            <div class="flex justify-center items-center gap-6 mt-12">
+                <button 
+                    @click="activeStory = activeStory > 0 ? activeStory - 1 : stories.length - 1"
+                    class="group w-14 h-14 rounded-full bg-green-700 text-white flex items-center justify-center hover:bg-green-800 transform hover:scale-110 transition-all duration-300 shadow-lg">
+                    <svg class="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </button>
-                
-                <!-- Dots Indicator -->
+
+                <!-- Dot Indicators -->
                 <div class="flex gap-3">
-                    <template x-for="(testimonial, index) in testimonials" :key="index">
-                        <button @click="currentSlide = index"
-                                class="transition-all duration-300"
-                                :class="currentSlide === index ? 'w-12 h-3 rounded-full bg-gradient-to-r ' + testimonial.color : 'w-3 h-3 rounded-full bg-white/30 hover:bg-white/50'">
+                    <template x-for="(story, index) in stories" :key="story.id">
+                        <button 
+                            @click="activeStory = index"
+                            class="transition-all duration-300"
+                            :class="activeStory === index ? 'w-12 h-3 rounded-full bg-gradient-to-r ' + story.color : 'w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400'">
                         </button>
                     </template>
                 </div>
-                
-                <!-- Next Button -->
-                <button @click="nextSlide()" 
-                        class="group w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                    <svg class="w-6 h-6 text-white group-hover:text-blue-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+
+                <button 
+                    @click="activeStory = activeStory < stories.length - 1 ? activeStory + 1 : 0"
+                    class="group w-14 h-14 rounded-full bg-green-700 text-white flex items-center justify-center hover:bg-green-800 transform hover:scale-110 transition-all duration-300 shadow-lg">
+                    <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </button>
             </div>
-            
-            <!-- Stats Bar -->
-            <div class="mt-16 grid grid-cols-3 gap-6">
-                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl font-black text-white mb-2">500+</div>
-                    <div class="text-gray-300 font-semibold">Happy Students</div>
-                </div>
-                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl font-black text-white mb-2">50+</div>
-                    <div class="text-gray-300 font-semibold">Countries</div>
-                </div>
-                <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div class="text-4xl font-black text-white mb-2">4.9/5</div>
-                    <div class="text-gray-300 font-semibold">Rating</div>
-                </div>
-            </div>
-        </div>
-            <!-- Testimonial 1 - Elegant Glass Card -->
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 p-8 transform hover:-translate-y-2 border border-blue-100/50">
-                    <!-- Decorative Quote with Gradient -->
-                    <div class="absolute top-4 right-4 text-7xl font-black bg-gradient-to-br from-blue-300 to-cyan-300 bg-clip-text text-transparent opacity-20">"</div>
-
-                    <!-- Student Profile -->
-                    <div class="flex items-center mb-6 relative z-10">
-                        <div class="relative">
-                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur opacity-60"></div>
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80"
-                                alt="Sarah Johnson"
-                                class="relative w-20 h-20 rounded-full border-4 border-white shadow-xl object-cover">
-                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-black text-xl bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                                Sarah Johnson</h4>
-                            <p class="text-sm text-gray-600 font-semibold flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                Harvard University
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Quote Text -->
-                    <p class="text-gray-700 mb-6 leading-relaxed text-base font-medium relative z-10">
-                        "StudyAbroad helped me find the perfect program in the US. The guidance was exceptional and made
-                        my dream come true!"
-                    </p>
-
-                    <!-- Rating -->
-                    <div class="flex items-center justify-between pt-4 border-t border-blue-100">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span class="ml-2 text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="group relative">
-                    <!-- Animated gradient border glow -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-purple-400 via-fuchsia-500 to-pink-600 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse">
-                    </div>
-                    <div
-                        class="relative bg-gradient-to-br from-purple-50 to-fuchsia-50 border-2 border-purple-200 rounded-3xl shadow-xl hover:shadow-purple-500/50 hover:shadow-2xl transition-all duration-500 p-8 transform hover:scale-105 hover:-translate-y-3">
-                        <div class="absolute top-6 right-6 text-7xl text-purple-200 opacity-70 font-serif">"</div>
-
-                        <div class="flex items-center mb-6 relative z-10">
-                            <div class="relative">
-                                <!-- Gradient glow under image -->
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-br from-purple-400 to-fuchsia-600 rounded-full blur-md opacity-60">
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
-                                    alt="Ahmed Hassan"
-                                    class="relative w-20 h-20 rounded-full border-4 border-purple-300 shadow-lg object-cover">
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-full flex items-center justify-center border-3 border-white shadow-lg">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="ml-5">
-                                <h4
-                                    class="font-black text-xl bg-gradient-to-r from-purple-600 to-fuchsia-700 bg-clip-text text-transparent">
-                                    Ahmed Hassan</h4>
-                                <p class="text-sm font-semibold text-purple-600 flex items-center gap-2 mt-1">
-                                    <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    University of Toronto
-                                </p>
-                            </div>
-                        </div>
-
-                        <p class="text-gray-700 font-medium mb-6 leading-relaxed italic text-base">
-                            "The application process was smooth and the support team was always there when I needed
-                            help.
-                            Truly outstanding service!"
-                        </p>
-
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span class="ml-2 text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="group relative">
-                    <!-- Animated gradient border glow -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-pink-400 via-rose-500 to-red-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse">
-                    </div>
-                    <div
-                        class="relative bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-3xl shadow-xl hover:shadow-pink-500/50 hover:shadow-2xl transition-all duration-500 p-8 transform hover:scale-105 hover:-translate-y-3">
-                        <div class="absolute top-6 right-6 text-7xl text-pink-200 opacity-70 font-serif">"</div>
-
-                        <div class="flex items-center mb-6 relative z-10">
-                            <div class="relative">
-                                <!-- Gradient glow under image -->
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-600 rounded-full blur-md opacity-60">
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80"
-                                    alt="Maria Garcia"
-                                    class="relative w-20 h-20 rounded-full border-4 border-pink-300 shadow-lg object-cover">
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center border-3 border-white shadow-lg">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="ml-5">
-                                <h4
-                                    class="font-black text-xl bg-gradient-to-r from-pink-600 to-rose-700 bg-clip-text text-transparent">
-                                    Maria Garcia</h4>
-                                <p class="text-sm font-semibold text-pink-600 flex items-center gap-2 mt-1">
-                                    <svg class="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    University of Melbourne
-                                </p>
-                            </div>
-                        </div>
-
-                        <p class="text-gray-700 font-medium mb-6 leading-relaxed italic text-base">
-                            "Thanks to StudyAbroad, I achieved my dream of studying in Australia. Highly recommended for
-                            anyone pursuing international education!"
-                        </p>
-
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span class="ml-2 text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trust Banner -->
-            <div class="mt-20 text-center">
-                <div class="relative group">
-                    <!-- Animated gradient glow -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500">
-                    </div>
-                    <div
-                        class="relative bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-10 inline-block border-2 border-white/50">
-                        <div class="flex flex-wrap items-center justify-center gap-12">
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300">
-                                <div
-                                    class="text-4xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-2">
-                                    4.9/5.0</div>
-                                <p class="text-sm font-semibold text-gray-600">Average Rating</p>
-                            </div>
-                            <div class="h-16 w-px bg-gradient-to-b from-transparent via-purple-300 to-transparent">
-                            </div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300">
-                                <div
-                                    class="text-4xl font-black bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent mb-2">
-                                    5,000+</div>
-                                <p class="text-sm font-semibold text-gray-600">Happy Students</p>
-                            </div>
-                            <div class="h-16 w-px bg-gradient-to-b from-transparent via-pink-300 to-transparent"></div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300">
-                                <div
-                                    class="text-4xl font-black bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent mb-2">
-                                    95%</div>
-                                <p class="text-sm font-semibold text-gray-600">Success Rate</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
-
-<!-- Student Success Stories Section - Modern Elegant Design -->
-<section class="relative py-24 overflow-hidden">
-    <!-- Subtle Gradient Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/40 via-pink-50/30 to-rose-50/40"></div>
-    
-    <!-- Floating Animated Decorative Elements -->
-    <div class="absolute inset-0 overflow-hidden opacity-30">
-        <div class="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
-        <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-rose-200 to-pink-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 3s;"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header with Glassmorphism -->
-        <div class="text-center mb-20">
-            <div class="inline-flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-purple-100 shadow-2xl">
-                <svg class="w-6 h-6 text-yellow-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                <span class="text-gray-800 font-bold text-lg tracking-wider uppercase">Success Stories 🎓</span>
-                <svg class="w-6 h-6 text-yellow-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-            </div>
-            <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent leading-tight">
-                Success Stories from <span class="block mt-2">Our Students</span>
-            </h2>
-            <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-semibold">
-                ✨ Inspiring journeys of students who turned their dreams into reality
-            </p>
         </div>
 
-        <!-- Success Story Cards -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <!-- Story 1 - Harvard MBA -->
-            <div class="group relative">
-                <!-- Animated gradient border glow -->
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse">
-                </div>
-                <div
-                    class="relative bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2 transition-all duration-500">
-                    <!-- Hero Image with Overlay -->
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=400&q=80"
-                            alt="Harvard Campus"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/80 via-blue-900/40 to-transparent">
-                        </div>
-
-                        <!-- Achievement Badge -->
-                        <div
-                            class="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-white px-5 py-2.5 rounded-full text-sm font-black shadow-2xl flex items-center gap-2 animate-pulse">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            Top MBA
-                        </div>
-
-                        <!-- Student Profile -->
-                        <div class="absolute bottom-4 left-4 flex items-center gap-4">
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-cyan-400 rounded-full blur-lg opacity-70"></div>
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80"
-                                    alt="Emma Thompson"
-                                    class="relative w-20 h-20 rounded-full border-4 border-white shadow-2xl object-cover">
-                            </div>
-                            <div class="text-white">
-                                <h4 class="font-black text-xl drop-shadow-2xl">Emma Thompson</h4>
-                                <p class="text-base font-semibold drop-shadow-lg text-cyan-200">Harvard Business School
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="p-7">
-                        <!-- Program Badge -->
-                        <div class="mb-5">
-                            <span
-                                class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                MBA Program
-                            </span>
-                        </div>
-
-                        <!-- Quote -->
-                        <div class="mb-5">
-                            <svg class="w-10 h-10 text-cyan-300 mb-3 opacity-60" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                            <p class="text-gray-700 font-medium leading-relaxed italic mb-4 text-base">
-                                "Thanks to StudyAbroad's guidance, I secured admission to Harvard. The visa process was
-                                seamless and their support team was incredible!"
-                            </p>
-                            <p class="text-sm text-gray-600 font-medium italic">
-                                "The personalized counseling helped me choose the right program and prepare for
-                                interviews."
-                            </p>
-                        </div>
-
-                        <!-- Achievements -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Visa Approved
-                            </span>
-                            <span
-                                class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Full Support
-                            </span>
-                        </div>
-
-                        <!-- Rating -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div class="flex items-center gap-1">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <span class="text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Story 2 - MIT Engineering -->
-            <div class="group relative">
-                <!-- Animated gradient border glow -->
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse">
-                </div>
-                <div
-                    class="relative bg-gradient-to-br from-purple-50 to-fuchsia-50 border-2 border-purple-200 rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2 transition-all duration-500">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80"
-                            alt="MIT Campus"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-fuchsia-900/40 to-transparent">
-                        </div>
-
-                        <div
-                            class="absolute top-4 right-4 bg-gradient-to-r from-emerald-400 via-green-500 to-teal-500 text-white px-5 py-2.5 rounded-full text-sm font-black shadow-2xl flex items-center gap-2 animate-pulse">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                                <path fill-rule="evenodd"
-                                    d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            Full Scholarship
-                        </div>
-
-                        <div class="absolute bottom-4 left-4 flex items-center gap-4">
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-purple-400 rounded-full blur-lg opacity-70"></div>
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
-                                    alt="Carlos Rodriguez"
-                                    class="relative w-20 h-20 rounded-full border-4 border-white shadow-2xl object-cover">
-                            </div>
-                            <div class="text-white">
-                                <h4 class="font-black text-xl drop-shadow-2xl">Carlos Rodriguez</h4>
-                                <p class="text-base font-semibold drop-shadow-lg text-purple-200">MIT Engineering</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-7">
-                        <div class="mb-5">
-                            <span
-                                class="bg-gradient-to-r from-purple-500 to-fuchsia-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                Engineering Program
-                            </span>
-                        </div>
-
-                        <div class="mb-5">
-                            <svg class="w-10 h-10 text-purple-300 mb-3 opacity-60" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                            <p class="text-gray-700 font-medium leading-relaxed italic mb-4 text-base">
-                                "From application to arrival, StudyAbroad handled everything. I got a full scholarship
-                                and now I'm living my dream!"
-                            </p>
-                            <p class="text-sm text-gray-600 italic">
-                                "Their scholarship matching service saved me thousands of dollars."
-                            </p>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Scholarship Winner
-                            </span>
-                            <span
-                                class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                End-to-End Support
-                            </span>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div class="flex items-center gap-1">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <span class="text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Story 3 - Oxford Medicine -->
-            <div class="group relative">
-                <!-- Animated gradient border glow -->
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-pink-400 via-rose-500 to-red-500 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse">
-                </div>
-                <div
-                    class="relative bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2 transition-all duration-500">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=400&q=80"
-                            alt="Oxford Campus"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-pink-900/80 via-rose-900/40 to-transparent">
-                        </div>
-
-                        <div
-                            class="absolute top-4 right-4 bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-500 text-white px-5 py-2.5 rounded-full text-sm font-black shadow-2xl flex items-center gap-2 animate-pulse">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            Medicine
-                        </div>
-
-                        <div class="absolute bottom-4 left-4 flex items-center gap-4">
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-pink-400 rounded-full blur-lg opacity-70"></div>
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80"
-                                    alt="Priya Sharma"
-                                    class="relative w-20 h-20 rounded-full border-4 border-white shadow-2xl object-cover">
-                            </div>
-                            <div class="text-white">
-                                <h4 class="font-black text-xl drop-shadow-2xl">Priya Sharma</h4>
-                                <p class="text-base font-semibold drop-shadow-lg text-pink-200">University of Oxford</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-7">
-                        <div class="mb-5">
-                            <span
-                                class="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                Medicine Program
-                            </span>
-                        </div>
-
-                        <div class="mb-5">
-                            <svg class="w-10 h-10 text-pink-300 mb-3 opacity-60" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                            <p class="text-gray-700 font-medium leading-relaxed italic mb-4 text-base">
-                                "The team helped me navigate the complex UK visa process and find accommodation. I'm now
-                                pursuing my medical degree!"
-                            </p>
-                            <p class="text-sm text-gray-600 font-medium italic">
-                                "Their pre-departure orientation prepared me perfectly for life in the UK."
-                            </p>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                UK Visa Success
-                            </span>
-                            <span
-                                class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Accommodation Support
-                            </span>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div class="flex items-center gap-1">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <span class="text-sm font-semibold text-gray-600">5.0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Banner -->
-        <div class="mt-16 text-center">
-            <div
-                class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-10 max-w-4xl mx-auto text-white">
-                <h3 class="text-3xl font-bold mb-4">Ready to Write Your Success Story?</h3>
-                <p class="text-lg mb-6 text-indigo-100">Join thousands of students who achieved their dreams with
-                    StudyAbroad</p>
+        <!-- CTA Section -->
+        <div class="mt-20 text-center">
+            <div class="bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto text-white transform hover:scale-105 transition-all duration-500">
+                <h3 class="text-4xl font-black mb-4">Ready to Write Your Success Story?</h3>
+                <p class="text-xl mb-8 text-green-100">Join thousands of students who achieved their dreams with StudyAbroad</p>
                 <div class="flex flex-wrap gap-4 justify-center">
                     <a href="{{ route('applications.create') }}"
-                        class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-indigo-50 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        class="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 text-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                         Start Your Journey
                     </a>
                     <a href="{{ route('best-choice.index') }}"
-                        class="bg-indigo-800 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-900 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        class="bg-orange-600 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 text-lg">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
                         Find Your Best Choice
                     </a>
@@ -1479,102 +860,290 @@
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<!-- <section class="bg-white py-16 border-t-4 border-b-4 border-blue-500">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
-        <p class="text-xl text-blue-100 mb-8">Join thousands of students who have successfully studied abroad with our
-            help.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('search') }}"
-                class="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition shadow-lg pulse-glow">Search
-                Programs</a>
-            <a href="{{ route('applications.create') }}"
-                class="bg-green-700 border-2 border-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 hover:border-green-800 transition shimmer">Apply
-                Now</a>
-        </div>
-    </div>
-</section> -->
+<!-- Popular Destinations Section -->
+
 
 <!-- Popular Destinations Section -->
-<section class="py-20">
+<section class="py-20 bg-gradient-to-br from-blue-50 via-white to-green-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Popular Study Destinations</h2>
-        <p class="text-xl text-center text-blue-700 mb-16 max-w-3xl mx-auto">Explore the world's most sought-after
-            destinations for international education</p>
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <span class="inline-block bg-green-700 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 animate-pulse">
+                🌍 Top Destinations
+            </span>
+            <h2 class="text-5xl font-black text-gray-900 mb-4">
+                Popular Study <span class="text-green-700">Destinations</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explore the world's most sought-after destinations for international education
+            </p>
+        </div>
+
+        <!-- Countries Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div
-                class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <div class="text-6xl mb-2">🇺🇸</div>
-                        <h3 class="text-2xl font-bold">United States</h3>
+            
+            <!-- United States -->
+            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                <!-- Country Image -->
+                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/22/22/36/cinderella-castle-2670770_1280.jpg" 
+                         alt="United States"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/40 to-transparent"></div>
+                    
+                    <!-- Country Flag & Name Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-5xl">🇺🇸</span>
+                            <div>
+                                <h3 class="text-2xl font-black text-white drop-shadow-lg">United States</h3>
+                                <p class="text-sm text-blue-100 font-semibold">The Land of Opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            Most Popular
+                        </span>
                     </div>
                 </div>
+
+                <!-- Content -->
                 <div class="p-6">
-                    <p class="text-gray-600 mb-4">Home to world-renowned universities like Harvard, MIT, and Stanford.
-                        Over 4,000 institutions to choose from.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">500+ Universities</span>
-                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Most
-                            Popular</span>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Home to world-renowned universities like Harvard, MIT, and Stanford. Over 4,000 institutions to choose from.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-blue-600">500+</div>
+                            <div class="text-xs text-gray-500 font-medium">Universities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green-600">$50K+</div>
+                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-orange-600">85%</div>
+                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
+                        </div>
                     </div>
+                    
+                    <!-- View Details Button -->
+                    <a href="{{ route('countries.show', 'united-states') }}" 
+                       class="block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Details
+                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            <div
-                class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <div class="text-6xl mb-2">UK</div>
-                        <h3 class="text-2xl font-bold">United Kingdom</h3>
+
+            <!-- United Kingdom -->
+            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                <!-- Country Image -->
+                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-red-700">
+                    <img src="https://cdn.pixabay.com/photo/2018/04/25/09/26/eiffel-tower-3349075_1280.jpg" 
+                         alt="United Kingdom"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent"></div>
+                    
+                    <!-- Country Flag & Name Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-5xl">🇬🇧</span>
+                            <div>
+                                <h3 class="text-2xl font-black text-white drop-shadow-lg">United Kingdom</h3>
+                                <p class="text-sm text-red-100 font-semibold">Historic Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+                            Oxford & Cambridge
+                        </span>
                     </div>
                 </div>
+
+                <!-- Content -->
                 <div class="p-6">
-                    <p class="text-gray-600 mb-4">Historic universities with cutting-edge research. Programs from 9-12
-                        months with post-study work visas.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">150+ Universities</span>
-                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">Historic
-                            Excellence</span>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Historic universities with cutting-edge research. Programs from 9-12 months with post-study work visas.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-red-600">150+</div>
+                            <div class="text-xs text-gray-500 font-medium">Universities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green-600">£30K+</div>
+                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-orange-600">82%</div>
+                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
+                        </div>
                     </div>
+                    
+                    <!-- View Details Button -->
+                    <a href="{{ route('countries.show', 'united-kingdom') }}" 
+                       class="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Details
+                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            <div
-                class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <div class="text-6xl mb-2">🇦🇺</div>
-                        <h3 class="text-2xl font-bold">Australia</h3>
+
+            <!-- Canada -->
+            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                <!-- Country Image -->
+                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-orange-600">
+                    <img src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg" 
+                         alt="Canada"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent"></div>
+                    
+                    <!-- Country Flag & Name Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-5xl">🇨🇦</span>
+                            <div>
+                                <h3 class="text-2xl font-black text-white drop-shadow-lg">Canada</h3>
+                                <p class="text-sm text-red-100 font-semibold">Quality & Affordability</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+                            PR Pathway
+                        </span>
                     </div>
                 </div>
+
+                <!-- Content -->
                 <div class="p-6">
-                    <p class="text-gray-600 mb-4">High-quality education with excellent post-study work opportunities.
-                        Known for research excellence.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">40+ Universities</span>
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">Work
-                            Opportunities</span>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        High-quality education with excellent immigration pathways. Safe, multicultural environment with top-ranked universities.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-red-600">90+</div>
+                            <div class="text-xs text-gray-500 font-medium">Universities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green-600">$35K+</div>
+                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-orange-600">88%</div>
+                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
+                        </div>
                     </div>
+                    
+                    <!-- View Details Button -->
+                    <a href="{{ route('countries.show', 'canada') }}" 
+                       class="block w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Details
+                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            <div
-                class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                <div class="h-48 bg-gradient-to-br from-red-400 to-yellow-600 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <div class="text-6xl mb-2">CA</div>
-                        <h3 class="text-2xl font-bold">Canada</h3>
+
+            <!-- Australia -->
+            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                <!-- Country Image -->
+                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-green-500 via-teal-600 to-blue-600">
+                    <img src="https://cdn.pixabay.com/photo/2014/02/17/10/20/statue-of-liberty-267948_1280.jpg" 
+                         alt="Australia"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-900/40 to-transparent"></div>
+                    
+                    <!-- Country Flag & Name Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-5xl">🇦🇺</span>
+                            <div>
+                                <h3 class="text-2xl font-black text-white drop-shadow-lg">Australia</h3>
+                                <p class="text-sm text-green-100 font-semibold">Work & Study Balance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-green-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+                            Work Rights
+                        </span>
                     </div>
                 </div>
+
+                <!-- Content -->
                 <div class="p-6">
-                    <p class="text-gray-600 mb-4">High-quality education with excellent post-study work opportunities.
-                        Known for research excellence.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-gray-500">20+ Universities</span>
-                        <span class="bg-pink-100 text-black-600 px-3 py-1 rounded-full text-sm font-semibold">Work
-                            Opportunities</span>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        High-quality education with excellent post-study work opportunities. Known for research excellence and innovation.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green-600">43+</div>
+                            <div class="text-xs text-gray-500 font-medium">Universities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-green-600">$40K+</div>
+                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-black text-orange-600">80%</div>
+                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
+                        </div>
                     </div>
+                    
+                    <!-- View Details Button -->
+                    <a href="{{ route('countries.show', 'australia') }}" 
+                       class="block w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Details
+                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
+
+        </div>
+
+        <!-- View All Countries CTA -->
+        <div class="text-center mt-12">
+            <a href="{{ route('countries.index') }}" 
+               class="inline-flex items-center gap-3 bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <span>Explore All Destinations</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </a>
         </div>
     </div>
 </section>
@@ -2018,7 +1587,7 @@
                 <p class="text-gray-600 mb-4">Step-by-step guides for university applications, visa processes, and
                     document preparation.</p>
                 <a href="{{ route('applications.create') }}"
-                    class="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Explore
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Explore
                     Guides</a>
             </div>
             <div
@@ -2028,7 +1597,7 @@
                 <p class="text-gray-600 mb-4">Budget calculators, scholarship databases, and financial aid resources for
                     international students.</p>
                 <a href="{{ route('scholarships.index') }}"
-                    class="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Plan
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Plan
                     Finances</a>
             </div>
             <div
@@ -2038,7 +1607,7 @@
                 <p class="text-gray-600 mb-4">Find student housing, dormitories, and off-campus apartments in your
                     destination city.</p>
                 <a href="{{ route('universities.index') }}"
-                    class="bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition">Find
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Find
                     Housing</a>
             </div>
             <div
@@ -2048,7 +1617,7 @@
                 <p class="text-gray-600 mb-4">Cultural adaptation tips, language resources, and local insights for your
                     destination country.</p>
                 <a href="{{ route('countries.index') }}"
-                    class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition">Learn
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Learn
                     Culture</a>
             </div>
             <div
@@ -2058,7 +1627,7 @@
                 <p class="text-gray-600 mb-4">Resume building, job search assistance, and internship opportunities for
                     international students.</p>
                 <a href="{{ route('posts.index') }}"
-                    class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition">Build
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Build
                     Career</a>
             </div>
             <div
@@ -2068,7 +1637,7 @@
                 <p class="text-gray-600 mb-4">Connect with fellow international students, join study groups, and share
                     experiences.</p>
                 <a href="{{ route('reviews.index') }}"
-                    class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition">Join
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Join
                     Community</a>
             </div>
             <div
@@ -2078,7 +1647,7 @@
                 <p class="text-gray-600 mb-4">Access all our services on-the-go with our mobile app for iOS and Android
                     devices.</p>
                 <a href="{{ route('about-us') }}"
-                    class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition">Download
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Download
                     App</a>
             </div>
             <div
@@ -2088,7 +1657,7 @@
                 <p class="text-gray-600 mb-4">Connect with successful alumni for mentorship, career advice, and
                     networking opportunities.</p>
                 <a href="{{ route('reviews.index') }}"
-                    class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition">Join
+                    class="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">Join
                     Network</a>
             </div>
         </div>

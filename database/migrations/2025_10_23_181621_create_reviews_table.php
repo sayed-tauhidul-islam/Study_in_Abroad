@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('email');
+            $table->string('university');
+            $table->string('country');
+            $table->string('program');
+            $table->integer('rating')->default(5);
+            $table->text('content');
+            $table->integer('year');
+            $table->string('scholarship');
+            $table->text('address');
+            $table->boolean('consent')->default(true);
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }

@@ -28,6 +28,31 @@
 </div>
 
 <div class="container mx-auto px-4 py-16">
+    <!-- Search Box -->
+    <div class="max-w-3xl mx-auto mb-12">
+        <form method="GET" action="{{ route('countries.index') }}" class="relative">
+            <input 
+                type="text" 
+                name="search" 
+                value="{{ request('search') }}"
+                placeholder="Search countries by name, language, capital, or currency..." 
+                class="w-full px-6 py-4 text-lg border-2 border-purple-300 rounded-full focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 shadow-lg"
+            >
+            <button 
+                type="submit" 
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg"
+            >
+                🔍 Search
+            </button>
+        </form>
+        @if(request('search'))
+            <div class="mt-4 text-center">
+                <span class="text-gray-700">Showing results for: <strong class="text-purple-600">{{ request('search') }}</strong></span>
+                <a href="{{ route('countries.index') }}" class="ml-4 text-pink-600 hover:text-pink-700 font-semibold">Clear Search ✕</a>
+            </div>
+        @endif
+    </div>
+
     <!-- Countries Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         @foreach($countries as $country)

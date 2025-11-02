@@ -18,9 +18,22 @@ class ScholarshipController extends Controller
     /**
      * Display a public listing of scholarships.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $scholarships = \App\Models\Scholarship::paginate(24);
+        $query = \App\Models\Scholarship::query();
+        
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('amount', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('eligibility', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('country', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $scholarships = $query->paginate(24)->appends($request->query());
         return view('scholarships.index', compact('scholarships'));
     }
 

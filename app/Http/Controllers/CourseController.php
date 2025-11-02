@@ -20,10 +20,43 @@ class CourseController extends Controller
     /**
      * Display a public listing of courses.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $courses = Course::with('university')->paginate(24);
+        $query = Course::with('university');
+        
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('level', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('duration', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('language', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $courses = $query->paginate(24)->appends($request->query());
         return view('courses.index', compact('courses'));
+    }
+
+    /**
+     * Display the specified course for public view.
+     */
+    public function publicShow(Course $course)
+    {
+        // Load the course with its university and country
+        $course->load(['university.country']);
+        
+        // Find all universities that offer this course (same name)
+        $universitiesOffering = Course::where('name', $course->name)
+            ->with(['university.country'])
+            ->get()
+            ->pluck('university')
+            ->unique('id')
+            ->sortBy('name');
+        
+        return view('courses.show', compact('course', 'universitiesOffering'));
     }
 
     /**

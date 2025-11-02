@@ -8,11 +8,23 @@ use Illuminate\Http\Request;
 class DegreeController extends Controller
 {
     /**
-     * Display a listing of the resource for public users.
+     * Display a listing of the resource for public.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $degrees = Degree::active()->latest()->paginate(15);
+        $query = Degree::active();
+        
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('level', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $degrees = $query->latest()->paginate(15)->appends($request->query());
         return view('degrees.index', compact('degrees'));
     }
 

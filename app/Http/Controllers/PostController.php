@@ -18,9 +18,20 @@ class PostController extends Controller
     /**
      * Display a public listing of posts.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $posts = \App\Models\Post::paginate(24);
+        $query = \App\Models\Post::query();
+        
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('content', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('excerpt', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $posts = $query->paginate(24)->appends($request->query());
         return view('posts.index', compact('posts'));
     }
 

@@ -69,6 +69,7 @@ Route::get('/universities', [UniversityController::class, 'publicIndex'])->name(
 Route::get('/courses', [CourseController::class, 'publicIndex'])->name('courses.index');
 Route::get('/posts', [PostController::class, 'publicIndex'])->name('posts.index');
 Route::get('/reviews', [ReviewController::class, 'publicIndex'])->name('reviews.index');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/scholarships', [ScholarshipController::class, 'publicIndex'])->name('scholarships.index');
 Route::get('/degrees', [DegreeController::class, 'publicIndex'])->name('degrees.index');
 

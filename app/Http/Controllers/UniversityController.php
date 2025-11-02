@@ -18,9 +18,24 @@ class UniversityController extends Controller
     /**
      * Display a public listing of universities.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $universities = \App\Models\University::with('country')->paginate(24);
+        $query = \App\Models\University::with('country');
+        
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('location', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhereHas('country', function($countryQuery) use ($searchTerm) {
+                      $countryQuery->where('name', 'like', '%' . $searchTerm . '%');
+                  });
+            });
+        }
+        
+        $universities = $query->paginate(24)->appends($request->query());
         return view('universities.index', compact('universities'));
     }
 

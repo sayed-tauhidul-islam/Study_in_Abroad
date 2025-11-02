@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8 bg-white">
-    <div class="text-center mb-12">
+    <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-blue-900 mb-4">Academic Degrees</h1>
         <p class="text-xl text-blue-700 max-w-3xl mx-auto">
             Explore various academic degrees available for international students. Choose the right degree level for
@@ -12,11 +12,30 @@
         </p>
     </div>
 
-    @if(isset($query) && $query)
-        <div class="mb-6">
-            <p class="text-blue-700">Showing results for: <strong>"{{ $query }}"</strong></p>
-        </div>
-    @endif
+    <!-- Search Box -->
+    <div class="max-w-2xl mx-auto mb-12">
+        <form method="GET" action="{{ route('degrees.index') }}" class="relative">
+            <input 
+                type="text" 
+                name="search" 
+                value="{{ request('search') }}"
+                placeholder="Search degrees by name, level, or duration..." 
+                class="w-full px-6 py-4 text-lg border-2 border-yellow-300 rounded-full focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 shadow-lg"
+            >
+            <button 
+                type="submit" 
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:from-yellow-700 hover:to-orange-700 transition-all duration-300 shadow-lg"
+            >
+                🔍 Search
+            </button>
+        </form>
+        @if(request('search'))
+            <div class="mt-4 text-center">
+                <span class="text-gray-700">Showing results for: <strong class="text-yellow-600">{{ request('search') }}</strong></span>
+                <a href="{{ route('degrees.index') }}" class="ml-4 text-pink-600 hover:text-pink-700 font-semibold">Clear Search ✕</a>
+            </div>
+        @endif
+    </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($degrees as $degree)

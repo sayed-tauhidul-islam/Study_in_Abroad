@@ -18,9 +18,24 @@ class CountryController extends Controller
     /**
      * Display a public listing of countries.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $countries = \App\Models\Country::paginate(24);
+        $query = \App\Models\Country::query();
+        
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('capital', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('language', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('currency', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('details', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $countries = $query->paginate(24)->appends($request->query());
         return view('countries.index', compact('countries'));
     }
 
@@ -29,7 +44,9 @@ class CountryController extends Controller
      */
     public function publicShow(\App\Models\Country $country)
     {
-        $country->load('universities');
+        $country->load(['universities.courses', 'universities' => function($query) {
+            $query->withCount('courses');
+        }]);
         return view('countries.show', compact('country'));
     }
 

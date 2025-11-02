@@ -87,8 +87,16 @@ class SearchController extends Controller
     public function searchReviews(Request $request)
     {
         $query = $request->input('query');
-        $reviews = \App\Models\Review::where('comment', 'LIKE', "%{$query}%")
-            ->paginate(24)->withQueryString();
+        $reviews = \App\Models\Review::where('is_approved', true)
+            ->where(function($q) use ($query) {
+                $q->where('content', 'LIKE', "%{$query}%")
+                  ->orWhere('name', 'LIKE', "%{$query}%")
+                  ->orWhere('university', 'LIKE', "%{$query}%")
+                  ->orWhere('country', 'LIKE', "%{$query}%")
+                  ->orWhere('program', 'LIKE', "%{$query}%");
+            })
+            ->latest()
+            ->paginate(12)->withQueryString();
         return view('reviews.index', compact('reviews', 'query'));
     }
 }

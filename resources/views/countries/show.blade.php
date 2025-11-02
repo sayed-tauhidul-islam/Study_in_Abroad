@@ -183,18 +183,213 @@
             <span class="text-5xl">🏛️</span> Universities in {{ $country->name }}
         </h2>
         @if($country->universities && $country->universities->count() > 0)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-8">
                 @foreach($country->universities as $university)
-                    <a href="{{ route('universities.show', $university) }}"
-                        class="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="flex items-start gap-3 mb-3">
-                            <span class="text-3xl">🎓</span>
-                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                                {{ $university->name }}</h3>
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <!-- University Header -->
+                        <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex items-start gap-4 flex-1">
+                                    @if($university->image_url)
+                                        <img src="{{ $university->image_url }}" alt="{{ $university->name }}" 
+                                             class="w-20 h-20 object-cover rounded-lg shadow-md">
+                                    @else
+                                        <span class="text-5xl">🎓</span>
+                                    @endif
+                                    <div class="flex-1">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ $university->name }}</h3>
+                                        <p class="text-gray-600 text-sm line-clamp-2 mb-2">{{ $university->description }}</p>
+                                        @if($university->ranking)
+                                            <span class="inline-block bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
+                                                🏆 Ranking: #{{ $university->ranking }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <!-- Info Button -->
+                                    <button onclick="toggleUniversityInfo({{ $university->id }})" 
+                                            class="flex-shrink-0 w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                                            title="View University Details">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </button>
+                                    <!-- View Details Link -->
+                                    <a href="{{ route('universities.show', $university) }}"
+                                       class="flex-shrink-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
+                                        View Full Details →
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-gray-600 text-sm line-clamp-3 mb-4">{{ $university->description }}</p>
-                        <span class="text-blue-600 font-semibold text-sm group-hover:underline">Learn More →</span>
-                    </a>
+
+                        <!-- University Details Panel (Hidden by default) -->
+                        <div id="university-info-{{ $university->id }}" class="hidden bg-white p-6 border-b border-gray-200">
+                            <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <span class="text-2xl">ℹ️</span> University Details
+                            </h4>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                @if($university->website)
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-blue-600">🌐</span>
+                                        <div>
+                                            <span class="font-semibold text-gray-700">Website:</span>
+                                            <a href="{{ $university->website }}" target="_blank" class="text-blue-600 hover:underline ml-1">
+                                                Visit Website
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if($university->location)
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-green-600">📍</span>
+                                        <div>
+                                            <span class="font-semibold text-gray-700">Location:</span>
+                                            <span class="text-gray-600 ml-1">{{ $university->location }}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="flex items-center gap-2">
+                                    <span class="text-purple-600">📚</span>
+                                    <div>
+                                        <span class="font-semibold text-gray-700">Total Courses:</span>
+                                        <span class="text-gray-600 ml-1">{{ $university->courses->count() }} programs</span>
+                                    </div>
+                                </div>
+                                @if($university->environment_quality)
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-600">⭐</span>
+                                        <div>
+                                            <span class="font-semibold text-gray-700">Campus Quality:</span>
+                                            <span class="text-gray-600 ml-1">{{ $university->environment_quality }}/10</span>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Available Courses & Degrees -->
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <span class="text-2xl">📚</span> Available Courses & Degrees
+                            </h4>
+                            
+                            @php
+                                $courses = $university->courses;
+                                $bachelors = $courses->where('level', 'Bachelor')->take(5);
+                                $masters = $courses->where('level', 'Master')->take(5);
+                                $phd = $courses->where('level', 'PhD')->take(5);
+                                $totalCourses = $courses->count();
+                            @endphp
+
+                            @if($totalCourses > 0)
+                                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                                    <!-- Bachelor's Programs -->
+                                    @if($bachelors->count() > 0)
+                                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                                            <h5 class="text-lg font-bold text-blue-700 mb-3 flex items-center gap-2">
+                                                🎓 Bachelor's ({{ $courses->where('level', 'Bachelor')->count() }})
+                                            </h5>
+                                            <ul class="space-y-2">
+                                                @foreach($bachelors as $course)
+                                                    <li class="text-sm text-gray-700 flex items-start gap-2">
+                                                        <span class="text-green-500 flex-shrink-0 mt-0.5">✓</span>
+                                                        <div class="flex-1">
+                                                            <a href="{{ route('courses.show', $course) }}" 
+                                                               class="font-semibold hover:text-blue-600 hover:underline">
+                                                                {{ $course->name }}
+                                                            </a>
+                                                            @if($course->duration)
+                                                                <p class="text-xs text-gray-500">{{ $course->duration }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            @if($courses->where('level', 'Bachelor')->count() > 5)
+                                                <p class="text-xs text-blue-600 mt-2">+ {{ $courses->where('level', 'Bachelor')->count() - 5 }} more programs</p>
+                                            @endif
+                                        </div>
+                                    @endif
+
+                                    <!-- Master's Programs -->
+                                    @if($masters->count() > 0)
+                                        <div class="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                                            <h5 class="text-lg font-bold text-purple-700 mb-3 flex items-center gap-2">
+                                                🎯 Master's ({{ $courses->where('level', 'Master')->count() }})
+                                            </h5>
+                                            <ul class="space-y-2">
+                                                @foreach($masters as $course)
+                                                    <li class="text-sm text-gray-700 flex items-start gap-2">
+                                                        <span class="text-green-500 flex-shrink-0 mt-0.5">✓</span>
+                                                        <div class="flex-1">
+                                                            <a href="{{ route('courses.show', $course) }}" 
+                                                               class="font-semibold hover:text-purple-600 hover:underline">
+                                                                {{ $course->name }}
+                                                            </a>
+                                                            @if($course->duration)
+                                                                <p class="text-xs text-gray-500">{{ $course->duration }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            @if($courses->where('level', 'Master')->count() > 5)
+                                                <p class="text-xs text-purple-600 mt-2">+ {{ $courses->where('level', 'Master')->count() - 5 }} more programs</p>
+                                            @endif
+                                        </div>
+                                    @endif
+
+                                    <!-- PhD Programs -->
+                                    @if($phd->count() > 0)
+                                        <div class="bg-green-50 rounded-lg p-4 border border-green-200">
+                                            <h5 class="text-lg font-bold text-green-700 mb-3 flex items-center gap-2">
+                                                🔬 PhD ({{ $courses->where('level', 'PhD')->count() }})
+                                            </h5>
+                                            <ul class="space-y-2">
+                                                @foreach($phd as $course)
+                                                    <li class="text-sm text-gray-700 flex items-start gap-2">
+                                                        <span class="text-green-500 flex-shrink-0 mt-0.5">✓</span>
+                                                        <div class="flex-1">
+                                                            <a href="{{ route('courses.show', $course) }}" 
+                                                               class="font-semibold hover:text-green-600 hover:underline">
+                                                                {{ $course->name }}
+                                                            </a>
+                                                            @if($course->duration)
+                                                                <p class="text-xs text-gray-500">{{ $course->duration }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            @if($courses->where('level', 'PhD')->count() > 5)
+                                                <p class="text-xs text-green-600 mt-2">+ {{ $courses->where('level', 'PhD')->count() - 5 }} more programs</p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 text-center">
+                                    <p class="text-sm text-gray-700 mb-2">
+                                        <span class="font-bold text-gray-900">Total Programs: {{ $totalCourses }}</span>
+                                    </p>
+                                    <a href="{{ route('universities.show', $university) }}" 
+                                       class="text-blue-600 hover:text-blue-800 font-semibold text-sm hover:underline">
+                                        View all {{ $totalCourses }} courses & full university details →
+                                    </a>
+                                </div>
+                            @else
+                                <div class="bg-gray-50 rounded-lg p-6 text-center">
+                                    <p class="text-gray-600">Course information will be updated soon.</p>
+                                    <a href="{{ route('universities.show', $university) }}" 
+                                       class="text-blue-600 hover:underline text-sm mt-2 inline-block">
+                                        View university details →
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 @endforeach
             </div>
         @else
@@ -204,4 +399,13 @@
         @endif
     </div>
 </div>
+
+<script>
+function toggleUniversityInfo(universityId) {
+    const infoPanel = document.getElementById('university-info-' + universityId);
+    if (infoPanel) {
+        infoPanel.classList.toggle('hidden');
+    }
+}
+</script>
 @endsection
