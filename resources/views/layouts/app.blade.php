@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Study Abroad')</title>
+    <meta name="description" content="GlobalEduHub - Your Gateway to Worldwide Education Connections. Find top universities, scholarships, and courses globally.">
+    <meta name="keywords" content="GlobalEduHub, study abroad, international education, universities, scholarships">
+    <title>@yield('title', 'GlobalEduHub - Worldwide Education Connections')</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -170,14 +172,13 @@
             animation: bounce 0.5s ease;
         }
 
-        @keyframes 0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-10px);
-        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Rotate on Hover */
@@ -187,6 +188,109 @@
 
         .rotate-hover:hover {
             transform: rotate(360deg);
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        /* Glow Pulse */
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 60px rgba(147, 51, 234, 0.6);
+            }
+        }
+
+        .glow-pulse {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .shake-hover:hover {
+            animation: shake 0.5s;
+        }
+
+        /* Heartbeat */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(0.9); }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        /* Slide Up */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        /* Zoom In */
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .zoom-in {
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        /* Neon Glow */
+        .neon-glow {
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #0ff,
+                0 0 20px #0ff,
+                0 0 25px #0ff,
+                0 0 30px #0ff,
+                0 0 35px #0ff;
+        }
+
+        /* Parallax Scroll */
+        .parallax {
+            transform: translateZ(-1px) scale(2);
         }
 
     </style>
@@ -201,7 +305,7 @@
                 <div class="flex items-center space-x-4 mb-2 md:mb-0 slide-in-left">
                     <a href="{{ url('/') }}"
                         class="text-2xl md:text-3xl font-bold text-white hover:scale-110 transition-transform duration-300 float-animation">
-                        🌍 <span class="text-white">StudyAbroad</span>
+                        🌍 <span class="text-white animate-pulse">GlobalEduHub</span>
                     </a>
                     <div
                         class="flex items-center text-white glass-effect px-3 py-1 rounded-full fade-in stagger-1 bg-pink-700 bg-opacity-50">
@@ -795,14 +899,137 @@
                     <a href="{{ url('/about-us') }}"
                         class="transition font-medium text-sm md:text-base hover-scale fade-in stagger-4 {{ request()->is('about-us') ? 'text-yellow-300 font-bold' : 'text-white hover:text-yellow-300' }}">About
                         Us</a>
+                    <button @click="$dispatch('open-suggestion-modal')"
+                        class="transition font-medium text-sm md:text-base hover-scale bounce-hover fade-in stagger-5 text-white hover:text-yellow-300 flex items-center">
+                        💡 Suggestion
+                    </button>
                     <a href="{{ route('best-choice.index') }}"
-                        class="px-4 md:px-6 py-2 rounded-full transition font-semibold shadow-lg text-sm md:text-base bounce-hover pulse-glow fade-in stagger-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700">
+                        class="px-4 md:px-6 py-2 rounded-full transition font-semibold shadow-lg text-sm md:text-base bounce-hover pulse-glow fade-in bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700">
                         🎯 Best Choice
                     </a>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Suggestion Modal -->
+    <div x-data="{ open: false }" 
+         @open-suggestion-modal.window="open = true"
+         @keydown.escape.window="open = false"
+         x-show="open"
+         x-cloak
+         class="fixed inset-0 z-50 overflow-y-auto"
+         style="display: none;">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div x-show="open" 
+                 x-transition:enter="ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+                 @click="open = false"></div>
+
+            <!-- Center modal -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+            <!-- Modal panel -->
+            <div x-show="open"
+                 x-transition:enter="ease-out duration-300"
+                 x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                 x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                 x-transition:leave="ease-in duration-200"
+                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                 class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                
+                <!-- Close button -->
+                <div class="absolute top-0 right-0 pt-4 pr-4">
+                    <button @click="open = false" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal content -->
+                <div class="sm:flex sm:items-start">
+                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+                            Share Your Suggestion or Complaint
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-4">
+                            We value your feedback! Please share your suggestions or concerns about our services, design, or anything else.
+                        </p>
+                        
+                        <!-- Suggestion Form -->
+                        <form id="suggestion-form" class="space-y-4" x-data="{ submitting: false }" @submit.prevent="submitSuggestion">
+                            <div id="form-message" class="hidden p-3 rounded-md text-sm"></div>
+                            
+                            <div>
+                                <label for="suggestion-name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" id="suggestion-name" name="name" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="Enter your name">
+                            </div>
+                            
+                            <div>
+                                <label for="suggestion-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="suggestion-email" name="email" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="suggestion-type" class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                                <select id="suggestion-type" name="type" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select type...</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="service">Service Feedback</option>
+                                    <option value="design">Design Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="suggestion-message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                                <textarea id="suggestion-message" name="message" rows="4" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                                    placeholder="Please share your thoughts in detail..."></textarea>
+                            </div>
+                            
+                            <div class="flex gap-3 mt-6">
+                                <button type="submit" x-bind:disabled="submitting"
+                                    class="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-md transition-all duration-300 font-semibold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span x-show="!submitting">Submit Suggestion</span>
+                                    <span x-show="submitting" class="flex items-center justify-center">
+                                        <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Submitting...
+                                    </span>
+                                </button>
+                                <button type="button" @click="open = false" x-bind:disabled="submitting"
+                                    class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="flex-1">
@@ -818,12 +1045,13 @@
                 <!-- Column 1: Company Info & Social Media -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center">
-                        <span class="text-blue-500 mr-2">🌍</span> 
-                        <span class="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">StudyAbroad</span>
+                        <span class="text-blue-500 mr-2 animate-bounce">🌍</span> 
+                        <span class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text animate-pulse">GlobalEduHub</span>
                     </h3>
                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
-                        Your trusted gateway to international education opportunities. We help students discover
-                        world-class universities, scholarships, and courses to shape their future globally.
+                        <strong class="text-blue-400">GlobalEduHub</strong> - Your trusted gateway to worldwide education connections. 
+                        We empower students to discover world-class universities, scholarships, and programs across the globe, 
+                        making international education accessible to everyone.
                     </p>
                     
                     <!-- Social Media Icons -->
@@ -1037,7 +1265,7 @@
             <div class="border-t border-gray-700 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p class="text-gray-400 text-sm">
-                        © {{ date('Y') }} <span class="text-blue-400 font-semibold">StudyAbroad</span>. All rights reserved. Made with ❤️ for students worldwide.
+                        © {{ date('Y') }} <span class="text-blue-400 font-semibold">GlobalEduHub</span>. All rights reserved. Made with ❤️ for students worldwide.
                     </p>
                     <div class="flex flex-wrap justify-center gap-6">
                         <a href="{{ route('about-us') }}" class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300 hover:underline">
@@ -1071,6 +1299,79 @@
             });
         });
 
+        // Suggestion form submission
+        async function submitSuggestion(event) {
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const messageDiv = form.querySelector('#form-message');
+            
+            // Get Alpine.js data
+            const alpineData = Alpine.$data(form);
+            alpineData.submitting = true;
+            
+            // Hide previous messages
+            messageDiv.classList.add('hidden');
+            
+            // Collect form data
+            const formData = {
+                name: form.querySelector('#suggestion-name').value,
+                email: form.querySelector('#suggestion-email').value,
+                type: form.querySelector('#suggestion-type').value,
+                message: form.querySelector('#suggestion-message').value,
+                _token: '{{ csrf_token() }}'
+            };
+            
+            try {
+                const response = await fetch('{{ route("suggestions.store") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Show success message
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'p-3 rounded-md text-sm bg-green-100 text-green-800 border border-green-200';
+                    messageDiv.classList.remove('hidden');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Close modal after 2 seconds
+                    setTimeout(() => {
+                        const modalElement = document.querySelector('[x-data*="open"]');
+                        if (modalElement) {
+                            Alpine.$data(modalElement).open = false;
+                        }
+                    }, 2000);
+                } else {
+                    // Show error message
+                    let errorMessage = data.message || 'An error occurred. Please try again.';
+                    if (data.errors) {
+                        errorMessage = Object.values(data.errors).flat().join(', ');
+                    }
+                    messageDiv.textContent = errorMessage;
+                    messageDiv.className = 'p-3 rounded-md text-sm bg-red-100 text-red-800 border border-red-200';
+                    messageDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.textContent = 'Network error. Please check your connection and try again.';
+                messageDiv.className = 'p-3 rounded-md text-sm bg-red-100 text-red-800 border border-red-200';
+                messageDiv.classList.remove('hidden');
+            } finally {
+                alpineData.submitting = false;
+            }
+        }
+
+        // Make function available globally for Alpine.js
+        window.submitSuggestion = submitSuggestion;
     </script>
 </body>
 

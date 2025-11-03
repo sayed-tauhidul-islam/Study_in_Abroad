@@ -188,3 +188,16 @@ Route::get('/search/reviews', [SearchController::class, 'searchReviews'])->name(
 // Event registration routes
 use App\Http\Controllers\EventController;
 Route::post('/events/{eventId}/register', [EventController::class, 'register'])->name('events.register');
+
+// Suggestion routes
+use App\Http\Controllers\SuggestionController;
+Route::post('/suggestions', [SuggestionController::class, 'store'])->name('suggestions.store');
+
+// Admin suggestion routes
+Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
+    Route::get('/suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
+    Route::get('/suggestions/{suggestion}', [SuggestionController::class, 'show'])->name('suggestions.show');
+    Route::post('/suggestions/{suggestion}/mark-read', [SuggestionController::class, 'markAsRead'])->name('suggestions.mark-read');
+    Route::post('/suggestions/{suggestion}/mark-unread', [SuggestionController::class, 'markAsUnread'])->name('suggestions.mark-unread');
+    Route::delete('/suggestions/{suggestion}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
+});

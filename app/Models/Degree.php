@@ -28,4 +28,9 @@ class Degree extends Model
     {
         return $query->where('level', $level);
     }
+
+    public function universities()
+    {
+        return $this->belongsToMany(University::class);
+    }
 }

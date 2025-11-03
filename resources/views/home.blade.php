@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Study Abroad | Home')
+@section('title', 'GlobalEduHub | Home - Your Gateway to Worldwide Education')
 
 @section('content')
 
@@ -144,19 +144,20 @@
     <div class="container mx-auto px-4 relative z-10">
         <!-- Section Header -->
         <div class="text-center mb-16 animate-fade-in-up">
-            <div class="inline-block mb-4">
+            <div class="inline-block mb-4 animate-bounce">
                 <span
-                    class="bg-green-700 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg">
-                    ✨ Why Choose Us
+                    class="bg-gradient-to-r from-green-700 via-blue-600 to-purple-600 text-white px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110">
+                    ✨ Why Choose GlobalEduHub
                 </span>
             </div>
             <h2
-                class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
-                Why Choose StudyAbroad?
+                class="text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 leading-tight animate-pulse">
+                Why Choose GlobalEduHub?
             </h2>
-            <p class="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                We provide <span class="font-bold text-green-700">comprehensive support</span> to make your study abroad journey
-                <span class="font-bold text-green-700">smooth, successful, and unforgettable.</span>
+            <p class="text-xl md:text-3xl text-gray-800 max-w-4xl mx-auto leading-relaxed font-semibold">
+                We provide <span class="font-black text-green-700 underline decoration-wavy decoration-green-400">worldwide education connections</span> 
+                to make your study abroad journey
+                <span class="font-black text-blue-700 underline decoration-wavy decoration-blue-400">smooth, successful, and unforgettable.</span>
             </p>
         </div>
 
@@ -837,8 +838,8 @@
         <!-- CTA Section -->
         <div class="mt-20 text-center">
             <div class="bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto text-white transform hover:scale-105 transition-all duration-500">
-                <h3 class="text-4xl font-black mb-4">Ready to Write Your Success Story?</h3>
-                <p class="text-xl mb-8 text-green-100">Join thousands of students who achieved their dreams with StudyAbroad</p>
+                <h3 class="text-4xl font-black mb-4 animate-pulse">Ready to Write Your Success Story?</h3>
+                <p class="text-xl mb-8 text-green-100">Join thousands of students who achieved their dreams with <span class="font-black text-yellow-300">GlobalEduHub</span> - Your Gateway to Worldwide Education</p>
                 <div class="flex flex-wrap gap-4 justify-center">
                     <a href="{{ route('applications.create') }}"
                         class="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 text-lg">

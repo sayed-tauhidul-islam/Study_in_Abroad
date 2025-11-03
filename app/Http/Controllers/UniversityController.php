@@ -11,7 +11,7 @@ class UniversityController extends Controller
      */
     public function index()
     {
-    $universities = \App\Models\University::with('country')->paginate(24);
+    $universities = \App\Models\University::with('country')->paginate(30);
     return view('admin.universities.index', compact('universities'));
     }
 
@@ -52,7 +52,8 @@ class UniversityController extends Controller
      */
     public function create()
     {
-        return view('admin.universities.create');
+        $degrees = \App\Models\Degree::orderBy('name')->get();
+        return view('admin.universities.create', compact('degrees'));
     }
 
     /**
@@ -71,9 +72,14 @@ class UniversityController extends Controller
             'environment_quality' => 'nullable|string',
             'num_courses' => 'nullable|integer',
             'bd_students' => 'nullable|integer',
+            'degrees' => 'required|array|min:5',
+            'degrees.*' => 'exists:degrees,id',
         ]);
 
         $university = \App\Models\University::create($validated);
+        
+        // Sync degrees
+        $university->degrees()->sync($request->degrees);
 
         return redirect()->route('admin.universities.show', $university->id)
             ->with('success', 'University created successfully!');
@@ -93,8 +99,9 @@ class UniversityController extends Controller
      */
     public function edit(string $id)
     {
-        $university = \App\Models\University::findOrFail($id);
-        return view('admin.universities.edit', compact('university'));
+        $university = \App\Models\University::with('degrees')->findOrFail($id);
+        $degrees = \App\Models\Degree::orderBy('name')->get();
+        return view('admin.universities.edit', compact('university', 'degrees'));
     }
 
     /**
@@ -115,9 +122,14 @@ class UniversityController extends Controller
             'environment_quality' => 'nullable|string',
             'num_courses' => 'nullable|integer',
             'bd_students' => 'nullable|integer',
+            'degrees' => 'required|array|min:5',
+            'degrees.*' => 'exists:degrees,id',
         ]);
 
         $university->update($validated);
+        
+        // Sync degrees
+        $university->degrees()->sync($request->degrees);
 
         return redirect()->route('admin.universities.show', $university->id)
             ->with('success', 'University updated successfully!');

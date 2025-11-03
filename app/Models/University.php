@@ -38,4 +38,9 @@ class University extends Model
     {
         return $this->hasMany(\App\Models\Application::class);
     }
+
+    public function degrees()
+    {
+        return $this->belongsToMany(\App\Models\Degree::class);
+    }
 }

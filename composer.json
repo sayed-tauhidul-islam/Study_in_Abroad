@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "globaleduhub/study-abroad",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "GlobalEduHub - Your Gateway to Worldwide Education Connections. Study Abroad Platform for International Students.",
+    "keywords": ["globaleduhub", "study-abroad", "education", "international", "university"],
     "license": "MIT",
     "require": {
         "php": "^8.2",

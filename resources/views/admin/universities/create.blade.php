@@ -97,6 +97,29 @@
                         class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="e.g., 500">
                 </div>
+
+                <!-- Degrees Selection -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Degrees Offered * (Select at least 5)</label>
+                    <div class="bg-gray-700 border border-gray-600 rounded-lg p-4 max-h-96 overflow-y-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            @foreach($degrees as $degree)
+                                <label class="flex items-center space-x-3 p-3 bg-gray-800 rounded-lg hover:bg-gray-600 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="degrees[]" value="{{ $degree->id }}"
+                                        class="w-5 h-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <div class="flex-1">
+                                        <span class="text-white text-sm font-medium">{{ $degree->name }}</span>
+                                        <span class="block text-gray-400 text-xs">{{ $degree->level }}</span>
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Please select at least 5 degrees that this university offers.</p>
+                    @error('degrees')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <!-- Action Buttons -->
