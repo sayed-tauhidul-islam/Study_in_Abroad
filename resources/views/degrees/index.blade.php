@@ -51,15 +51,21 @@
 
                     <p class="text-blue-700 mb-4">{{ $degree->description }}</p>
 
-                    <div class="flex items-center justify-between">
+                    <div class="space-y-3">
                         <div class="text-sm text-blue-600">
                             <span class="font-medium">⏱️ Duration:</span> {{ $degree->duration_years }}
                             year{{ $degree->duration_years > 1 ? 's' : '' }}
                         </div>
-                        <a href="{{ url('/applications/create') }}"
-                            class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg transition-all duration-300 font-semibold shadow-lg">
-                            Apply Now
-                        </a>
+                        <div class="flex items-center gap-3">
+                            <a href="{{ route('degrees.show', $degree->id) }}"
+                                class="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 font-semibold shadow-lg text-center">
+                                View Details
+                            </a>
+                            <a href="{{ url('/applications/create') }}"
+                                class="flex-1 bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg transition-all duration-300 font-semibold shadow-lg text-center">
+                                Apply Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

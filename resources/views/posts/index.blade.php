@@ -10,7 +10,7 @@
 
     <!-- Search Box -->
     <div class="max-w-2xl mx-auto mb-12">
-        <form action="{{ route('posts.public') }}" method="GET" class="flex gap-4">
+        <form action="{{ route('posts.index') }}" method="GET" class="flex gap-4">
             <input type="text" 
                    name="search" 
                    value="{{ request('search') }}"
@@ -25,7 +25,7 @@
         @if(request('search'))
             <div class="mt-4 text-center text-blue-700">
                 Showing results for: <strong>"{{ request('search') }}"</strong>
-                <a href="{{ route('posts.public') }}" class="ml-2 text-indigo-600 hover:text-indigo-800 underline">Clear search</a>
+                <a href="{{ route('posts.index') }}" class="ml-2 text-indigo-600 hover:text-indigo-800 underline">Clear search</a>
             </div>
         @endif
     </div>

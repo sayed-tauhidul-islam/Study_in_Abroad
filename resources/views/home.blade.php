@@ -1843,7 +1843,7 @@
                 </div>
                 <div class="text-center">
                     <div
-                        class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        class="bg-red-300 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                         4</div>
                     <h3 class="font-bold text-xl mb-3 text-orange-700">Test Preparation</h3>
                     <p class="text-gray-600">Prepare for IELTS/TOEFL, GRE/GMAT with our expert coaching</p>
@@ -1859,7 +1859,7 @@
                 </div>
                 <div class="text-center">
                     <div
-                        class="bg-teal-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        class="bg-green-300 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                         6</div>
                     <h3 class="font-bold text-xl mb-3 text-teal-700">Offer & Acceptance</h3>
                     <p class="text-gray-600">Receive offers and make informed decisions about your future</p>
@@ -2131,101 +2131,261 @@
 </section>
 
 <!-- Post-Study Work Opportunities Section -->
-<section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 py-20">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-white mb-4">Post-Study Work Opportunities</h2>
-        <p class="text-xl text-center text-white mb-16 max-w-3xl mx-auto">Maximize your international education
-            investment with work opportunities after graduation</p>
+<section class="relative py-24 overflow-hidden bg-blue-300">
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Section Header with Animation -->
+        <div class="text-center mb-16 animate-fade-in-down">
+            <div class="inline-block mb-4">
+                <span class="bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text text-6xl font-bold animate-pulse">
+                    💼
+                </span>
+            </div>
+            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-transparent bg-clip-text animate-gradient">
+                    Post-Study Work Opportunities
+                </span>
+            </h2>
+            <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+                🚀 Maximize your international education investment with 
+                <span class="text-yellow-400 font-bold">exciting work opportunities</span> after graduation
+            </p>
+        </div>
+
+        <!-- Cards Grid with Staggered Animation -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇺🇸</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">OPT</div>
+            <!-- USA Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.1s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <!-- Country Flag & Badge -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇺🇸</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                OPT
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Title -->
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        United States - OPT Program
+                    </h3>
+                    
+                    <!-- Benefits List -->
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>12-36 months for STEM graduates</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Work authorization for F-1 students</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Path to H-1B visa</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Salary Badge -->
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>$65,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">United States - OPT Program</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 12 months for STEM graduates</li>
-                    <li>• 36 months for STEM extensions</li>
-                    <li>• Work authorization for F-1 students</li>
-                    <li>• Path to H-1B visa</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: $65,000+</div>
             </div>
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇬🇧</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">PSW</div>
+
+            <!-- UK Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.2s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇬🇧</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                PSW
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        United Kingdom - PSW Visa
+                    </h3>
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>2 years work permission</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Any job, any salary level</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Path to skilled worker visa</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>£35,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">United Kingdom - PSW Visa</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 2 years work permission</li>
-                    <li>• Any job, any salary level</li>
-                    <li>• Extendable in some cases</li>
-                    <li>• Path to skilled worker visa</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: £35,000+</div>
             </div>
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇦🇺</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">485</div>
+
+            <!-- Australia Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.3s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇦🇺</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                485 Visa
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        Australia - 485 Visa
+                    </h3>
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>18 months - 4 years duration</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Work rights in any occupation</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Pathway to PR</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>AUD 70,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">Australia - 485 Visa</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 18 months for graduates</li>
-                    <li>• 4 years for PhD graduates</li>
-                    <li>• Work rights in any occupation</li>
-                    <li>• Pathway to PR</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: AUD 70,000+</div>
             </div>
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇨🇦</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">PGWP</div>
+
+            <!-- Canada Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.4s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇨🇦</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                PGWP
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        Canada - PGWP
+                    </h3>
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>8-36 months based on program</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Express Entry points</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Direct path to PR</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>CAD 60,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">Canada - PGWP</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 8-36 months based on program length</li>
-                    <li>• Open work permit</li>
-                    <li>• Express Entry points</li>
-                    <li>• Direct path to permanent residency</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: CAD 60,000+</div>
             </div>
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇩🇪</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">Job Seeker</div>
+
+            <!-- Germany Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.5s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇩🇪</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                Job Seeker
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        Germany - Job Seeker Visa
+                    </h3>
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>6 months to find work</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>EU Blue Card pathway</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Strong economy</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>€45,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">Germany - Job Seeker Visa</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 6 months to find work</li>
-                    <li>• Extendable if job found</li>
-                    <li>• EU Blue Card pathway</li>
-                    <li>• Strong economy with high demand</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: €45,000+</div>
             </div>
-            <div
-                class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="text-4xl">🇳🇱</div>
-                    <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">Orientation</div>
+
+            <!-- Netherlands Card -->
+            <div class="work-opportunity-card group" style="animation-delay: 0.6s;">
+                <div class="relative bg-white backdrop-blur-lg rounded-3xl p-8 border-2 border-gray-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-6xl transform group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">🇳🇱</div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-yellow-400 blur-md group-hover:blur-lg transition-all duration-300"></div>
+                            <div class="relative bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                Orientation
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-black group-hover:text-blue-400 transition-colors duration-300">
+                        Netherlands - Orientation Year
+                    </h3>
+                    <ul class="text-black space-y-3 mb-6">
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>1 year to find work or start business</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>Highly skilled migrant pathway</span>
+                        </li>
+                        <li class="flex items-start gap-2 transform transition-all duration-300 hover:translate-x-2 group-hover:text-blue-400">
+                            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
+                            <span>English widely spoken</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-3 rounded-xl font-bold text-lg shadow-lg inline-flex items-center gap-2">
+                            <span>💰</span>
+                            <span>€40,000+</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl mb-3 text-white">Netherlands - Orientation Year</h3>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    <li>• 1 year to find work or start business</li>
-                    <li>• No job offer required initially</li>
-                    <li>• Highly skilled migrant visa pathway</li>
-                    <li>• English widely spoken</li>
-                </ul>
-                <div class="text-yellow-400 font-semibold">Average Salary: €40,000+</div>
             </div>
         </div>
     </div>
@@ -2350,66 +2510,72 @@
 
 <!-- Pulse Animation Styles for Social Icons -->
 <style>
-    <blade keyframes|%20pulse-0%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
+    @keyframes blob {
+        0%, 100% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        33% {
+            transform: translate(30px, -50px) scale(1.1);
+        }
+        66% {
+            transform: translate(-20px, 20px) scale(0.9);
+        }
     }
 
-    50% {
-        transform: scale(1.05);
-    }
-    }
-
-    <blade keyframes|%20pulse-1%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
     }
 
-    <blade keyframes|%20pulse-2%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
+    @keyframes gradient {
+        0%, 100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
     }
 
-    50% {
-        transform: scale(1.05);
-    }
-    }
-
-    <blade keyframes|%20pulse-3%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
+    .animate-blob {
+        animation: blob 7s infinite;
     }
 
-    50% {
-        transform: scale(1.05);
-    }
-    }
-
-    <blade keyframes|%20pulse-4%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
     }
 
-    50% {
-        transform: scale(1.05);
-    }
-    }
-
-    <blade keyframes|%20pulse-5%20%7B%0D>0%,
-    100% {
-        transform: scale(1);
+    .animate-gradient {
+        background-size: 200% auto;
+        animation: gradient 3s ease infinite;
     }
 
-    50% {
-        transform: scale(1.05);
-    }
+    .animation-delay-2000 {
+        animation-delay: 2s;
     }
 
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .work-opportunity-card {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
 </style>
 
 @endsection

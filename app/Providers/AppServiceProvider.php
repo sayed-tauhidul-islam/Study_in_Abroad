@@ -11,6 +11,7 @@ use App\View\Composers\ScholarshipComposer;
 use App\View\Composers\DegreeComposer;
 use App\View\Composers\ReviewComposer;
 use App\View\Composers\PostComposer;
+use App\View\Composers\SocialLinkComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
             DegreeComposer::class,
             ReviewComposer::class,
             PostComposer::class,
+            SocialLinkComposer::class,
         ]);
     }
 }

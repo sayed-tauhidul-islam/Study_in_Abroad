@@ -810,170 +810,248 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16 mt-16 border-t border-gray-700">
+    <footer class="bg-gray-800 text-white py-16 mt-16 border-t-4 border-blue-500">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                <!-- Company Info -->
-                <div class="lg:col-span-2">
+            <!-- Single Row with 4 Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Column 1: Company Info & Social Media -->
+                <div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center">
-                        <span class="text-blue-400 mr-2">🌍</span> StudyAbroad
+                        <span class="text-blue-500 mr-2">🌍</span> 
+                        <span class="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">StudyAbroad</span>
                     </h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                         Your trusted gateway to international education opportunities. We help students discover
                         world-class universities, scholarships, and courses to shape their future globally.
                     </p>
+                    
                     <!-- Social Media Icons -->
-                    <!-- <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-                            title="Facebook">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors duration-300"
-                            title="Instagram">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12.017 0C8.396 0 7.996.014 6.79.067 5.584.12 4.775.302 4.082.566c-.693.264-1.286.657-1.879 1.25C1.51 2.409 1.117 3.002.853 3.695.589 4.388.407 5.197.354 6.403.301 7.609.285 8.009.285 11.63c0 3.621.016 4.021.069 5.227.053 1.206.235 2.015.499 2.708.264.693.657 1.286 1.25 1.879.593.593 1.186 1.286 1.879 1.879.693.593 1.286.986 1.879 1.25.693.264 1.502.446 2.708.499 1.206.053 1.606.069 5.227.069 3.621 0 4.021-.016 5.227-.069 1.206-.053 2.015-.235 2.708-.499.693-.264 1.286-.657 1.879-1.25.593-.593 1.286-1.186 1.879-1.879.593-.593.986-1.286 1.25-1.879.264-.693.446-1.502.499-2.708.053-1.206.069-1.606.069-5.227 0-3.621-.016-4.021-.069-5.227-.053-1.206-.235-2.015-.499-2.708-.264-.693-.657-1.286-1.25-1.879-.593-.593-1.186-1.286-1.879-1.879-.693-.593-1.286-.986-1.879-1.25-.693-.264-1.502-.446-2.708-.499C15.024.014 14.624 0 12.017 0zm0 2.163c3.574 0 4.021.014 5.227.069 1.206.053 1.866.302 2.302.566.436.264.793.657 1.25 1.114.457.457.85.814 1.114 1.25.264.436.513 1.096.566 2.302.053 1.206.069 1.653.069 5.227 0 3.574-.016 4.021-.069 5.227-.053 1.206-.302 1.866-.566 2.302-.264.436-.657.793-1.114 1.25-.457.457-.814.85-1.25 1.114-.436.264-1.096.513-2.302.566-1.206.053-1.653.069-5.227.069-3.574 0-4.021-.016-5.227-.069-1.206-.053-1.866-.302-2.302-.566-.436-.264-.793-.657-1.25-1.114-.457-.457-.85-.814-1.114-1.25-.264-.436-.513-1.096-.566-2.302-.053-1.206-.069-1.653-.069-5.227 0-3.574.016-4.021.069-5.227.053-1.206.302-1.866.566-2.302.264-.436.657-.793 1.114-1.25.457-.457.814-.85 1.25-1.114.436-.264 1.096-.513 2.302-.566C7.996 2.177 8.442 2.163 12.017 2.163z" />
-                                <circle cx="12.017" cy="12.017" r="3.288" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"
-                            title="LinkedIn">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-                            title="Twitter">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                            </svg>
-                        </a>
-                    </div> -->
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ url('/') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Home</a></li>
-                        <li><a href="{{ url('/countries') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Countries</a>
-                        </li>
-                        <li><a href="{{ url('/universities') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Universities</a>
-                        </li>
-                        <li><a href="{{ url('/courses') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Courses</a>
-                        </li>
-                        <li><a href="{{ url('/scholarships') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Scholarships</a>
-                        </li>
-                        <li><a href="{{ url('/countries') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Cultural
-                                Guidance</a>
-                        </li>
-                        <li><a href="{{ url('/reviews') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Student
-                                Community</a>
-                        </li>
-                        <li><a href="{{ url('/about-us') }}"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About Us</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Services -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-white">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">University
-                                Applications</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Visa
-                                Assistance</a></li>
-                        <li><a href="#"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Scholarship
-                                Guidance</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Career
-                                Counseling</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Test
-                                Preparation</a></li>
-                        <li><a href="#"
-                                class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Accommodation
-                                Help</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-white">Contact Info</h4>
-                    <div class="space-y-3">
-                        <div class="flex items-start space-x-3">
-                            <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <span class="text-gray-300 text-sm">123 Education Street<br>Dhaka, Bangladesh</span>
+                    <div class="mb-6">
+                        <h5 class="text-sm font-semibold mb-3 text-gray-200">Connect With Us</h5>
+                        <div class="flex flex-wrap gap-3">
+                            @if(isset($socialLinks) && count($socialLinks) > 0)
+                                @foreach($socialLinks as $social)
+                                    <a href="{{ $social->url }}" target="_blank"
+                                        class="w-10 h-10 rounded-full {{ $social->bg_color }} {{ $social->hover_color }} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg"
+                                        title="{{ $social->platform }}">
+                                        <i class="{{ $social->icon }} text-white"></i>
+                                    </a>
+                                @endforeach
+                            @else
+                                <!-- Default Social Media Icons -->
+                                <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg" title="Facebook">
+                                    <i class="fab fa-facebook-f text-white"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-full bg-blue-400 hover:bg-blue-500 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg" title="Twitter">
+                                    <i class="fab fa-twitter text-white"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg" title="Instagram">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-blue-700 hover:bg-blue-800 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in text-white"></i>
+                                </a>
+                            @endif
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <span class="text-gray-300 text-sm">+880 1306 753144</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-300 text-sm">info@studyabroad.com</span>
+                    </div>
+
+                    <!-- Download Apps -->
+                    <div>
+                        <h5 class="text-sm font-semibold mb-3 text-gray-200">Download Our App</h5>
+                        <div class="space-y-2">
+                            <a href="https://www.apple.com/app-store/" target="_blank" class="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-all duration-300 border border-gray-600 hover:border-blue-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                                </svg>
+                                <div class="text-left">
+                                    <div class="text-xs text-gray-400">Download on</div>
+                                    <div class="text-xs font-semibold text-white">App Store</div>
+                                </div>
+                            </a>
+                            <a href="https://play.google.com/store" target="_blank" class="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-all duration-300 border border-gray-600 hover:border-blue-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                                </svg>
+                                <div class="text-left">
+                                    <div class="text-xs text-gray-400">Get it on</div>
+                                    <div class="text-xs font-semibold text-white">Google Play</div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Newsletter -->
+                <!-- Column 2: Navigation Links -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4 text-white">Newsletter</h4>
-                    <p class="text-gray-300 text-sm mb-4">Stay updated with the latest opportunities and news.</p>
-                    <div class="space-y-3">
-                        <input type="email" placeholder="Your email address"
-                            class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors">
-                        <button
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors duration-300 font-medium">
-                            Subscribe
-                        </button>
+                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-blue-500 pb-2 inline-block">Navigation</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="{{ route('home') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('countries.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Countries
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('universities.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Universities
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('courses.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Courses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('scholarships.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Scholarships
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Blog & News
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('reviews.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Student Reviews
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about-us') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                About Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-blue-500 pb-2 inline-block">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="{{ route('applications.create') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                University Applications
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about-us') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Visa Assistance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('scholarships.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Scholarship Guidance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('chat.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Career Counseling
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('courses.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Test Preparation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about-us') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Accommodation Help
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('countries.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Cultural Guidance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('reviews.index') }}" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                                <span class="mr-2 text-blue-500 group-hover:translate-x-1 transition-transform">›</span>
+                                Student Community
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact Info & Newsletter -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-blue-500 pb-2 inline-block">Contact Us</h4>
+                    <div class="space-y-4 mb-6">
+                        <a href="https://maps.google.com/?q=Dhaka,Bangladesh" target="_blank" class="flex items-start space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                            <svg class="w-5 h-5 text-blue-500 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-sm">123 Education Street<br>Dhaka, Bangladesh</span>
+                        </a>
+                        <a href="tel:+8801306753144" class="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                            <svg class="w-5 h-5 text-blue-500 flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-sm">+880 1306 753144</span>
+                        </a>
+                        <a href="mailto:info@studyabroad.com" class="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                            <svg class="w-5 h-5 text-blue-500 flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-sm">info@studyabroad.com</span>
+                        </a>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                        <h5 class="text-lg font-semibold mb-2 text-white">📧 Newsletter</h5>
+                        <p class="text-gray-300 text-xs mb-3">Stay updated with latest opportunities!</p>
+                        <form id="newsletter-form" class="space-y-2" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                            <input type="email" name="email" placeholder="Your email address" required
+                                class="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md text-white text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-md transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transform">
+                                Subscribe Now
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
 
             <!-- Bottom Bar -->
             <div class="border-t border-gray-700 mt-12 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p class="text-gray-400 text-sm">
-                        © 2024 StudyAbroad. All rights reserved.
+                        © {{ date('Y') }} <span class="text-blue-400 font-semibold">StudyAbroad</span>. All rights reserved. Made with ❤️ for students worldwide.
                     </p>
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#"
-                            class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300">Privacy
-                            Policy</a>
-                        <a href="#"
-                            class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300">Terms of
-                            Service</a>
-                        <a href="#"
-                            class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300">Cookie
-                            Policy</a>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="{{ route('about-us') }}" class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300 hover:underline">
+                            Privacy Policy
+                        </a>
+                        <a href="{{ route('about-us') }}" class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300 hover:underline">
+                            Terms of Service
+                        </a>
+                        <a href="{{ route('about-us') }}" class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300 hover:underline">
+                            Cookie Policy
+                        </a>
+                        <a href="{{ route('about-us') }}" class="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-300 hover:underline">
+                            Contact
+                        </a>
                     </div>
                 </div>
             </div>

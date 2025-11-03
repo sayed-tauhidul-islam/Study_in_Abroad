@@ -60,9 +60,49 @@
                 class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
                 <!-- Country Image -->
                 <div class="relative h-56 overflow-hidden">
-                    <img src="{{ $country->image_url ?? 'https://source.unsplash.com/800x600/?country,'.$country->name }}"
-                        alt="{{ $country->name }}"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    @if($country->image_url)
+                        <img src="{{ $country->image_url }}"
+                            alt="{{ $country->name }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80';">
+                    @else
+                        <!-- Fallback gradient background with country flag emoji or icon -->
+                        <div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-2">
+                                    @switch($country->country_code)
+                                        @case('US') 🇺🇸 @break
+                                        @case('CA') 🇨🇦 @break
+                                        @case('AU') 🇦🇺 @break
+                                        @case('GB') 🇬🇧 @break
+                                        @case('DE') 🇩🇪 @break
+                                        @case('FR') 🇫🇷 @break
+                                        @case('IT') 🇮🇹 @break
+                                        @case('ES') 🇪🇸 @break
+                                        @case('NL') 🇳🇱 @break
+                                        @case('SE') 🇸🇪 @break
+                                        @case('NO') 🇳🇴 @break
+                                        @case('DK') 🇩🇰 @break
+                                        @case('FI') 🇫🇮 @break
+                                        @case('CH') 🇨🇭 @break
+                                        @case('NZ') 🇳🇿 @break
+                                        @case('JP') 🇯🇵 @break
+                                        @case('KR') 🇰🇷 @break
+                                        @case('CN') 🇨🇳 @break
+                                        @case('IN') 🇮🇳 @break
+                                        @case('SG') 🇸🇬 @break
+                                        @case('BR') 🇧🇷 @break
+                                        @case('ZA') 🇿🇦 @break
+                                        @case('RU') 🇷🇺 @break
+                                        @case('TR') 🇹🇷 @break
+                                        @case('IE') 🇮🇪 @break
+                                        @default 🌍
+                                    @endswitch
+                                </div>
+                                <p class="text-xl font-bold">{{ $country->name }}</p>
+                            </div>
+                        </div>
+                    @endif
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
                     <!-- Country Code Badge -->
@@ -101,18 +141,24 @@
                     </div>
 
                     <!-- Description -->
-                    <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ $country->description }}</p>
+                    @if($country->description)
+                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ $country->description }}</p>
+                    @else
+                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">Discover amazing educational opportunities and cultural experiences in {{ $country->name }}. Explore world-class universities and programs.</p>
+                    @endif
 
                     <!-- Stats -->
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <div
-                            class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                            <span>🎓</span> {{ number_format($country->student_count ?? 0) }} Students
-                        </div>
+                        @if($country->student_count > 0)
+                            <div
+                                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <span>🎓</span> {{ number_format($country->student_count) }} Students
+                            </div>
+                        @endif
                         @if($country->universities_count > 0)
                             <div
                                 class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                                <span>🏛️</span> {{ $country->universities_count }}+ Universities
+                                <span>🏛️</span> {{ number_format($country->universities_count) }} {{ $country->universities_count == 1 ? 'University' : 'Universities' }}
                             </div>
                         @endif
                     </div>

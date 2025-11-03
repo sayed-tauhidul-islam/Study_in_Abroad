@@ -78,6 +78,7 @@ Route::get('/universities/{university}', [UniversityController::class, 'publicSh
 Route::get('/countries/{country}', [CountryController::class, 'publicShow'])->name('countries.show');
 Route::get('/courses/{course}', [CourseController::class, 'publicShow'])->name('courses.show');
 Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'publicShow'])->name('scholarships.show');
+Route::get('/degrees/{degree}', [DegreeController::class, 'publicShow'])->name('degrees.show');
 
 
 Route::get('/applications/create', [ApplicationController::class, 'create'])->name('applications.create');

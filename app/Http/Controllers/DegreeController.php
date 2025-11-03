@@ -29,6 +29,26 @@ class DegreeController extends Controller
     }
 
     /**
+     * Display the specified resource for public.
+     */
+    public function publicShow(string $id)
+    {
+        $degree = Degree::where('is_active', true)->findOrFail($id);
+        
+        // Get universities that offer courses at this degree level
+        $universitiesCount = \App\Models\University::whereHas('courses', function($query) use ($degree) {
+            $query->where('level', $degree->level);
+        })->count();
+        
+        // Get sample universities offering this degree level
+        $universities = \App\Models\University::whereHas('courses', function($query) use ($degree) {
+            $query->where('level', $degree->level);
+        })->with('country')->take(12)->get();
+        
+        return view('degrees.show', compact('degree', 'universitiesCount', 'universities'));
+    }
+
+    /**
      * Display a listing of the resource for admin.
      */
     public function index()
