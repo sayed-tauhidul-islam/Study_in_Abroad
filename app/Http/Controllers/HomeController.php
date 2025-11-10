@@ -18,6 +18,7 @@ use App\Models\UniversityRanking;
 use App\Models\StudentResource;
 use App\Models\Event;
 use App\Models\PageSection;
+use App\Models\Country;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,11 @@ class HomeController extends Controller
         $testimonials = Testimonial::where('is_active', true)->orderBy('order')->get();
         $faqs = Faq::where('is_active', true)->orderBy('order')->get();
         $socialLinks = SocialLink::where('is_active', true)->orderBy('order')->get();
+        
+        // Popular countries for destinations section - Only 6 countries
+        $popularCountries = Country::whereIn('country_code', ['US', 'GB', 'CA', 'AU', 'DE', 'FR'])
+            ->orderByRaw("FIELD(country_code, 'US', 'GB', 'CA', 'AU', 'DE', 'FR')")
+            ->get();
 
         // New dynamic data
         $slideshowImages = HeroSlideshowImage::active()->ordered()->get();
@@ -57,7 +63,8 @@ class HomeController extends Controller
             'universityRankings',
             'studentResources',
             'upcomingEvents',
-            'pageSections'
+            'pageSections',
+            'popularCountries'
         ));
     }
 }

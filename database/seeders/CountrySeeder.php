@@ -21,7 +21,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 1095299,
                 'tuition_range_min' => 20000,
                 'tuition_range_max' => 70000,
-                'image_url' => 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800',
+                'image_url' => 'https://images.pexels.com/photos/64271/queen-of-liberty-statue-of-liberty-new-york-liberty-statue-64271.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'The USA attracts the most international students worldwide. Major cities include New York, Los Angeles, Boston, San Francisco, and Chicago. Known for STEM programs, business schools, and liberal arts education. Work opportunities available through OPT and CPT programs.'
             ],
             [
@@ -34,7 +34,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 642480,
                 'tuition_range_min' => 15000,
                 'tuition_range_max' => 35000,
-                'image_url' => 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800',
+                'image_url' => 'https://images.pexels.com/photos/534173/pexels-photo-534173.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'Canada provides excellent post-graduation work permits (PGWP) and pathways to permanent residency. Major student cities: Toronto, Vancouver, Montreal, and Ottawa. Known for engineering, computer science, and business programs.'
             ],
             [
@@ -62,7 +62,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 605130,
                 'tuition_range_min' => 15000,
                 'tuition_range_max' => 45000,
-                'image_url' => 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800',
+                'image_url' => 'https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'UK degrees are typically 3 years for undergraduate and 1 year for masters. Major cities: London, Edinburgh, Manchester, Oxford, Cambridge. Graduate visa available for 2-3 years post-study.'
             ],
             [
@@ -75,7 +75,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 411601,
                 'tuition_range_min' => 0,
                 'tuition_range_max' => 20000,
-                'image_url' => 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800',
+                'image_url' => 'https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'No tuition fees at public universities, only semester contributions (~300 EUR). Major cities: Berlin, Munich, Frankfurt, Hamburg. 18-month post-study work visa. Strong engineering and technical programs.'
             ],
             [
@@ -88,7 +88,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 358000,
                 'tuition_range_min' => 200,
                 'tuition_range_max' => 20000,
-                'image_url' => 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800',
+                'image_url' => 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'Very low tuition at public universities. Paris is a top student city. Known for Grandes Écoles, business schools, and culinary institutes. Post-study work opportunities available.'
             ],
             [
@@ -101,7 +101,7 @@ class CountrySeeder extends Seeder
                 'student_count' => 122000,
                 'tuition_range_min' => 6000,
                 'tuition_range_max' => 20000,
-                'image_url' => 'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800',
+                'image_url' => 'https://images.pexels.com/photos/1888883/pexels-photo-1888883.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'details' => 'Most programs taught in English. Major cities: Amsterdam, Rotterdam, Utrecht, The Hague. One-year search visa after graduation. Known for business, engineering, and design.'
             ],
             [
@@ -209,6 +209,34 @@ class CountrySeeder extends Seeder
                 'tuition_range_max' => 10000,
                 'image_url' => 'https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800',
                 'details' => 'Very low registration fees at public universities. Small class sizes. Reykjavik is the capital. Unique for environmental and energy studies.'
+            ],
+
+            // Oceania
+            [
+                'name' => 'Australia',
+                'country_code' => 'AU',
+                'capital' => 'Canberra',
+                'language' => 'English',
+                'currency' => 'AUD ($)',
+                'description' => 'Innovative education system with beautiful campuses and vibrant cities. Australia offers Group of Eight universities, excellent quality of life, and post-study work opportunities.',
+                'student_count' => 690000,
+                'tuition_range_min' => 20000,
+                'tuition_range_max' => 45000,
+                'image_url' => 'https://images.pexels.com/photos/995765/pexels-photo-995765.jpeg?auto=compress&cs=tinysrgb&w=800',
+                'details' => 'Australia offers 2-4 year post-study work visa. Major cities: Sydney, Melbourne, Brisbane, Perth. Known for research excellence, beautiful beaches, and outdoor lifestyle. Group of Eight universities are world-renowned.'
+            ],
+            [
+                'name' => 'New Zealand',
+                'country_code' => 'NZ',
+                'capital' => 'Wellington',
+                'language' => 'English, Māori',
+                'currency' => 'NZD ($)',
+                'description' => 'Safe, friendly environment with stunning natural beauty. New Zealand offers quality education with innovative teaching methods and welcoming culture.',
+                'student_count' => 125000,
+                'tuition_range_min' => 18000,
+                'tuition_range_max' => 35000,
+                'image_url' => 'https://images.pexels.com/photos/1118877/pexels-photo-1118877.jpeg?auto=compress&cs=tinysrgb&w=800',
+                'details' => 'Post-study work visa for 1-3 years. Major cities: Auckland, Wellington, Christchurch. Known for adventure activities, beautiful landscapes. Safe and welcoming for international students.'
             ],
 
             // Europe - Southern

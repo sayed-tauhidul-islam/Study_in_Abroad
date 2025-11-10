@@ -881,258 +881,103 @@
         </div>
 
         <!-- Countries Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            @php
+                $colors = [
+                    ['bg' => 'from-blue-600 to-indigo-700', 'overlay' => 'from-blue-900/90 via-indigo-900/60', 'accent' => 'blue', 'button' => '37, 99, 235, 67, 56, 202'],
+                    ['bg' => 'from-red-600 to-rose-700', 'overlay' => 'from-red-900/90 via-rose-900/60', 'accent' => 'red', 'button' => '220, 38, 38, 190, 18, 60'],
+                    ['bg' => 'from-green-600 to-emerald-700', 'overlay' => 'from-green-900/90 via-emerald-900/60', 'accent' => 'green', 'button' => '22, 163, 74, 4, 120, 87'],
+                    ['bg' => 'from-purple-600 to-violet-700', 'overlay' => 'from-purple-900/90 via-violet-900/60', 'accent' => 'purple', 'button' => '147, 51, 234, 109, 40, 217'],
+                    ['bg' => 'from-orange-600 to-amber-700', 'overlay' => 'from-orange-900/90 via-amber-900/60', 'accent' => 'orange', 'button' => '234, 88, 12, 217, 119, 6'],
+                    ['bg' => 'from-pink-600 to-fuchsia-700', 'overlay' => 'from-pink-900/90 via-fuchsia-900/60', 'accent' => 'pink', 'button' => '219, 39, 119, 162, 28, 175'],
+                ];
+            @endphp
             
-            <!-- United States -->
-            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
-                <!-- Country Image -->
-                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700">
-                    <img src="https://cdn.pixabay.com/photo/2017/08/22/22/36/cinderella-castle-2670770_1280.jpg" 
-                         alt="United States"
+            @foreach($popularCountries as $index => $country)
+            @php
+                $color = $colors[$index % count($colors)];
+            @endphp
+            <div class="group relative bg-gradient-to-br {{ $color['bg'] }} rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+                <!-- Country Image with Overlay -->
+                <div class="relative h-72 overflow-hidden">
+                    <img src="{{ $country->image_url ?? 'https://images.pexels.com/photos/1703310/pexels-photo-1703310.jpeg?auto=compress&cs=tinysrgb&w=800' }}" 
+                         alt="{{ $country->name }}"
                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                          loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t {{ $color['overlay'] }} to-transparent"></div>
                     
-                    <!-- Country Flag & Name Overlay -->
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-5xl">🇺🇸</span>
-                            <div>
-                                <h3 class="text-2xl font-black text-white drop-shadow-lg">United States</h3>
-                                <p class="text-sm text-blue-100 font-semibold">The Land of Opportunities</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
+                    <!-- Badge for first country -->
+                    @if($index === 0)
+                    <div class="absolute top-4 left-4">
+                        <div class="bg-white/95 backdrop-blur-sm text-{{ $color['accent'] }}-600 px-4 py-2 rounded-full text-xs font-bold shadow-xl flex items-center gap-2 animate-pulse">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                             Most Popular
-                        </span>
+                        </div>
+                    </div>
+                    @endif
+                    
+                    <!-- Country Name Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 class="text-3xl font-black text-white mb-1 drop-shadow-2xl">{{ $country->name }}</h3>
+                        @if($country->capital)
+                            <p class="text-white/90 font-semibold flex items-center gap-2 drop-shadow-lg">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                </svg>
+                                {{ $country->capital }}
+                            </p>
+                        @endif
                     </div>
                 </div>
 
-                <!-- Content -->
-                <div class="p-6">
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        Home to world-renowned universities like Harvard, MIT, and Stanford. Over 4,000 institutions to choose from.
+                <!-- Content Card -->
+                <div class="bg-white p-6">
+                    <p class="text-gray-700 mb-5 text-sm leading-relaxed line-clamp-3">
+                        {{ $country->description ? \Illuminate\Support\Str::limit($country->description, 130) : 'Discover world-class education opportunities and vibrant student life in ' . $country->name . '.' }}
                     </p>
                     
-                    <!-- Stats -->
-                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-3 gap-4 mb-6 bg-gray-50 rounded-xl p-4">
                         <div class="text-center">
-                            <div class="text-2xl font-black text-blue-600">500+</div>
-                            <div class="text-xs text-gray-500 font-medium">Universities</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-green-600">$50K+</div>
-                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-orange-600">85%</div>
-                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
-                        </div>
-                    </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="{{ route('countries.show', 'united-states') }}" 
-                       class="block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        View Details
-                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- United Kingdom -->
-            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
-                <!-- Country Image -->
-                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-red-700">
-                    <img src="https://cdn.pixabay.com/photo/2018/04/25/09/26/eiffel-tower-3349075_1280.jpg" 
-                         alt="United Kingdom"
-                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                         loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent"></div>
-                    
-                    <!-- Country Flag & Name Overlay -->
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-5xl">🇬🇧</span>
-                            <div>
-                                <h3 class="text-2xl font-black text-white drop-shadow-lg">United Kingdom</h3>
-                                <p class="text-sm text-red-100 font-semibold">Historic Excellence</p>
+                            <div class="text-2xl font-black text-{{ $color['accent'] }}-600">
+                                {{ $country->universities_count ?? '50+' }}
                             </div>
+                            <div class="text-xs text-gray-600 font-semibold mt-1">Universities</div>
                         </div>
-                    </div>
-                    
-                    <!-- Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
-                            Oxford & Cambridge
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="p-6">
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        Historic universities with cutting-edge research. Programs from 9-12 months with post-study work visas.
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-red-600">150+</div>
-                            <div class="text-xs text-gray-500 font-medium">Universities</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-green-600">£30K+</div>
-                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-orange-600">82%</div>
-                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
-                        </div>
-                    </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="{{ route('countries.show', 'united-kingdom') }}" 
-                       class="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        View Details
-                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Canada -->
-            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
-                <!-- Country Image -->
-                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-orange-600">
-                    <img src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg" 
-                         alt="Canada"
-                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                         loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent"></div>
-                    
-                    <!-- Country Flag & Name Overlay -->
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-5xl">🇨🇦</span>
-                            <div>
-                                <h3 class="text-2xl font-black text-white drop-shadow-lg">Canada</h3>
-                                <p class="text-sm text-red-100 font-semibold">Quality & Affordability</p>
+                        <div class="text-center border-x border-gray-200">
+                            <div class="text-2xl font-black text-{{ $color['accent'] }}-600">
+                                @if($country->currency)
+                                    <span class="text-base">{{ $country->currency }}</span>
+                                @endif
+                                {{ $country->tuition_range_min ? number_format($country->tuition_range_min/1000) . 'K' : '30K' }}
                             </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
-                            PR Pathway
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="p-6">
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        High-quality education with excellent immigration pathways. Safe, multicultural environment with top-ranked universities.
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-red-600">90+</div>
-                            <div class="text-xs text-gray-500 font-medium">Universities</div>
+                            <div class="text-xs text-gray-600 font-semibold mt-1">Tuition/Year</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-2xl font-black text-green-600">$35K+</div>
-                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-orange-600">88%</div>
-                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
-                        </div>
-                    </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="{{ route('countries.show', 'canada') }}" 
-                       class="block w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        View Details
-                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Australia -->
-            <div class="group relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
-                <!-- Country Image -->
-                <div class="relative h-64 overflow-hidden bg-gradient-to-br from-green-500 via-teal-600 to-blue-600">
-                    <img src="https://cdn.pixabay.com/photo/2014/02/17/10/20/statue-of-liberty-267948_1280.jpg" 
-                         alt="Australia"
-                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                         loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-900/40 to-transparent"></div>
-                    
-                    <!-- Country Flag & Name Overlay -->
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-5xl">🇦🇺</span>
-                            <div>
-                                <h3 class="text-2xl font-black text-white drop-shadow-lg">Australia</h3>
-                                <p class="text-sm text-green-100 font-semibold">Work & Study Balance</p>
+                            <div class="text-2xl font-black text-{{ $color['accent'] }}-600">
+                                {{ $country->student_count ? number_format($country->student_count/1000) . 'K' : '10K' }}
                             </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-green-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
-                            Work Rights
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="p-6">
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        High-quality education with excellent post-study work opportunities. Known for research excellence and innovation.
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="flex items-center justify-between mb-5 pb-5 border-b border-gray-100">
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-green-600">43+</div>
-                            <div class="text-xs text-gray-500 font-medium">Universities</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-green-600">$40K+</div>
-                            <div class="text-xs text-gray-500 font-medium">Scholarships</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-black text-orange-600">80%</div>
-                            <div class="text-xs text-gray-500 font-medium">Visa Rate</div>
+                            <div class="text-xs text-gray-600 font-semibold mt-1">Students</div>
                         </div>
                     </div>
                     
                     <!-- View Details Button -->
-                    <a href="{{ route('countries.show', 'australia') }}" 
-                       class="block w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-center py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        View Details
-                        <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                    <a href="{{ route('countries.show', $country->id) }}" 
+                       class="group/btn relative block w-full text-white text-center py-3.5 rounded-xl font-bold shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                       style="background: linear-gradient(135deg, rgb({{ $color['button'] }}));">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            View Details
+                            <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </span>
+                        <div class="absolute inset-0 bg-black/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
                     </a>
                 </div>
             </div>
+            @endforeach
 
         </div>
 
@@ -1150,192 +995,421 @@
 </section>
 
 <!-- Study Programs Section - Modern Elegant Design -->
-<section class="relative py-24 overflow-hidden">
-    <!-- Subtle Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/60 via-blue-50/50 to-purple-50/60"></div>
+<section class="relative py-24 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <!-- Animated Background with Floating Shapes -->
+    <div class="absolute inset-0 overflow-hidden opacity-30">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full blur-3xl animate-blob"></div>
+        <div class="absolute top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
     
-    <!-- Floating Decorative Elements -->
-    <div class="absolute inset-0 overflow-hidden opacity-25">
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-indigo-200 to-blue-200 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute top-1/3 -right-32 w-96 h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+    <!-- Floating Particles -->
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-1/4 w-3 h-3 bg-blue-400 rounded-full animate-float"></div>
+        <div class="absolute top-40 right-1/4 w-2 h-2 bg-purple-400 rounded-full animate-float animation-delay-1000"></div>
+        <div class="absolute bottom-40 left-1/3 w-4 h-4 bg-pink-400 rounded-full animate-float animation-delay-2000"></div>
+        <div class="absolute bottom-20 right-1/3 w-3 h-3 bg-cyan-400 rounded-full animate-float animation-delay-3000"></div>
     </div>
     
     <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-indigo-100 shadow-2xl">
-                <span class="text-3xl animate-bounce">📚</span>
-                <span class="text-gray-800 font-bold text-sm uppercase tracking-widest">Academic Excellence</span>
-                <span class="text-3xl animate-bounce" style="animation-delay: 0.2s;">🎓</span>
+        <!-- Section Header with Animation -->
+        <div class="text-center mb-20 animate-fade-in-up">
+            <div class="inline-flex items-center gap-4 mb-6 bg-white/80 backdrop-blur-xl px-10 py-5 rounded-3xl border-2 border-indigo-200/50 shadow-2xl hover:shadow-indigo-300/50 transition-all duration-500 hover:scale-105">
+                <span class="text-4xl animate-bounce">🎓</span>
+                <span class="text-gray-800 font-extrabold text-base uppercase tracking-widest bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Academic Excellence</span>
+                <span class="text-4xl animate-bounce animation-delay-300">✨</span>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
-                Explore Study Programs</h2>
-            <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-semibold">Find the perfect program that matches your
-                academic goals and career aspirations ✨</p>
+            
+            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+                    Explore Study Programs
+                </span>
+            </h2>
+            
+            <p class="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+                Find the perfect program that matches your academic goals and career aspirations 
+                <span class="inline-block animate-pulse">✨</span>
+            </p>
         </div>
 
+        <!-- Programs Grid with Staggered Animation -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Undergraduate Programs - Glassmorphism Design -->
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
-                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-blue-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-blue-100/50">
-                    <!-- Icon with Gradient Background -->
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                        🎓
+            
+            <!-- Undergraduate Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.1s;">
+                <!-- Glow Effect -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-blue-100/50 overflow-hidden hover:shadow-blue-400/40 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <!-- Top Accent Bar -->
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500"></div>
+                    
+                    <!-- Card Content -->
+                    <div class="p-8">
+                        <!-- Animated Icon Container -->
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition duration-500"></div>
+                            <div class="relative w-24 h-24 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center text-5xl shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                                🎓
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-black text-3xl mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                            Undergraduate Programs
+                        </h3>
+                        
+                        <p class="text-gray-700 mb-6 font-medium leading-relaxed text-lg">
+                            Bachelor's degrees in various fields including Business, Engineering, Arts, and Sciences.
+                        </p>
+                        
+                        <!-- Features List with Icons -->
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl px-4 py-3 hover:from-blue-100 hover:to-cyan-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Foundation Programs Available</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl px-4 py-3 hover:from-blue-100 hover:to-cyan-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Transfer Credits Accepted</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl px-4 py-3 hover:from-blue-100 hover:to-cyan-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Career Counseling Included</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Call to Action Button -->
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Undergraduate Programs</h3>
-                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">Bachelor's degrees in various fields including
-                        Business, Engineering, Arts, and Sciences.</p>
-                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
-                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
-                            <span class="mr-2 text-lg text-blue-500">✓</span> Foundation Programs Available
-                        </li>
-                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
-                            <span class="mr-2 text-lg text-blue-500">✓</span> Transfer Credits Accepted
-                        </li>
-                        <li class="flex items-center bg-blue-50/80 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition">
-                            <span class="mr-2 text-lg text-blue-500">✓</span> Career Counseling Included
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Graduate Programs - Glassmorphism Design -->
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
-                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-green-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-green-100/50">
-                    <!-- Icon with Gradient Background -->
-                    <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                        📚
+            <!-- Graduate Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-emerald-100/50 overflow-hidden hover:shadow-emerald-400/40 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500"></div>
+                    
+                    <div class="p-8">
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-500 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition duration-500"></div>
+                            <div class="relative w-24 h-24 bg-gradient-to-br from-emerald-500 to-green-500 rounded-3xl flex items-center justify-center text-5xl shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                                📚
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-black text-3xl mb-4 bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                            Graduate Programs
+                        </h3>
+                        
+                        <p class="text-gray-700 mb-6 font-medium leading-relaxed text-lg">
+                            Master's and PhD programs for advanced study. Research opportunities and industry partnerships.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl px-4 py-3 hover:from-emerald-100 hover:to-green-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-emerald-500 to-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Research Assistantships</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl px-4 py-3 hover:from-emerald-100 hover:to-green-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-emerald-500 to-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Industry Partnerships</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl px-4 py-3 hover:from-emerald-100 hover:to-green-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-emerald-500 to-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Fast-track Options</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">Graduate Programs</h3>
-                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">Master's and PhD programs for advanced study. Research
-                        opportunities and industry partnerships.</p>
-                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
-                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
-                            <span class="mr-2 text-lg text-green-500">✓</span> Research Assistantships
-                        </li>
-                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
-                            <span class="mr-2 text-lg text-green-500">✓</span> Industry Partnerships
-                        </li>
-                        <li class="flex items-center bg-green-50/80 rounded-lg px-3 py-2 hover:bg-green-100/80 transition">
-                            <span class="mr-2 text-lg text-green-500">✓</span> Fast-track Options
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Professional Programs - Glassmorphism Design -->
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
-                <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-purple-300/50 transition-all duration-500 hover:-translate-y-2 p-8 border border-purple-100/50">
-                    <!-- Icon with Gradient Background -->
-                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                        💼
+            <!-- Professional Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.3s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-purple-100/50 overflow-hidden hover:shadow-purple-400/40 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500"></div>
+                    
+                    <div class="p-8">
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition duration-500"></div>
+                            <div class="relative w-24 h-24 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-3xl flex items-center justify-center text-5xl shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                                💼
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-black text-3xl mb-4 bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                            Professional Programs
+                        </h3>
+                        
+                        <p class="text-gray-700 mb-6 font-medium leading-relaxed text-lg">
+                            MBA, Law, Medicine, and other professional degrees with industry certifications.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-purple-50 to-fuchsia-50 rounded-xl px-4 py-3 hover:from-purple-100 hover:to-fuchsia-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Industry Certifications</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-purple-50 to-fuchsia-50 rounded-xl px-4 py-3 hover:from-purple-100 hover:to-fuchsia-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Internship Programs</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-gradient-to-r from-purple-50 to-fuchsia-50 rounded-xl px-4 py-3 hover:from-purple-100 hover:to-fuchsia-100 transition-all duration-300 hover:translate-x-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</span>
+                                <span class="text-gray-800 font-semibold">Executive Networks</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <h3 class="font-black text-3xl mb-3 bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">Professional Programs</h3>
-                    <p class="text-gray-700 mb-6 font-medium leading-relaxed">MBA, Law, Medicine, and other professional degrees
-                        with industry certifications.</p>
-                    <ul class="text-sm text-gray-700 space-y-3 font-medium">
-                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
-                            <span class="mr-2 text-lg text-purple-500">✓</span> Industry Certifications
-                        </li>
-                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
-                            <span class="mr-2 text-lg text-purple-500">✓</span> Internship Programs
-                        </li>
-                        <li class="flex items-center bg-purple-50/80 rounded-lg px-3 py-2 hover:bg-purple-100/80 transition">
-                            <span class="mr-2 text-lg text-purple-500">✓</span> Executive Networks
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Online & Hybrid Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 p-8 border-4 border-orange-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-yellow-300 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <!-- Online & Hybrid Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.4s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 via-red-500 to-rose-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 rounded-3xl shadow-2xl overflow-hidden hover:shadow-orange-400/60 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <!-- Decorative Circles -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-10 p-8 text-white">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-5xl mb-6 shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 border-2 border-white/30">
                             🌐
                         </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">Online & Hybrid Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">Flexible learning options combining online coursework
-                            with in-person components.</p>
+                        
+                        <h3 class="font-black text-3xl mb-4 drop-shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                            Online & Hybrid Programs
+                        </h3>
+                        
+                        <p class="text-white/95 mb-6 font-medium leading-relaxed text-lg drop-shadow-lg">
+                            Flexible learning options combining online coursework with in-person components.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Flexible Scheduling</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Global Faculty Access</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Interactive Learning</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-white text-orange-600 font-bold py-4 rounded-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Flexible Scheduling</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Global Faculty Access</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Interactive Learning</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Creative Arts Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-pink-500 via-pink-600 to-rose-600 p-8 border-4 border-pink-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <!-- Creative Arts Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.5s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-gradient-to-br from-pink-500 via-rose-500 to-red-600 rounded-3xl shadow-2xl overflow-hidden hover:shadow-pink-400/60 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-10 p-8 text-white">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-5xl mb-6 shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 border-2 border-white/30">
                             🎨
                         </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">Creative Arts Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">Fine Arts, Design, Music, Film, and Performing Arts
-                            with portfolio development.</p>
+                        
+                        <h3 class="font-black text-3xl mb-4 drop-shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                            Creative Arts Programs
+                        </h3>
+                        
+                        <p class="text-white/95 mb-6 font-medium leading-relaxed text-lg drop-shadow-lg">
+                            Fine Arts, Design, Music, Film, and Performing Arts with portfolio development.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Portfolio Development</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Industry Connections</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Exhibition Opportunities</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-white text-pink-600 font-bold py-4 rounded-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Portfolio Development</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Industry Connections</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Exhibition Opportunities</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- STEM Programs -->
-            <div
-                class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-700 p-8 border-4 border-teal-300">
-                <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="w-20 h-20 bg-pink-300 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <!-- STEM Programs Card -->
+            <div class="group relative animate-slide-up" style="animation-delay: 0.6s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-70 transition duration-700"></div>
+                
+                <div class="relative h-full bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 rounded-3xl shadow-2xl overflow-hidden hover:shadow-teal-400/60 transition-all duration-500 hover:-translate-y-3 hover:scale-105">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-10 p-8 text-white">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-5xl mb-6 shadow-2xl group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 border-2 border-white/30">
                             🔬
                         </div>
-                        <h3 class="font-black text-3xl mb-3 text-white drop-shadow-lg">STEM Programs</h3>
-                        <p class="text-white/95 mb-4 font-medium">Science, Technology, Engineering, and Mathematics with
-                            cutting-edge research facilities.</p>
+                        
+                        <h3 class="font-black text-3xl mb-4 drop-shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                            STEM Programs
+                        </h3>
+                        
+                        <p class="text-white/95 mb-6 font-medium leading-relaxed text-lg drop-shadow-lg">
+                            Science, Technology, Engineering, and Mathematics with cutting-edge research facilities.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Research Facilities</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Innovation Labs</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/20 transition-all duration-300 hover:translate-x-2 border border-white/20">
+                                <span class="flex-shrink-0 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-xs font-bold">✓</span>
+                                <span class="font-semibold">Industry Partnerships</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-white text-teal-600 font-bold py-4 rounded-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                            <span>Learn More</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <ul class="text-sm text-white/90 space-y-3 font-medium">
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Research Facilities</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Innovation Labs</li>
-                        <li class="flex items-center bg-white/10 rounded-lg px-3 py-2"><span
-                                class="mr-2 text-lg">✓</span> Industry Partnerships</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Custom CSS for Animations -->
+<style>
+    @keyframes blob {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(20px, -50px) scale(1.1); }
+        50% { transform: translate(-20px, 20px) scale(0.9); }
+        75% { transform: translate(50px, 50px) scale(1.05); }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes gradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .animate-blob {
+        animation: blob 7s infinite;
+    }
+    
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out;
+    }
+    
+    .animate-slide-up {
+        animation: slide-up 0.6s ease-out forwards;
+        opacity: 0;
+    }
+    
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradient 3s ease infinite;
+    }
+    
+    .animation-delay-300 {
+        animation-delay: 0.3s;
+    }
+    
+    .animation-delay-1000 {
+        animation-delay: 1s;
+    }
+    
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+    
+    .animation-delay-3000 {
+        animation-delay: 3s;
+    }
+    
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+</style>
 
 <!-- University Rankings Section -->
 <section class="relative bg-white py-20 border-t-4 border-b-4 border-blue-500 overflow-hidden">

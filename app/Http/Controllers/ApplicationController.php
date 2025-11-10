@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Country;
 
 class ApplicationController extends Controller
 {
@@ -20,7 +21,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        return view('applications.create');
+        $countries = Country::orderBy('name')->get();
+        return view('applications.create', compact('countries'));
     }
 
     /**
@@ -30,16 +32,40 @@ class ApplicationController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:50',
-            'country' => 'nullable|string|max:100',
+            'email' => 'required|email:rfc,dns|max:255',
+            'date_of_birth' => 'required|date|before:-16 years',
+            'gender' => 'required|in:male,female,other',
+            'phone_country_code' => 'required|string|max:10',
+            'phone' => 'required|regex:/^[0-9]{6,15}$/',
+            'address' => 'required|string|min:10|max:500',
+            'passport_number' => 'nullable|regex:/^[A-Z0-9]{6,12}$/i',
+            'education_level' => 'required|string',
+            'english_proficiency' => 'nullable|string',
+            'test_score' => 'nullable|string|max:10',
+            'source_country' => 'required|exists:countries,id',
+            'destination_country' => 'required|exists:countries,id|different:source_country',
+            'intended_program' => 'required|string',
+            'intake_year' => 'required|digits:4|min:2025',
+            'intake_month' => 'required|string',
             'course' => 'nullable|string|max:100',
-            'message' => 'nullable|string',
+            'message' => 'nullable|string|max:1000',
+        ], [
+            'email.email' => 'Please enter a valid email address.',
+            'email.required' => 'Email address is required.',
+            'date_of_birth.before' => 'You must be at least 16 years old.',
+            'phone.regex' => 'Phone number must be 6-15 digits.',
+            'address.min' => 'Address must be at least 10 characters.',
+            'passport_number.regex' => 'Passport number must be 6-12 alphanumeric characters.',
+            'destination_country.different' => 'Destination country must be different from source country.',
         ]);
+
+        // Combine country code and phone number
+        $validated['phone'] = $validated['phone_country_code'] . ' ' . $validated['phone'];
+        unset($validated['phone_country_code']);
 
         \App\Models\Application::create($validated);
 
-    return redirect('/')->with('success', 'Your application has been submitted!');
+        return redirect('/')->with('success', 'Your application has been submitted successfully! We will contact you soon.');
     }
 
     /**
